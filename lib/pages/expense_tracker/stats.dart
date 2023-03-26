@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../app_drawer.dart';
 import 'stats/categorywise.dart';
 import 'stats/monthly.dart';
 import 'stats/weekly.dart';
@@ -43,6 +44,9 @@ class _StatsState extends State<Stats> {
                 ),
               ],
             ),
+          ),
+          drawer: AppDrawer(
+            email: '',
           ),
           body: TabBarView(
             children: [

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:velocity_x/velocity_x.dart';
+import 'app_drawer.dart';
 import 'expense_tracker/home_expense.dart';
 import 'screen2/screen2.dart';
 import 'screen3/screen3.dart';
@@ -36,12 +37,15 @@ class HomeScreen extends StatelessWidget {
         ],
         iconTheme: IconThemeData(color: Colors.black54),
       ),
+      drawer: AppDrawer(
+        email: '',
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              child: Text('Screen 1'),
+              child: Text('Expense Tracker'),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomeExpense()));

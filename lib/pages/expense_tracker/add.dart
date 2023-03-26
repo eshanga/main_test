@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../app_drawer.dart';
+
 class Item {
   const Item(this.name, this.icon);
   final String name;
@@ -126,6 +128,9 @@ class _AddState extends State<Add> {
     final userKey = FirebaseAuth.instance.currentUser;
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      drawer: AppDrawer(
+        email: '',
+      ),
       body: Builder(
         builder: (context) => SafeArea(
           child: SingleChildScrollView(

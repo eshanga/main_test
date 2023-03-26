@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'dart:core';
 
+import '../app_drawer.dart';
+
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
@@ -109,6 +111,9 @@ class _DashboardState extends State<Dashboard> {
           )
         ],
         iconTheme: IconThemeData(color: Colors.black54),
+      ),
+      drawer: AppDrawer(
+        email: '',
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance

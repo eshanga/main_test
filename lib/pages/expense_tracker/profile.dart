@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../widgets/button_widget.dart';
+import '../app_drawer.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -38,6 +39,9 @@ class _ProfileState extends State<Profile> {
           )
         ],
         iconTheme: IconThemeData(color: Colors.black54),
+      ),
+      drawer: AppDrawer(
+        email: '',
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),
@@ -171,6 +175,7 @@ class _ProfileState extends State<Profile> {
         text: 'Logout',
         onClicked: () {
           FirebaseAuth.instance.signOut();
+          // In the logout function, navigate to the login screen
         },
       );
 }
