@@ -1,3 +1,4 @@
+import 'package:financia_mobile_app/pages/about_page.dart';
 import 'package:financia_mobile_app/pages/expense_tracker/home_expense.dart';
 import 'package:financia_mobile_app/pages/main_home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -113,6 +114,17 @@ class AppDrawer extends StatelessWidget {
               // Add logout functionality here
             },
           ),
+          Divider(),
+          Expanded(
+            child: ListTile(
+              leading: Icon(Icons.screen_share),
+              title: Text('About us'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AboutPage()));
+              },
+            ),
+          )
         ],
       ),
     );

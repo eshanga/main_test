@@ -9,6 +9,7 @@ class Screen6 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Screen 6'),
+        backgroundColor: Colors.indigo,
       ),
       drawer: AppDrawer(
         email: '',

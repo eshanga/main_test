@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -18,28 +20,28 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   var _budget = 50000;
-  late DocumentSnapshot documentSnapshot;
+  late DocumentSnapshot documentSnapshot = Null as DocumentSnapshot<Object?>;
   var today = new DateTime.now();
   var ringdate = new DateTime.now();
 
   getColor(String iconcolor) {
     switch (iconcolor) {
       case 'Education':
-        return Color(0xff0293ee);
+        return const Color(0xff0293ee);
       case 'Rent':
-        return Color(0xfff8b250);
+        return const Color(0xfff8b250);
       case 'Entertainment':
-        return Color(0xff845bef);
+        return const Color(0xff845bef);
       case 'Taxes':
-        return Color(0xff13d38e);
+        return const Color(0xff13d38e);
       case 'Vehicle':
-        return Color(0xFF800C32);
+        return const Color(0xFF800C32);
       case 'Stationary':
-        return Color(0xffd500f9);
+        return const Color(0xffd500f9);
       case 'Meal':
-        return Color(0xff00695c);
+        return const Color(0xff00695c);
     }
-    return Color(0xff546e7a);
+    return const Color(0xff546e7a);
   }
 
   IconData getIcon(String iconstring) {
@@ -102,7 +104,7 @@ class _DashboardState extends State<Dashboard> {
         backgroundColor: Colors.indigo,
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.logout,
             ),
             onPressed: () {
@@ -110,9 +112,9 @@ class _DashboardState extends State<Dashboard> {
             },
           )
         ],
-        iconTheme: IconThemeData(color: Colors.black54),
+        iconTheme: const IconThemeData(color: Colors.black54),
       ),
-      drawer: AppDrawer(
+      drawer: const AppDrawer(
         email: '',
       ),
       body: StreamBuilder(
@@ -123,7 +125,7 @@ class _DashboardState extends State<Dashboard> {
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
             return Center(
-                child: CircularProgressIndicator().centered().expand());
+                child: const CircularProgressIndicator().centered().expand());
           }
 
           getBudget(userKey).then((value) {
@@ -159,7 +161,7 @@ class _DashboardState extends State<Dashboard> {
                 children: [
                   Container(
                     height: 180,
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 15,
                       left: 35,
                       right: 20,
@@ -169,8 +171,8 @@ class _DashboardState extends State<Dashboard> {
                         CircularPercentIndicator(
                           radius: 155,
                           center: Text(
-                            _percenttext.toString() + "%",
-                            style: TextStyle(
+                            "$_percenttext%",
+                            style: const TextStyle(
                               fontSize: 30,
                               color: Colors.white,
                             ),
@@ -193,7 +195,7 @@ class _DashboardState extends State<Dashboard> {
                                   top: 40,
                                 ),
                                 child: balchecker == 0
-                                    ? Text(
+                                    ? const Text(
                                         "Balance",
                                         style: TextStyle(
                                           fontSize: 20,
@@ -201,7 +203,7 @@ class _DashboardState extends State<Dashboard> {
                                           fontFamily: 'Helvetica',
                                         ),
                                       )
-                                    : Text(
+                                    : const Text(
                                         "OverBudget",
                                         style: TextStyle(
                                           fontSize: 23,
@@ -216,15 +218,15 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                                 child: balchecker == 0
                                     ? Text(
-                                        "Rs. " + _balance.toString(),
-                                        style: TextStyle(
+                                        "Rs. $_balance",
+                                        style: const TextStyle(
                                           fontSize: 35,
                                           color: Colors.white,
                                         ),
                                       )
                                     : Text(
-                                        "By" + " Rs. " + _balance.toString(),
-                                        style: TextStyle(
+                                        "By Rs. $_balance",
+                                        style: const TextStyle(
                                           fontSize: 25,
                                           color: Colors.white,
                                         ),
@@ -236,15 +238,15 @@ class _DashboardState extends State<Dashboard> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Expanded(
                     // fit: FlexFit.tight,
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(40),
@@ -253,8 +255,8 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               top: 10,
                               bottom: 10,
                             ),
@@ -274,7 +276,7 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Flexible(
@@ -288,7 +290,7 @@ class _DashboardState extends State<Dashboard> {
                                   AsyncSnapshot<QuerySnapshot> snapshot) {
                                 if (!snapshot.hasData) {
                                   return Center(
-                                      child: CircularProgressIndicator()
+                                      child: const CircularProgressIndicator()
                                           .centered()
                                           .expand());
                                 }
@@ -324,7 +326,7 @@ class _DashboardState extends State<Dashboard> {
                                                   (user['date'] as Timestamp)
                                                       .toDate())
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14,
                                             // fontWeight: FontWeight.bold,
                                           ),
