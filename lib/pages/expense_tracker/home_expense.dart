@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'pages/expense_tracker/add.dart';
-import 'pages/expense_tracker/dashboard.dart';
-import 'pages/expense_tracker/stats.dart';
-import 'pages/expense_tracker/payment.dart';
-import 'pages/expense_tracker/profile.dart';
-import 'pages/expense_tracker/add.dart';
+import 'add.dart';
+import 'dashboard.dart';
+import 'stats.dart';
+import 'payment.dart';
+import 'profile.dart';
+import 'add.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeExpense extends StatefulWidget {
+  const HomeExpense({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<HomeExpense> {
   int currentTab = 0;
   final List<Widget> screens = [
     Dashboard(),

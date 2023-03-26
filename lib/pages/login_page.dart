@@ -1,4 +1,5 @@
 import 'package:financia_mobile_app/pages/home_page.dart';
+import 'package:financia_mobile_app/pages/main_home_page.dart';
 import 'package:financia_mobile_app/services/auth_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../firebase_options.dart';
@@ -35,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text.trim(),
       );
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
