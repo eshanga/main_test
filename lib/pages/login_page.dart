@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.purple[300],
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Email',
-                        fillColor: Colors.grey[200],
+                        fillColor: Colors.purple[100],
                         filled: true,
                       ),
                     ),
@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Password',
-                        fillColor: Colors.grey[200],
+                        fillColor: Colors.purple[100],
                         filled: true,
                       ),
                     ),
@@ -193,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Container(
                         padding: EdgeInsets.all(25),
                         decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: Colors.deepPurple,
                             borderRadius: BorderRadius.circular(12)),
                         child: Center(
                           child: Text(

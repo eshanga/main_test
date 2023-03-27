@@ -10,9 +10,14 @@ import 'screen4/screen4.dart';
 import 'screen5/screen5.dart';
 import 'screen6/screen6.dart';
 
-class HomeScreen extends StatelessWidget {
-  static const String routeName = '/home';
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
