@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.purple[300],
+        backgroundColor: Colors.grey[200],
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -298,7 +298,23 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Powered By,',
+                    style: TextStyle(fontSize: 12),
+                  ),
+
+                  Container(
+                    width: 100.0,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/company.png'),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
