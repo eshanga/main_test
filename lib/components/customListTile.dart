@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import '../model/article_model.dart';
@@ -21,6 +23,7 @@ Widget customListTile(Article article, BuildContext context) {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.0),
+          // ignore: prefer_const_literals_to_create_immutables
           boxShadow: [
             BoxShadow(
               color: Colors.black12,

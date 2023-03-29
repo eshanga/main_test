@@ -4,22 +4,9 @@ import 'package:http/http.dart';
 
 import '../model/article_model.dart';
 
-//Now let's make the HTTP request services
-// this class will alows us to make a simple get http request
-// from the API and get the Articles and then return a list of Articles
-
 class ApiService {
-  //let's add an Endpoint URL, you can check the website documentation
-  // and learn about the different Endpoint
-  //for this example I'm going to use a single endpoint
-
-  //NOTE: make sure to use your OWN apikey, you can make a free acount and
-  // choose a developer option it's FREE
   final endPointUrl =
-      "http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=a57d358f6f814336850a3a2c31c823a7";
-
-  //Now let's create the http request function
-  // but first let's import the http package
+      "http://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=a57d358f6f814336850a3a2c31c823a7";
 
   Future<List<Article>> getArticle() async {
     //Response res = await get(endPointUrl);
