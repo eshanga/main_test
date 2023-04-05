@@ -1,10 +1,10 @@
-import 'package:financia_mobile_app/pages/home_page.dart';
 import 'package:financia_mobile_app/pages/main_home_page.dart';
 import 'package:financia_mobile_app/services/auth_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../firebase_options.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import 'forgot_password_page.dart';
 
@@ -82,15 +82,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  //financia Mobile app
-
+                  //financia logo and name of the app
                   Container(
                     width: 200.0,
                     height: 200.0,
@@ -105,14 +104,19 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     'FINANCIA',
                     style: GoogleFonts.openSans(
-                      fontSize: 36,
+                      color: Color.fromARGB(255, 220, 178, 62),
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
                       letterSpacing: 4,
                     ),
                   ),
                   SizedBox(height: 10),
                   Text(
                     'Financial Management Mobile app',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 239, 237, 218),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
                   ),
 
                   SizedBox(height: 50),
@@ -121,17 +125,24 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextField(
                       controller: _emailController,
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 220, 178, 62),
+                      ),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 46, 46, 46)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.deepPurple),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 220, 178, 62)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Email',
-                        fillColor: Colors.purple[100],
+                        hintStyle: TextStyle(
+                            color: Color.fromARGB(255, 171, 170, 170)),
+                        fillColor: Color.fromARGB(255, 46, 46, 46),
                         filled: true,
                       ),
                     ),
@@ -143,17 +154,23 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       obscureText: true,
                       controller: _passwordController,
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 220, 178, 62)),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 46, 46, 46)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.deepPurple),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 220, 178, 62)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Password',
-                        fillColor: Colors.purple[100],
+                        hintStyle: TextStyle(
+                            color: Color.fromARGB(255, 171, 170, 170)),
+                        fillColor: Color.fromARGB(255, 46, 46, 46),
                         filled: true,
                       ),
                     ),
@@ -178,7 +195,8 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: Text(
                             'Forgot Password? ',
-                            style: TextStyle(color: Colors.blue),
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 220, 178, 62)),
                           ),
                         ),
                       ],
@@ -193,13 +211,13 @@ class _LoginPageState extends State<LoginPage> {
                       child: Container(
                         padding: EdgeInsets.all(25),
                         decoration: BoxDecoration(
-                            color: Colors.deepPurple,
+                            color: Color.fromARGB(255, 240, 203, 100),
                             borderRadius: BorderRadius.circular(12)),
                         child: Center(
                           child: Text(
                             'Sign In',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                             ),
@@ -269,7 +287,7 @@ class _LoginPageState extends State<LoginPage> {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: AssetImage('assets/apple.png'),
+                            image: AssetImage('assets/apple2.png'),
                           ),
                         ),
                       ),
@@ -292,27 +310,31 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           'Register now',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: Color.fromARGB(255, 220, 178, 62),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   Text(
                     'Powered By,',
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color.fromARGB(255, 220, 178, 62),
+                    ),
                   ),
 
                   Container(
-                    width: 100.0,
-                    height: 100.0,
+                    width: 50.0,
+                    height: 50.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
                         image: AssetImage('assets/company.png'),
                       ),
+                      color: Color.fromARGB(255, 155, 153, 153),
                     ),
                   ),
                 ],

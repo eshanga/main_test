@@ -1,0 +1,7 @@
+background colour: Colors.black;
+colors: 
+
+Color.fromARGB(255, 220, 178, 62)  //yellow
+Colors.grey[700] //grey
+Colors.grey[400]  //light grey
+
