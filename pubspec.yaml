@@ -51,7 +51,6 @@ dependencies:
   provider: ^5.0.0   
   http: ^0.13.5 
   cached_network_image: ^3.2.3                                  # new
-  flutter_native_splash: ^2.2.16
 
 
 dev_dependencies:
