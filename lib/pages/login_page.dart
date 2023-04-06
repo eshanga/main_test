@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromRGBO(30, 35, 41, 1),
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: GoogleFonts.openSans(
                       color: Color.fromARGB(255, 220, 178, 62),
                       fontSize: 40,
-                      fontWeight: FontWeight.bold,
+                      // fontWeight: FontWeight.bold,
                       letterSpacing: 4,
                     ),
                   ),
@@ -115,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                     'Financial Management Mobile app',
                     style: TextStyle(
                         color: Color.fromARGB(255, 239, 237, 218),
-                        fontWeight: FontWeight.bold,
+                        // fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
 
