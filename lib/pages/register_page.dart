@@ -49,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Color.fromRGBO(30, 35, 41, 1),
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -72,14 +72,17 @@ class _RegisterPageState extends State<RegisterPage> {
                   Text(
                     'FINANCIA',
                     style: GoogleFonts.openSans(
+                      color: Color.fromRGBO(240, 185, 11, 1),
                       fontSize: 36,
+                      fontWeight: FontWeight.bold,
                       letterSpacing: 4,
                     ),
                   ),
                   SizedBox(height: 10),
                   Text(
                     'Register with your details! ',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                        color: Color.fromRGBO(234, 236, 239, 1), fontSize: 16),
                   ),
 
                   SizedBox(height: 50),
@@ -88,17 +91,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextField(
                       controller: _emailController,
+                      style: const TextStyle(
+                        color: Color.fromRGBO(240, 185, 11, 1),
+                      ),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.deepPurple),
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Email',
-                        fillColor: Colors.grey[200],
+                        hintStyle: TextStyle(color: Colors.grey[700]),
+                        fillColor: Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
@@ -110,17 +119,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: TextField(
                       obscureText: true,
                       controller: _passwordController,
+                      style: const TextStyle(
+                        color: Color.fromRGBO(240, 185, 11, 1),
+                      ),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.deepPurple),
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Password',
-                        fillColor: Colors.grey[200],
+                        hintStyle: TextStyle(color: Colors.grey[700]),
+                        fillColor: Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
@@ -131,18 +146,24 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextField(
                       obscureText: true,
+                      style: const TextStyle(
+                        color: Color.fromRGBO(240, 185, 11, 1),
+                      ),
                       controller: _confirmpasswordcontroller,
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.deepPurple),
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Confirm your Password',
-                        fillColor: Colors.grey[200],
+                        hintStyle: TextStyle(color: Colors.grey[700]),
+                        fillColor: Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
@@ -157,13 +178,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Container(
                         padding: EdgeInsets.all(25),
                         decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: Color.fromRGBO(240, 185, 11, 1),
                             borderRadius: BorderRadius.circular(12)),
                         child: Center(
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                             ),
@@ -252,7 +273,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: const Text(
                           'LogIn',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: Color.fromRGBO(240, 185, 11, 1),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
