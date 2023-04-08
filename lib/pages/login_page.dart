@@ -104,9 +104,9 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     'FINANCIA',
                     style: GoogleFonts.openSans(
-                      color: Color.fromARGB(255, 220, 178, 62),
+                      color: Color.fromRGBO(240, 185, 11, 1),
                       fontSize: 40,
-                      // fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold,
                       letterSpacing: 4,
                     ),
                   ),
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     'Financial Management Mobile app',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 239, 237, 218),
+                        color: Color.fromRGBO(234, 236, 239, 1),
                         // fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
@@ -126,23 +126,22 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       controller: _emailController,
                       style: const TextStyle(
-                        color: Color.fromARGB(255, 220, 178, 62),
+                        color: Color.fromRGBO(240, 185, 11, 1),
                       ),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 46, 46, 46)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: Color.fromARGB(255, 220, 178, 62)),
+                              color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Email',
-                        hintStyle: TextStyle(
-                            color: Color.fromARGB(255, 171, 170, 170)),
-                        fillColor: Color.fromARGB(255, 46, 46, 46),
+                        hintStyle: TextStyle(color: Colors.grey[700]),
+                        fillColor: Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
@@ -154,23 +153,21 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       obscureText: true,
                       controller: _passwordController,
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 220, 178, 62)),
+                      style: TextStyle(color: Color.fromRGBO(240, 185, 11, 1)),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 46, 46, 46)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: Color.fromARGB(255, 220, 178, 62)),
+                              color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Password',
-                        hintStyle: TextStyle(
-                            color: Color.fromARGB(255, 171, 170, 170)),
-                        fillColor: Color.fromARGB(255, 46, 46, 46),
+                        hintStyle: TextStyle(color: Colors.grey[700]),
+                        fillColor: Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
@@ -196,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             'Forgot Password? ',
                             style: TextStyle(
-                                color: Color.fromARGB(255, 220, 178, 62)),
+                                color: Color.fromRGBO(240, 185, 11, 1)),
                           ),
                         ),
                       ],
@@ -211,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Container(
                         padding: EdgeInsets.all(25),
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 240, 203, 100),
+                            color: Color.fromRGBO(240, 185, 11, 1),
                             borderRadius: BorderRadius.circular(12)),
                         child: Center(
                           child: Text(
@@ -310,8 +307,8 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           'Register now',
                           style: TextStyle(
-                            color: Color.fromARGB(255, 220, 178, 62),
-                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(240, 185, 11, 1),
+                            //fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -322,7 +319,7 @@ class _LoginPageState extends State<LoginPage> {
                     'Powered By,',
                     style: TextStyle(
                       fontSize: 12,
-                      color: Color.fromARGB(255, 220, 178, 62),
+                      color: Color.fromRGBO(240, 185, 11, 1),
                     ),
                   ),
 
@@ -334,7 +331,7 @@ class _LoginPageState extends State<LoginPage> {
                         fit: BoxFit.fill,
                         image: AssetImage('assets/company.png'),
                       ),
-                      color: Color.fromARGB(255, 155, 153, 153),
+                      color: Color.fromARGB(255, 100, 96, 96),
                     ),
                   ),
                 ],
