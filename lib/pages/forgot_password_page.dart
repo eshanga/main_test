@@ -48,17 +48,48 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return Scaffold(
         backgroundColor: Color.fromRGBO(30, 35, 41, 1),
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(252, 213, 53, 1),
+          title: Text('Forgotten password',
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              )),
+          backgroundColor: Color.fromRGBO(250, 211, 56, 1),
           elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black, // set the arrow color to black
+          ),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(
+                'assets/lock.png',
+                height: 150,
+                width: 150,
+              ),
+            ),
+            const SizedBox(height: 25),
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Text(
-                'Enter Your Email addres we will send you a password reset link',
+                'Forgot Password ?  ',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Color.fromRGBO(240, 185, 11, 1), fontSize: 35),
+              ),
+            ),
+            const SizedBox(height: 25),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Text(
+                'Enter Your Email address, we will send you a password reset link',
                 textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Color.fromRGBO(250, 250, 250, 1), fontSize: 15),
               ),
             ),
 
@@ -69,29 +100,48 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextField(
                 controller: _emailController,
+                style: TextStyle(color: Color.fromRGBO(240, 185, 11, 1)),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide:
+                        BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple),
+                    borderSide:
+                        BorderSide(color: Color.fromRGBO(240, 185, 11, 1)),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   hintText: 'Enter your Email',
-                  fillColor: Colors.grey[200],
+                  hintStyle: TextStyle(color: Colors.grey[700]),
+                  fillColor: Color.fromRGBO(48, 52, 56, 1),
                   filled: true,
                 ),
               ),
             ),
             SizedBox(height: 10),
-            MaterialButton(
-              onPressed: () {
-                passwordReset();
-              },
-              child: Text('Reset Password'),
-              color: Color.fromRGBO(240, 185, 11, 1),
-            ),
+
+            SizedBox(
+              height: 50,
+              width: 200,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: MaterialButton(
+                  onPressed: () {
+                    passwordReset();
+                  },
+                  child: Text(
+                    'Reset Password',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  color: Color.fromRGBO(240, 185, 11, 1),
+                ),
+              ),
+            )
           ],
         ));
   }
