@@ -90,7 +90,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 passwordReset();
               },
               child: Text('Reset Password'),
-              color: Colors.deepPurple[200],
+              color: Color.fromRGBO(240, 185, 11, 1),
             ),
           ],
         ));
