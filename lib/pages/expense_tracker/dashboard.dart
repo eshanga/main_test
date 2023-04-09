@@ -263,7 +263,7 @@ class _DashboardState extends State<Dashboard> {
                             child: Text(
                               "Recent Transactions",
                               style: TextStyle(
-                                fontSize: 26,
+                                fontSize: 24,
                               ),
                             ),
                           ),
@@ -272,7 +272,7 @@ class _DashboardState extends State<Dashboard> {
                             child: Text(
                               DateFormat.yMMMEd().format(_newtoday),
                               style: const TextStyle(
-                                fontSize: 17,
+                                fontSize: 15,
                               ),
                             ),
                           ),
