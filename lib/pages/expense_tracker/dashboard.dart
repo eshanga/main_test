@@ -272,7 +272,7 @@ class _DashboardState extends State<Dashboard> {
                             child: Text(
                               DateFormat.yMMMEd().format(_newtoday),
                               style: const TextStyle(
-                                fontSize: 15,
+                                fontSize: 17,
                               ),
                             ),
                           ),
