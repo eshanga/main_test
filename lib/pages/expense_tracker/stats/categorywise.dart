@@ -70,160 +70,164 @@ class PieChart2State extends State {
   Widget build(BuildContext context) {
     final userKey = FirebaseAuth.instance.currentUser;
     ringdate = new DateTime(ringdate.year, ringdate.month);
-    return Container(
-        child: Column(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 25, left: 25),
-            child: Text(
-              'Categorywise Analytics',
-              style: TextStyle(
-                fontFamily: 'Helvetica',
-                color: const Color(0xFF123E9C),
-                fontSize: 24,
-                // fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Container(
+          child: Column(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 25, left: 25),
+              child: Text(
+                'Categorywise Analytics',
+                style: TextStyle(
+                  fontFamily: 'Helvetica',
+                  color: const Color(0xFF123E9C),
+                  fontSize: 24,
+                  // fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
-        ),
-        AspectRatio(
-          aspectRatio: 1.1,
-          child: Container(
-            color: Colors.white12,
-            child: Row(
-              children: <Widget>[
-                SizedBox(
-                  height: 20,
-                ),
-                Flexible(
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: StreamBuilder<QuerySnapshot>(
-                        stream: FirebaseFirestore.instance
-                            .collection(userKey!.email!)
-                            .where("date", isGreaterThanOrEqualTo: ringdate)
-                            .snapshots(),
-                        builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-                          if (!snapshot.hasData) {
-                            return Center(
-                                child: CircularProgressIndicator()
-                                    .centered()
-                                    .expand());
-                          }
-                          getData(snapshot).then((_spent) {
-                            setState(() {});
-                          });
-                          return PieChart(
-                            PieChartData(
-                                pieTouchData: PieTouchData(
-                                    touchCallback: (pieTouchResponse) {
-                                  setState(() {
-                                    final desiredTouch = pieTouchResponse
-                                            .touchInput is! PointerExitEvent &&
-                                        pieTouchResponse.touchInput
-                                            is! PointerUpEvent;
-                                    if (desiredTouch &&
-                                        pieTouchResponse.touchedSection !=
-                                            null) {
-                                      touchedIndex = pieTouchResponse
-                                          .touchedSection!.touchedSectionIndex;
-                                    } else {
-                                      touchedIndex = -1;
-                                    }
-                                  });
-                                }),
-                                borderData: FlBorderData(
-                                  show: false,
-                                ),
-                                sectionsSpace: 2,
-                                centerSpaceRadius: 50,
-                                sections: showingSections()),
-                          );
-                        }),
+          AspectRatio(
+            aspectRatio: 1.1,
+            child: Container(
+              color: Colors.white12,
+              child: Row(
+                children: <Widget>[
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Indicator(
-                      color: Color(0xff0293ee),
-                      text: 'Education',
-                      isSquare: true,
+                  Flexible(
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: StreamBuilder<QuerySnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection(userKey!.email!)
+                              .where("date", isGreaterThanOrEqualTo: ringdate)
+                              .snapshots(),
+                          builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+                            if (!snapshot.hasData) {
+                              return Center(
+                                  child: CircularProgressIndicator()
+                                      .centered()
+                                      .expand());
+                            }
+                            getData(snapshot).then((_spent) {
+                              setState(() {});
+                            });
+                            return PieChart(
+                              PieChartData(
+                                  pieTouchData: PieTouchData(
+                                      touchCallback: (pieTouchResponse) {
+                                    setState(() {
+                                      final desiredTouch =
+                                          pieTouchResponse.touchInput
+                                                  is! PointerExitEvent &&
+                                              pieTouchResponse.touchInput
+                                                  is! PointerUpEvent;
+                                      if (desiredTouch &&
+                                          pieTouchResponse.touchedSection !=
+                                              null) {
+                                        touchedIndex = pieTouchResponse
+                                            .touchedSection!
+                                            .touchedSectionIndex;
+                                      } else {
+                                        touchedIndex = -1;
+                                      }
+                                    });
+                                  }),
+                                  borderData: FlBorderData(
+                                    show: false,
+                                  ),
+                                  sectionsSpace: 2,
+                                  centerSpaceRadius: 50,
+                                  sections: showingSections()),
+                            );
+                          }),
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Indicator(
-                      color: Color(0xfff8b250),
-                      text: 'Rent',
-                      isSquare: true,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Indicator(
-                      color: Color(0xff845bef),
-                      text: 'Entertainment',
-                      isSquare: true,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Indicator(
-                      color: Color(0xff13d38e),
-                      text: 'Taxes',
-                      isSquare: true,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Indicator(
-                      color: Color(0xffec407a),
-                      text: 'Vehicle',
-                      isSquare: true,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Indicator(
-                      color: Color(0xffd500f9),
-                      text: 'Stationary',
-                      isSquare: true,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Indicator(
-                      color: Color(0xff00695c),
-                      text: 'Meal',
-                      isSquare: true,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Indicator(
-                      color: Color(0xff546e7a),
-                      text: 'Other',
-                      isSquare: true,
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-              ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Indicator(
+                        color: Color(0xff0293ee),
+                        text: 'Education',
+                        isSquare: true,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Indicator(
+                        color: Color(0xfff8b250),
+                        text: 'Rent',
+                        isSquare: true,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Indicator(
+                        color: Color(0xff845bef),
+                        text: 'Entertainment',
+                        isSquare: true,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Indicator(
+                        color: Color(0xff13d38e),
+                        text: 'Taxes',
+                        isSquare: true,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Indicator(
+                        color: Color(0xffec407a),
+                        text: 'Vehicle',
+                        isSquare: true,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Indicator(
+                        color: Color(0xffd500f9),
+                        text: 'Stationary',
+                        isSquare: true,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Indicator(
+                        color: Color(0xff00695c),
+                        text: 'Meal',
+                        isSquare: true,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Indicator(
+                        color: Color(0xff546e7a),
+                        text: 'Other',
+                        isSquare: true,
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
-    ));
+        ],
+      )),
+    );
   }
 
   List<PieChartSectionData> showingSections() {

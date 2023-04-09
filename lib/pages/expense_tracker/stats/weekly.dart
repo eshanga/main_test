@@ -74,59 +74,62 @@ class _WeeklyState extends State<Weekly> {
   @override
   Widget build(BuildContext context) {
     final userKey = FirebaseAuth.instance.currentUser;
-    return Container(
-      height: 300,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: const Color(0xFFFFFFFF),
-      ),
-      margin: EdgeInsets.all(10.0),
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'Weekly Analytics',
-            style: TextStyle(
-              fontFamily: 'Helvetica',
-              color: const Color(0xFF123E9C),
-              fontSize: 24,
+    return SingleChildScrollView(
+      child: Container(
+        height: 300,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          color: const Color(0xFFFFFFFF),
+        ),
+        margin: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Weekly Analytics',
+              style: TextStyle(
+                fontFamily: 'Helvetica',
+                color: const Color(0xFF123E9C),
+                fontSize: 24,
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 4,
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: StreamBuilder<QuerySnapshot>(
-                  stream: FirebaseFirestore.instance
-                      .collection(userKey!.email!)
-                      .where("date", isGreaterThan: firstDayOfWeek)
-                      .snapshots(),
-                  builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (!snapshot.hasData) {
-                      return Center(
-                          child:
-                              CircularProgressIndicator().centered().expand());
-                    }
-                    getWeeklyData(snapshot).then((weekspent) {
-                      setState(() {});
-                    });
-                    return BarChart(
-                      mainBarData(),
-                    );
-                  }),
+            const SizedBox(
+              height: 4,
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-        ],
+            const SizedBox(
+              height: 25,
+            ),
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection(userKey!.email!)
+                        .where("date", isGreaterThan: firstDayOfWeek)
+                        .snapshots(),
+                    builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (!snapshot.hasData) {
+                        return Center(
+                            child: CircularProgressIndicator()
+                                .centered()
+                                .expand());
+                      }
+                      getWeeklyData(snapshot).then((weekspent) {
+                        setState(() {});
+                      });
+                      return BarChart(
+                        mainBarData(),
+                      );
+                    }),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+          ],
+        ),
       ),
     );
   }
