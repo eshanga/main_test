@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
+
+import 'package:financia_mobile_app/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +22,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     super.dispose();
   }
 
-  Future passwordReset() async {
+  Future<void> passwordReset() async {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
@@ -27,19 +30,64 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-              content: Text('Password Reset link sent. Check your email!'));
+              title: Text("Succes!",
+                  style: TextStyle(color: Color.fromRGBO(1, 134, 12, 1))),
+              content: Text('Password Reset link sent. Check your email!'),
+              actions: [
+                TextButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginPage(
+                                  showRegisterPage: () {},
+                                )));
+                  },
+                )
+              ]);
         },
       );
-    } catch (e) {
-      print(e);
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Text(e.toString()),
-          );
-        },
-      );
+    } on FirebaseAuthException catch (e) {
+      //print(e);
+      if (e.code == 'invalid-email') {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+                title: Text("Error!",
+                    style: TextStyle(color: Color.fromARGB(255, 134, 13, 4))),
+                content: Text('Provided Email is Incorrect! Please try again'),
+                actions: [
+                  TextButton(
+                    child: Text("OK"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ]);
+          },
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+                title: Text("Error!",
+                    style: TextStyle(color: Color.fromARGB(255, 134, 13, 4))),
+                content:
+                    Text('Provided Email does not have a user! Please Singup'),
+                actions: [
+                  TextButton(
+                    child: Text("OK"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ]);
+          },
+        );
+      }
     }
   }
 
