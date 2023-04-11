@@ -85,55 +85,62 @@ class _MonthlyState extends State<Monthly> {
   @override
   Widget build(BuildContext context) {
     final userKey = FirebaseAuth.instance.currentUser;
-    return Container(
-        child: Column(children: <Widget>[
-      Align(
-        alignment: Alignment.centerLeft,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 25, left: 25),
-          child: Text(
-            'Monthly Analytics',
-            style: TextStyle(
-              fontFamily: 'Helvetica',
-              color: const Color(0xFF123E9C),
-              fontSize: 24,
-              // fontWeight: FontWeight.bold,
-            ),
+    return SingleChildScrollView(
+      child: Container(
+          padding: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.height * 0.05,
+            horizontal: MediaQuery.of(context).size.width * 0.05,
           ),
-        ),
-      ),
-      SizedBox(
-        height: 60,
-      ),
-      StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance
-              .collection(userKey!.email!)
-              .where('date',
-                  isGreaterThanOrEqualTo: DateTime(DateTime.now().year))
-              .snapshots(),
-          builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) {
-              return Center(
-                  child: CircularProgressIndicator().centered().expand());
-            }
-            getMonthlyData(snapshot).then((spentmonth) {
-              spentmonth = this.spentmonth;
-              setState(() {});
-            });
-            return SfCartesianChart(
-                primaryXAxis: CategoryAxis(),
-                legend: Legend(isVisible: false),
-                tooltipBehavior: TooltipBehavior(enable: true),
-                series: <ChartSeries<_ExpenseData, String>>[
-                  LineSeries<_ExpenseData, String>(
-                      dataSource: makeList(spentmonth),
-                      xValueMapper: (_ExpenseData sales, _) => sales.year,
-                      yValueMapper: (_ExpenseData sales, _) => sales.expense,
-                      name: 'EXPENSE (in ₹ K)',
-                      dataLabelSettings: DataLabelSettings(isVisible: true))
-                ]);
-          })
-    ]));
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
+                  Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 25, left: 25),
+              child: Text(
+                'Monthly Analytics',
+                style: TextStyle(
+                  fontFamily: 'Helvetica',
+                  color: const Color(0xFF123E9C),
+                  fontSize: 24,
+                  // fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance
+                    .collection(userKey!.email!)
+                    .where('date',
+                        isGreaterThanOrEqualTo: DateTime(DateTime.now().year))
+                    .snapshots(),
+                builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                        child: CircularProgressIndicator().centered().expand());
+                  }
+                  getMonthlyData(snapshot).then((spentmonth) {
+                    spentmonth = this.spentmonth;
+                    setState(() {});
+                  });
+                  return SfCartesianChart(
+                      primaryXAxis: CategoryAxis(),
+                      legend: Legend(isVisible: false),
+                      tooltipBehavior: TooltipBehavior(enable: true),
+                      series: <ChartSeries<_ExpenseData, String>>[
+                        LineSeries<_ExpenseData, String>(
+                            dataSource: makeList(spentmonth),
+                            xValueMapper: (_ExpenseData sales, _) => sales.year,
+                            yValueMapper: (_ExpenseData sales, _) =>
+                                sales.expense,
+                            name: 'EXPENSE (in ₹ K)',
+                            dataLabelSettings:
+                                DataLabelSettings(isVisible: true))
+                      ]);
+                })
+          ])),
+    );
   }
 }
 

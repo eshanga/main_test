@@ -263,7 +263,7 @@ class _DashboardState extends State<Dashboard> {
                             child: Text(
                               "Recent Transactions",
                               style: TextStyle(
-                                fontSize: 26,
+                                fontSize: 24,
                               ),
                             ),
                           ),
