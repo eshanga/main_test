@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             .color(Colors.white)
             .make(),
         elevation: 0.0,
-        backgroundColor: Colors.indigo,
+        backgroundColor: Color.fromARGB(255, 125, 129, 74),
         actions: [
           IconButton(
             icon: Icon(

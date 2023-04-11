@@ -27,7 +27,7 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.indigo,
+              color: Color.fromARGB(255, 172, 156, 12),
             ),
             accountName: Text("User Email"),
             accountEmail: Text(

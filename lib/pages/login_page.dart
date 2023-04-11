@@ -331,7 +331,6 @@ class _LoginPageState extends State<LoginPage> {
                         fit: BoxFit.fill,
                         image: AssetImage('assets/company.png'),
                       ),
-                      color: Color.fromARGB(255, 100, 96, 96),
                     ),
                   ),
                 ],
