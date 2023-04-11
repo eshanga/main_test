@@ -62,6 +62,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   TextButton(
                     child: Text("OK"),
                     onPressed: () {
+                      _emailController.text = '';
                       Navigator.of(context).pop();
                     },
                   )
@@ -81,6 +82,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   TextButton(
                     child: Text("OK"),
                     onPressed: () {
+                      _emailController.text = '';
                       Navigator.of(context).pop();
                     },
                   )
