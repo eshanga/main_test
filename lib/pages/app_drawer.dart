@@ -35,7 +35,7 @@ class AppDrawer extends StatelessWidget {
               user?.email ?? '',
               style: TextStyle(
                 fontSize: 17,
-                color: Colors.grey,
+                color: Colors.white,
               ),
             ),
             currentAccountPicture: Center(
@@ -51,7 +51,10 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
+            leading: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
             title: Text(
               'Home',
               style: TextStyle(
@@ -64,7 +67,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share),
+            leading: Icon(Icons.monetization_on, color: Colors.white),
             title: Text(
               'Expense Tracker',
               style: TextStyle(
@@ -77,7 +80,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share),
+            leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Screen 2',
               style: TextStyle(
@@ -90,7 +93,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share),
+            leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Screen 3',
               style: TextStyle(
@@ -103,7 +106,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share),
+            leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Screen 4',
               style: TextStyle(
@@ -116,7 +119,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share),
+            leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Screen 5',
               style: TextStyle(
@@ -129,7 +132,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share),
+            leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Screen 6',
               style: TextStyle(
@@ -142,7 +145,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.logout),
+            leading: Icon(Icons.logout, color: Colors.white),
             title: Text(
               'Logout',
               style: TextStyle(
@@ -155,10 +158,12 @@ class AppDrawer extends StatelessWidget {
               // Add logout functionality here
             },
           ),
-          Divider(),
+          Divider(
+            color: Colors.white70,
+          ),
           Expanded(
             child: ListTile(
-              leading: Icon(Icons.screen_share),
+              leading: Icon(Icons.touch_app, color: Colors.white),
               title: Text(
                 'About us',
                 style: TextStyle(
