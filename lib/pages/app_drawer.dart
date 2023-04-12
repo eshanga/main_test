@@ -33,10 +33,8 @@ class AppDrawer extends StatelessWidget {
             accountName: Text("User Email"),
             accountEmail: Text(
               user?.email ?? '',
-              style: TextStyle(
-                fontSize: 17,
-                color: Colors.white,
-              ),
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
             currentAccountPicture: Center(
               child: Container(
