@@ -48,7 +48,10 @@ class _LoginPageState extends State<LoginPage> {
         return AlertDialog(
           title: Text(
             "Error!",
-            style: TextStyle(color: Color.fromARGB(255, 134, 13, 4)),
+            style: TextStyle(
+              color: Color.fromARGB(255, 134, 13, 4),
+              fontWeight: FontWeight.bold,
+            ),
           ),
           content: Text(errormessage),
           actions: [
