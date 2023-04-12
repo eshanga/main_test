@@ -22,6 +22,7 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     return Drawer(
+      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -51,7 +52,12 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.home),
-            title: Text('Home'),
+            title: Text(
+              'Home',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -59,7 +65,12 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.screen_share),
-            title: Text('Expense Tracker'),
+            title: Text(
+              'Expense Tracker',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomeExpense()));
@@ -67,7 +78,12 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.screen_share),
-            title: Text('Screen 2'),
+            title: Text(
+              'Screen 2',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen2()));
@@ -75,7 +91,12 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.screen_share),
-            title: Text('Screen 3'),
+            title: Text(
+              'Screen 3',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen3()));
@@ -83,7 +104,12 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.screen_share),
-            title: Text('Screen 4'),
+            title: Text(
+              'Screen 4',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen4()));
@@ -91,7 +117,12 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.screen_share),
-            title: Text('Screen 5'),
+            title: Text(
+              'Screen 5',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen5()));
@@ -99,7 +130,12 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.screen_share),
-            title: Text('Screen 6'),
+            title: Text(
+              'Screen 6',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen6()));
@@ -107,7 +143,12 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.logout),
-            title: Text('Logout'),
+            title: Text(
+              'Logout',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onTap: () {
               FirebaseAuth.instance.signOut();
 
@@ -118,7 +159,12 @@ class AppDrawer extends StatelessWidget {
           Expanded(
             child: ListTile(
               leading: Icon(Icons.screen_share),
-              title: Text('About us'),
+              title: Text(
+                'About us',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AboutPage()));
