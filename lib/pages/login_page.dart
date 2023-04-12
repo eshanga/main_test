@@ -18,58 +18,101 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 //text controllers
+
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Future signIn() async {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
+  Future<void> signIn() async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
-      Navigator.pop(context);
+      // If sign-in is successful, you can perform any necessary actions here
+      // such as navigating to a new screen.
     } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
-      if (e.code == 'user-not-found') {
-        wrongEmailMessage();
+      if (e.code == 'invalid-email') {
+        showErrorDialog(context, 'Credentials are incorrect! Please try again');
+      } else if (e.code == 'user-not-found') {
+        showErrorDialog(context, "Email is incorrect. Please try again");
       } else if (e.code == 'wrong-password') {
-        wrongPasswordMessage();
+        showErrorDialog(context, "Password is incorrect. Please try again");
       }
     }
-
-    Navigator.pop(context);
   }
 
-  //wrong emailmessage popup
-  void wrongEmailMessage() {
+  void showErrorDialog(context, String errormessage) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            title: Text('Incorrect Email. Please Enter your Email correctly!'),
-          );
-        });
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            "Error!",
+            style: TextStyle(color: Color.fromARGB(255, 134, 13, 4)),
+          ),
+          content: Text(errormessage),
+          actions: [
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
-  void wrongPasswordMessage() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            title: Text('Invalid Credentials. Please Check your Password!'),
-          );
-        });
-  }
+  // Future signIn() async {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return const Center(
+  //         child: CircularProgressIndicator(),
+  //       );
+  //     },
+  //   );
+  //   try {
+  //     await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //       email: _emailController.text.trim(),
+  //       password: _passwordController.text.trim(),
+  //     );
+  //     Navigator.push(
+  //         context, MaterialPageRoute(builder: (context) => HomeScreen()));
+  //     Navigator.pop(context);
+  //   } on FirebaseAuthException catch (e) {
+  //     Navigator.pop(context);
+  //     if (e.code == 'user-not-found') {
+  //       wrongEmailMessage();
+  //     } else if (e.code == 'wrong-password') {
+  //       wrongPasswordMessage();
+  //     }
+  //   }
+
+  //   Navigator.pop(context);
+  // }
+
+  // //wrong emailmessage popup
+  // void wrongEmailMessage() {
+  //   showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return const AlertDialog(
+  //           title: Text('Incorrect Email. Please Enter your Email correctly!'),
+  //         );
+  //       });
+  // }
+
+  // void wrongPasswordMessage() {
+  //   showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return const AlertDialog(
+  //           title: Text('Invalid Credentials. Please Check your Password!'),
+  //         );
+  //       });
+  // }
 
   @override
   void dispose() {

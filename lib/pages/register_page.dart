@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../services/auth_services.dart';
@@ -16,9 +17,18 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmpasswordcontroller = TextEditingController();
+  double _ratingValue = 0.0;
+  final List<Color> _colors = [
+    Colors.green,
+    Colors.lightGreen,
+    Colors.yellow,
+    Colors.orangeAccent,
+    Colors.redAccent,
+  ];
 
   @override
   void dispose() {
@@ -86,6 +96,33 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
 
                   SizedBox(height: 50),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: TextField(
+                      controller: _nameController,
+                      style: const TextStyle(
+                        color: Color.fromRGBO(240, 185, 11, 1),
+                      ),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(240, 185, 11, 1)),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        hintText: 'Enter your Name',
+                        hintStyle: TextStyle(color: Colors.grey[700]),
+                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        filled: true,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
                   //email textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -141,6 +178,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   SizedBox(height: 10),
+
                   //confirm password textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -169,7 +207,37 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text(
+                      'Please rate your risk rate that you are wiiling to take while using this App.',
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Color.fromRGBO(240, 185, 11, 1)),
+                    ),
+                  ),
 
+                  RatingBar.builder(
+                    initialRating: _ratingValue,
+                    minRating: 0,
+                    maxRating: 10,
+                    itemSize: 50.0,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    unratedColor: Colors.grey[300],
+                    itemBuilder: (context, index) {
+                      return Icon(
+                        Icons.circle,
+                        color: _getColor(index),
+                      );
+                    },
+                    onRatingUpdate: (rating) {
+                      setState(() {
+                        _ratingValue = rating;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 10),
                   //sign in button
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -285,5 +353,20 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
         ));
+  }
+
+  Color? _getColor(int index) {
+    if (index < 1.0) {
+      return _colors[0];
+    } else if ((index) < 2) {
+      return _colors[1];
+    } else if (index < 3) {
+      return _colors[2];
+    } else if (index < 4) {
+      return _colors[3];
+    } else if (index < 5) {
+      return _colors[4];
+    }
+    return Colors.grey[300];
   }
 }
