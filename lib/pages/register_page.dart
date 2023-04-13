@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import '../services/auth_services.dart';
 
@@ -22,6 +23,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordController = TextEditingController();
   final _confirmpasswordcontroller = TextEditingController();
   double _ratingValue = 0.0;
+  DateTime? _selectedDate;
+
   final List<Color> _colors = [
     Colors.green,
     Colors.lightGreen,
@@ -150,6 +153,67 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: TextField(
+                      readOnly: true,
+                      onTap: () async {
+                        final ThemeData customTheme = ThemeData(
+                          primaryColor: Colors.grey[700],
+                          accentColor: Color.fromRGBO(240, 185, 11, 1),
+                          textTheme: TextTheme(
+                            bodyText1: TextStyle(color: Colors.white),
+                            bodyText2: TextStyle(color: Colors.white),
+                            button: TextStyle(color: Colors.white),
+                          ),
+                          colorScheme: ColorScheme.dark(
+                              primary: Color.fromRGBO(240, 185, 11, 1)),
+                        );
+                        final pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime.now(),
+                          builder: (BuildContext context, Widget? child) {
+                            return Theme(
+                              data: customTheme,
+                              child: child ?? const SizedBox.shrink(),
+                            );
+                          },
+                        );
+
+                        if (pickedDate != null && pickedDate != _selectedDate) {
+                          setState(() {
+                            _selectedDate = pickedDate;
+                          });
+                        }
+                      },
+                      style: const TextStyle(
+                        color: Color.fromRGBO(240, 185, 11, 1),
+                      ),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(240, 185, 11, 1)),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        hintText: 'Select your birthday',
+                        hintStyle: TextStyle(color: Colors.grey[700]),
+                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        filled: true,
+                      ),
+                      controller: TextEditingController(
+                          text: _selectedDate != null
+                              ? DateFormat.yMMMd().format(_selectedDate!)
+                              : ''),
+                    ),
+                  ),
+                  SizedBox(height: 10),
                   //password textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -240,11 +304,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(height: 10),
                   //sign in button
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 75.0),
                     child: GestureDetector(
                       onTap: signUp,
                       child: Container(
-                        padding: EdgeInsets.all(25),
+                        padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
                             color: Color.fromRGBO(240, 185, 11, 1),
                             borderRadius: BorderRadius.circular(12)),
@@ -261,7 +325,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -290,7 +354,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 20),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -299,8 +363,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       GestureDetector(
                         onTap: () => AuthService().signInWithGoogle(),
                         child: Container(
-                          width: 90.0,
-                          height: 90.0,
+                          width: 60.0,
+                          height: 60.0,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -315,24 +379,25 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       // apple button
                       Container(
-                        width: 75.0,
-                        height: 75.0,
+                        width: 60.0,
+                        height: 60.0,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: AssetImage('assets/apple.png'),
+                            image: AssetImage('assets/apple2.png'),
                           ),
                         ),
                       ),
                     ],
                   ),
+                  SizedBox(height: 15),
                   // not a member? register now
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Already Signed In?',
+                        'Already Signed In?   ',
                         style: TextStyle(color: Colors.grey[700]),
                       ),
                       const SizedBox(width: 4),

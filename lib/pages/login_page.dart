@@ -21,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _isObscure = true;
 
   Future<void> signIn() async {
     try {
@@ -194,12 +195,15 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 10),
                   //password textfield
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextField(
-                      obscureText: true,
+                      obscureText: _isObscure,
                       controller: _passwordController,
-                      style: TextStyle(color: Color.fromRGBO(240, 185, 11, 1)),
+                      style: const TextStyle(
+                        color: Color.fromRGBO(240, 185, 11, 1),
+                      ),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide:
@@ -215,6 +219,19 @@ class _LoginPageState extends State<LoginPage> {
                         hintStyle: TextStyle(color: Colors.grey[700]),
                         fillColor: Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _isObscure = !_isObscure;
+                            });
+                          },
+                          child: Icon(
+                            _isObscure
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.grey[700],
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -245,17 +262,17 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 15),
                   //sign in button
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 60.0),
                     child: GestureDetector(
                       onTap: signIn,
                       child: Container(
-                        padding: EdgeInsets.all(25),
+                        padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
                             color: Color.fromRGBO(240, 185, 11, 1),
-                            borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(16)),
                         child: Center(
                           child: Text(
                             'Sign In',
@@ -308,8 +325,8 @@ class _LoginPageState extends State<LoginPage> {
                       GestureDetector(
                         onTap: () => AuthService().signInWithGoogle(),
                         child: Container(
-                          width: 75.0,
-                          height: 75.0,
+                          width: 60.0,
+                          height: 60.0,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -324,8 +341,8 @@ class _LoginPageState extends State<LoginPage> {
 
                       // apple button
                       Container(
-                        width: 75.0,
-                        height: 75.0,
+                        width: 60.0,
+                        height: 60.0,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
