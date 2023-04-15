@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
 import 'forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {

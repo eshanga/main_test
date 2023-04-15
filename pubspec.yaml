@@ -40,7 +40,7 @@ dependencies:
   firebase_analytics: ^10.1.6                                       # new
   firebase_database: ^10.0.16                                       # new
   firebase_storage: ^11.0.16   
-  google_sign_in: ^6.0.2
+
   cloud_firestore: 
   fl_chart: ^0.36.3
   syncfusion_flutter_charts: ^19.2.55+1
@@ -52,6 +52,8 @@ dependencies:
   http: ^0.13.5 
   cached_network_image: ^3.2.3
   flutter_rating_bar: ^4.0.1                                  # new
+  google_sign_in: ^6.1.0
+  googleapis_auth: ^1.4.0
 
 
 dev_dependencies:
