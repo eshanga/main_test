@@ -6,9 +6,10 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
         title: Text('About'),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Color.fromARGB(255, 172, 156, 12),
       ),
       drawer: AppDrawer(
         email: '',

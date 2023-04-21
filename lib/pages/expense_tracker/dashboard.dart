@@ -156,204 +156,206 @@ class _DashboardState extends State<Dashboard> {
 
           return Container(
             color: Colors.indigo,
-            child: SafeArea(
-              child: Column(
-                children: [
-                  Container(
-                    height: 180,
-                    padding: const EdgeInsets.only(
-                      top: 15,
-                      left: 35,
-                      right: 20,
-                    ),
-                    child: Row(
-                      children: [
-                        CircularPercentIndicator(
-                          radius: 155,
-                          center: Text(
-                            "$_percenttext%",
-                            style: const TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                            ),
-                          ),
-                          progressColor: _percenttext > 75
-                              ? Colors.red
-                              : Colors.green[400],
-                          backgroundColor: Colors.black,
-                          percent: _percenttext > 100.0 ? 0 : _percent,
-                          lineWidth: 16,
-                          circularStrokeCap: CircularStrokeCap.round,
-                        ),
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 25,
-                                  top: 40,
-                                ),
-                                child: balchecker == 0
-                                    ? const Text(
-                                        "Balance",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.white,
-                                          fontFamily: 'Helvetica',
-                                        ),
-                                      )
-                                    : const Text(
-                                        "OverBudget",
-                                        style: TextStyle(
-                                          fontSize: 23,
-                                          color: Colors.red,
-                                          fontFamily: 'Helvetica',
-                                        ),
-                                      ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 25,
-                                ),
-                                child: balchecker == 0
-                                    ? Text(
-                                        "Rs. $_balance",
-                                        style: const TextStyle(
-                                          fontSize: 35,
-                                          color: Colors.white,
-                                        ),
-                                      )
-                                    : Text(
-                                        "By Rs. $_balance",
-                                        style: const TextStyle(
-                                          fontSize: 25,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Expanded(
-                    // fit: FlexFit.tight,
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      width: MediaQuery.of(context).size.width,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(40),
-                        ),
+            child: Expanded(
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 180,
+                      padding: const EdgeInsets.only(
+                        top: 15,
+                        left: 35,
+                        right: 20,
                       ),
-                      child: Column(
+                      child: Row(
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(
-                              top: 10,
-                              bottom: 10,
-                            ),
-                            child: Text(
-                              "Recent Transactions",
-                              style: TextStyle(
-                                fontSize: 24,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              DateFormat.yMMMEd().format(_newtoday),
+                          CircularPercentIndicator(
+                            radius: 155,
+                            center: Text(
+                              "$_percenttext%",
                               style: const TextStyle(
-                                fontSize: 17,
+                                fontSize: 30,
+                                color: Colors.white,
                               ),
                             ),
+                            progressColor: _percenttext > 75
+                                ? Colors.red
+                                : Colors.green[400],
+                            backgroundColor: Colors.black,
+                            percent: _percenttext > 100.0 ? 0 : _percent,
+                            lineWidth: 16,
+                            circularStrokeCap: CircularStrokeCap.round,
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Flexible(
-                            fit: FlexFit.tight,
-                            child: StreamBuilder(
-                              stream: FirebaseFirestore.instance
-                                  .collection(userKey.email!)
-                                  .orderBy('date', descending: true)
-                                  .snapshots(),
-                              builder: (context,
-                                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                      child: const CircularProgressIndicator()
-                                          .centered()
-                                          .expand());
-                                }
-                                return ListView(
-                                  children: snapshot.data!.docs.map((user) {
-                                    return Center(
-                                      child: ListTile(
-                                        leading: Container(
-                                          width: 40,
-                                          height: 40,
-                                          decoration: BoxDecoration(
-                                            color: getColor(user['category']),
-                                            borderRadius:
-                                                BorderRadius.circular(12),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 25,
+                                    top: 40,
+                                  ),
+                                  child: balchecker == 0
+                                      ? const Text(
+                                          "Balance",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                            fontFamily: 'Helvetica',
                                           ),
-                                          alignment: Alignment.center,
-                                          child: Icon(
-                                            getIcon(user['category']),
-                                            size: 20,
+                                        )
+                                      : const Text(
+                                          "OverBudget",
+                                          style: TextStyle(
+                                            fontSize: 23,
+                                            color: Colors.red,
+                                            fontFamily: 'Helvetica',
+                                          ),
+                                        ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 25,
+                                  ),
+                                  child: balchecker == 0
+                                      ? Text(
+                                          "Rs. $_balance",
+                                          style: const TextStyle(
+                                            fontSize: 35,
+                                            color: Colors.white,
+                                          ),
+                                        )
+                                      : Text(
+                                          "By Rs. $_balance",
+                                          style: const TextStyle(
+                                            fontSize: 25,
                                             color: Colors.white,
                                           ),
                                         ),
-                                        title: Text(
-                                          user['name'],
-                                          style: const TextStyle(
-                                            fontSize: 17,
-                                            // fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        subtitle: Text(
-                                          DateFormat('dd MMMM, yyyy')
-                                              .format(
-                                                  (user['date'] as Timestamp)
-                                                      .toDate())
-                                              .toString(),
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            // fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        trailing: Text(
-                                          'Rs. ${user['spent'].toString()}',
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.red,
-                                            // fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        onLongPress: () {
-                                          user.reference.delete();
-                                        },
-                                      ),
-                                    );
-                                  }).toList(),
-                                );
-                              },
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      // fit: FlexFit.tight,
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        width: MediaQuery.of(context).size.width,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                top: 10,
+                                bottom: 10,
+                              ),
+                              child: Text(
+                                "Recent Transactions",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                DateFormat.yMMMEd().format(_newtoday),
+                                style: const TextStyle(
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Flexible(
+                              fit: FlexFit.tight,
+                              child: StreamBuilder(
+                                stream: FirebaseFirestore.instance
+                                    .collection(userKey.email!)
+                                    .orderBy('date', descending: true)
+                                    .snapshots(),
+                                builder: (context,
+                                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                        child: const CircularProgressIndicator()
+                                            .centered()
+                                            .expand());
+                                  }
+                                  return ListView(
+                                    children: snapshot.data!.docs.map((user) {
+                                      return Center(
+                                        child: ListTile(
+                                          leading: Container(
+                                            width: 40,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              color: getColor(user['category']),
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Icon(
+                                              getIcon(user['category']),
+                                              size: 20,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          title: Text(
+                                            user['name'],
+                                            style: const TextStyle(
+                                              fontSize: 17,
+                                              // fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          subtitle: Text(
+                                            DateFormat('dd MMMM, yyyy')
+                                                .format(
+                                                    (user['date'] as Timestamp)
+                                                        .toDate())
+                                                .toString(),
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                              // fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          trailing: Text(
+                                            'Rs. ${user['spent'].toString()}',
+                                            style: const TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.red,
+                                              // fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          onLongPress: () {
+                                            user.reference.delete();
+                                          },
+                                        ),
+                                      );
+                                    }).toList(),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
