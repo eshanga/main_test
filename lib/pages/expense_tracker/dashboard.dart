@@ -299,56 +299,62 @@ class _DashboardState extends State<Dashboard> {
                                   }
                                   return ListView(
                                     children: snapshot.data!.docs.map((user) {
-                                      return Center(
-                                        child: ListTile(
-                                          leading: Container(
-                                            width: 40,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              color: getColor(user['category']),
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
+                                      return Column(
+                                        children: <Widget>[
+                                          ListTile(
+                                            leading: Container(
+                                              width: 40,
+                                              height: 40,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    getColor(user['category']),
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: Icon(
+                                                getIcon(user['category']),
+                                                size: 20,
+                                                color: Colors.white,
+                                              ),
                                             ),
-                                            alignment: Alignment.center,
-                                            child: Icon(
-                                              getIcon(user['category']),
-                                              size: 20,
-                                              color: Colors.white,
+                                            title: Text(
+                                              user['name'],
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17,
+                                                // fontWeight: FontWeight.bold,
+                                              ),
                                             ),
+                                            subtitle: Text(
+                                              DateFormat('dd MMMM, yyyy')
+                                                  .format((user['date']
+                                                          as Timestamp)
+                                                      .toDate())
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 14,
+                                                // fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            trailing: Text(
+                                              'Rs. ${user['spent'].toString()}',
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                color: Color.fromARGB(
+                                                    255, 245, 33, 18),
+                                                // fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            onLongPress: () {
+                                              user.reference.delete();
+                                            },
                                           ),
-                                          title: Text(
-                                            user['name'],
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 17,
-                                              // fontWeight: FontWeight.bold,
-                                            ),
+                                          Divider(
+                                            color: Colors.white,
                                           ),
-                                          subtitle: Text(
-                                            DateFormat('dd MMMM, yyyy')
-                                                .format(
-                                                    (user['date'] as Timestamp)
-                                                        .toDate())
-                                                .toString(),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 14,
-                                              // fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          trailing: Text(
-                                            'Rs. ${user['spent'].toString()}',
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              color: Color.fromARGB(
-                                                  255, 245, 33, 18),
-                                              // fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          onLongPress: () {
-                                            user.reference.delete();
-                                          },
-                                        ),
+                                        ],
                                       );
                                     }).toList(),
                                   );
