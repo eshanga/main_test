@@ -11,3 +11,7 @@ other colors:
     white  Color.fromRGBO(255, 255, 255, 1)
 
     slightly light than background  Color.fromRGBO(48, 52, 56, 1)
+
+    red colour Color.fromARGB( 255, 191, 14, 1),
+    dark pink RGB(193, 9, 97,1)
+    green RGB(16, 115, 90)
