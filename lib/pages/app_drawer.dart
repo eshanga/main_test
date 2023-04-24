@@ -28,13 +28,22 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 172, 156, 12),
+              color: Color.fromRGBO(250, 211, 56, 1),
             ),
-            accountName: Text("User Email"),
+            accountName: Text(
+              "User Email",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             accountEmail: Text(
               user?.email ?? '',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
             ),
             currentAccountPicture: Center(
               child: Container(

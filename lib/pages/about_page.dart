@@ -8,8 +8,14 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: Text('About'),
-        backgroundColor: Color.fromARGB(255, 172, 156, 12),
+        title: Text(
+          'About',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       drawer: AppDrawer(
         email: '',
@@ -24,8 +30,8 @@ class AboutPage extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/company.png',
-                    width: 400,
-                    height: 400,
+                    width: 300,
+                    height: 300,
                   ),
                   SizedBox(height: 16.0),
                   Text(
@@ -35,6 +41,19 @@ class AboutPage extends StatelessWidget {
                   SizedBox(height: 8.0),
                   Text(
                     'We are a company that does amazing things.',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8.0),
+                  Text(
+                    ' A startup company is a team of 4 individuals with a passion for innovations and a drive to make a difference. We specialize in developing software solutions according to the request of the client. Our team member has a knowledge about different programming languages, frameworks and platforms. All of our team members are responsible to deliver a high quality, scalable and maintainable software that meets the unique needs of our clients. Our company has a project manager, 2 Frontend/backend developers and a UI/UX designer.',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16.0),
