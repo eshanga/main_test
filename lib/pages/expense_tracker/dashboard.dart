@@ -98,10 +98,10 @@ class _DashboardState extends State<Dashboard> {
             .text
             .xl2
             .fontFamily('Helvetica')
-            .color(Colors.white)
+            .color(Colors.black)
             .make(),
         elevation: 0.0,
-        backgroundColor: Colors.indigo,
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
         actions: [
           IconButton(
             icon: const Icon(
@@ -155,7 +155,7 @@ class _DashboardState extends State<Dashboard> {
           }
 
           return Container(
-            color: Colors.indigo,
+            color: Color.fromRGBO(30, 35, 41, 1),
             child: Expanded(
               child: SafeArea(
                 child: Column(
@@ -180,8 +180,8 @@ class _DashboardState extends State<Dashboard> {
                             ),
                             progressColor: _percenttext > 75
                                 ? Colors.red
-                                : Colors.green[400],
-                            backgroundColor: Colors.black,
+                                : Color.fromRGBO(240, 185, 11, 1),
+                            backgroundColor: Color.fromARGB(255, 112, 102, 102),
                             percent: _percenttext > 100.0 ? 0 : _percent,
                             lineWidth: 16,
                             circularStrokeCap: CircularStrokeCap.round,
@@ -248,7 +248,7 @@ class _DashboardState extends State<Dashboard> {
                         padding: const EdgeInsets.all(20),
                         width: MediaQuery.of(context).size.width,
                         decoration: const BoxDecoration(
-                          color: Colors.white,
+                          color: Color.fromRGBO(68, 71, 75, 1),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(40),
                             topRight: Radius.circular(40),
@@ -264,6 +264,7 @@ class _DashboardState extends State<Dashboard> {
                               child: Text(
                                 "Recent Transactions",
                                 style: TextStyle(
+                                  color: Colors.white,
                                   fontSize: 24,
                                 ),
                               ),
@@ -273,6 +274,7 @@ class _DashboardState extends State<Dashboard> {
                               child: Text(
                                 DateFormat.yMMMEd().format(_newtoday),
                                 style: const TextStyle(
+                                  color: Colors.white,
                                   fontSize: 17,
                                 ),
                               ),
@@ -317,6 +319,7 @@ class _DashboardState extends State<Dashboard> {
                                           title: Text(
                                             user['name'],
                                             style: const TextStyle(
+                                              color: Colors.white,
                                               fontSize: 17,
                                               // fontWeight: FontWeight.bold,
                                             ),
@@ -328,6 +331,7 @@ class _DashboardState extends State<Dashboard> {
                                                         .toDate())
                                                 .toString(),
                                             style: const TextStyle(
+                                              color: Colors.white,
                                               fontSize: 14,
                                               // fontWeight: FontWeight.bold,
                                             ),
@@ -336,7 +340,8 @@ class _DashboardState extends State<Dashboard> {
                                             'Rs. ${user['spent'].toString()}',
                                             style: const TextStyle(
                                               fontSize: 16,
-                                              color: Colors.red,
+                                              color: Color.fromARGB(
+                                                  255, 245, 33, 18),
                                               // fontWeight: FontWeight.bold,
                                             ),
                                           ),
