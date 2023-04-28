@@ -45,13 +45,14 @@ class _HomeState extends State<HomeExpense> {
             },
           );
         },
-        backgroundColor: Colors.indigo,
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 10,
         child: Container(
+          color: Color.fromRGBO(30, 35, 41, 1),
           height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,14 +75,16 @@ class _HomeState extends State<HomeExpense> {
                       children: [
                         Icon(
                           CupertinoIcons.bars,
-                          color: currentTab == 0 ? Colors.indigo : Colors.grey,
+                          color: currentTab == 0
+                              ? Color.fromRGBO(240, 185, 11, 1)
+                              : Colors.grey,
                         ),
                         Text(
                           'Home',
                           style: TextStyle(
                               fontFamily: 'Helvetica',
                               color: currentTab == 0
-                                  ? Colors.indigo
+                                  ? Color.fromRGBO(240, 185, 11, 1)
                                   : Colors.grey),
                         ),
                       ],
@@ -102,14 +105,16 @@ class _HomeState extends State<HomeExpense> {
                       children: [
                         Icon(
                           CupertinoIcons.chart_bar_square,
-                          color: currentTab == 1 ? Colors.indigo : Colors.grey,
+                          color: currentTab == 1
+                              ? Color.fromRGBO(240, 185, 11, 1)
+                              : Colors.grey,
                         ),
                         Text(
                           'Stats',
                           style: TextStyle(
                               fontFamily: 'Helvetica',
                               color: currentTab == 1
-                                  ? Colors.indigo
+                                  ? Color.fromRGBO(240, 185, 11, 1)
                                   : Colors.grey),
                         ),
                       ],
@@ -135,14 +140,16 @@ class _HomeState extends State<HomeExpense> {
                       children: [
                         Icon(
                           CupertinoIcons.creditcard,
-                          color: currentTab == 2 ? Colors.indigo : Colors.grey,
+                          color: currentTab == 2
+                              ? Color.fromRGBO(240, 185, 11, 1)
+                              : Colors.grey,
                         ),
                         Text(
                           'Payment',
                           style: TextStyle(
                               fontFamily: 'Helvetica',
                               color: currentTab == 2
-                                  ? Colors.indigo
+                                  ? Color.fromRGBO(240, 185, 11, 1)
                                   : Colors.grey),
                         ),
                       ],
@@ -163,14 +170,16 @@ class _HomeState extends State<HomeExpense> {
                       children: [
                         Icon(
                           CupertinoIcons.person,
-                          color: currentTab == 3 ? Colors.indigo : Colors.grey,
+                          color: currentTab == 3
+                              ? Color.fromRGBO(240, 185, 11, 1)
+                              : Colors.grey,
                         ),
                         Text(
                           'Profile',
                           style: TextStyle(
                               fontFamily: 'Helvetica',
                               color: currentTab == 3
-                                  ? Colors.indigo
+                                  ? Color.fromRGBO(240, 185, 11, 1)
                                   : Colors.grey),
                         ),
                       ],
