@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
             .text
             .xl2
             .fontFamily('Helvetica')
-            .color(Colors.white)
+            .color(Color.fromARGB(255, 0, 0, 0))
             .make(),
         elevation: 0.0,
         backgroundColor: Color.fromRGBO(240, 185, 11, 1),
@@ -82,49 +82,222 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  ElevatedButton(
-                    child: Text('Expense Tracker'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeExpense()));
-                    },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        //Connnect to screen 2
+                        child: Text(
+                          'Fixed Deposits',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen2()));
+                        },
+
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(110, 80),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        //Connect to screen 3
+                        child: Text(
+                          'Stocks',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen3()));
+                        },
+
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(110, 80),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        //Connected to Screen 4
+                        child: Text(
+                          'Crypto',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen4()));
+                        },
+
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(110, 80),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  ElevatedButton(
-                    child: Text('Screen 2'),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Screen2()));
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Text('Screen 3'),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Screen3()));
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Text('Screen 4'),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Screen4()));
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Text('Screen 5'),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Screen5()));
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Text('Screen 6'),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Screen6()));
-                    },
+                  SizedBox(height: 20),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        child: SizedBox(
+                          child: Text(
+                            'Expense Tracker',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color.fromRGBO(240, 185, 11, 1),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeExpense()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(380, 40),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      ElevatedButton(
+                        //Connected to screen 5
+                        child: Text(
+                          'Suggestions',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen5()));
+                        },
+
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(380, 40),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        child: Text(
+                          'Screen 6',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen6()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(380, 40),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        child: Text(
+                          'Screen 7',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          /* Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen6()));*/
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(380, 40),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        child: Text(
+                          'Screen 8',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          /* Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen6()));*/
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(380, 40),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
