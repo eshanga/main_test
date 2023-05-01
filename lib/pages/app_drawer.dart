@@ -4,6 +4,7 @@ import 'package:financia_mobile_app/pages/main_home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'login_page.dart';
 import 'screen2/screen2.dart';
 import 'screen3/screen3.dart';
 import 'screen4/screen4.dart';
@@ -89,7 +90,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Screen 2',
+              'Available soon...',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -102,7 +103,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Screen 3',
+              'Available soon...',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -115,7 +116,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Screen 4',
+              'Available soon...',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -128,7 +129,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Screen 5',
+              'Available soon...',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -141,7 +142,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Screen 6',
+              'Available soon...',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -154,13 +155,20 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.logout, color: Colors.white),
             title: Text(
-              'Logout',
+              'Available soon...',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
               FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LoginPage(
+                          showRegisterPage: () {},
+                        )),
+              );
 
               // Add logout functionality here
             },

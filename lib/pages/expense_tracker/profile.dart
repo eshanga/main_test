@@ -35,6 +35,13 @@ class _ProfileState extends State<Profile> {
               Icons.logout,
             ),
             onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LoginPage(
+                          showRegisterPage: () {},
+                        )),
+              );
               FirebaseAuth.instance.signOut();
             },
           )
@@ -175,8 +182,6 @@ class _ProfileState extends State<Profile> {
   Widget buildLogout() => ButtonWidget(
         text: 'Logout',
         onClicked: () {
-          FirebaseAuth.instance.signOut();
-          // In the logout function, navigate to the login screen
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -184,6 +189,8 @@ class _ProfileState extends State<Profile> {
                       showRegisterPage: () {},
                     )),
           );
+          FirebaseAuth.instance.signOut();
+          // In the logout function, navigate to the login screen
         },
       );
 }

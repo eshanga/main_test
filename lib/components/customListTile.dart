@@ -18,7 +18,7 @@ Widget customListTile(Article article, BuildContext context) {
     child: Container(
       margin: EdgeInsets.all(12.0),
       padding: EdgeInsets.all(8.0),
-      width: MediaQuery.of(context).size.width * 0.9,
+      width: MediaQuery.of(context).size.width * 0.95,
       height: MediaQuery.of(context).size.height * 0.3,
       decoration: BoxDecoration(
           color: Colors.grey,

@@ -7,6 +7,7 @@ import '../model/article_model.dart';
 import '../services/api_service.dart';
 import 'app_drawer.dart';
 import 'expense_tracker/home_expense.dart';
+import 'login_page.dart';
 import 'screen2/screen2.dart';
 import 'screen3/screen3.dart';
 import 'screen4/screen4.dart';
@@ -42,6 +43,13 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             onPressed: () {
               FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LoginPage(
+                          showRegisterPage: () {},
+                        )),
+              );
             },
           )
         ],

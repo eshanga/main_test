@@ -10,6 +10,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'dart:core';
 
 import '../app_drawer.dart';
+import '../login_page.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -108,6 +109,13 @@ class _DashboardState extends State<Dashboard> {
               Icons.logout,
             ),
             onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LoginPage(
+                          showRegisterPage: () {},
+                        )),
+              );
               FirebaseAuth.instance.signOut();
             },
           )
