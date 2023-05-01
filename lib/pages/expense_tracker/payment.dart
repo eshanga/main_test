@@ -36,11 +36,11 @@ class _PaymentState extends State<Payment> {
             SizedBox(
               height: 35,
             ),
-            _buildCreditCard(
-                color: Color(0xFF5151CC),
-                cardExpiration: "09/2022",
-                cardHolder: "JOHN DOE",
-                cardNumber: "3546 7532 XXXX 9742"),
+            //   _buildCreditCard(
+            //   color: Color(0xFF5151CC),
+            //   cardExpiration: "09/2022",
+            //   cardHolder: "JOHN DOE",
+            //    cardNumber: "3546 7532 XXXX 9742"),
           ],
         ),
       ),
