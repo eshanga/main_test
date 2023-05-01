@@ -155,13 +155,12 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.logout, color: Colors.white),
             title: Text(
-              'Available soon...',
+              'Log out',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
-              FirebaseAuth.instance.signOut();
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -169,6 +168,7 @@ class AppDrawer extends StatelessWidget {
                           showRegisterPage: () {},
                         )),
               );
+              FirebaseAuth.instance.signOut();
 
               // Add logout functionality here
             },
