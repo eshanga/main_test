@@ -18,10 +18,10 @@ Widget customListTile(Article article, BuildContext context) {
     child: Container(
       margin: EdgeInsets.all(12.0),
       padding: EdgeInsets.all(8.0),
-      height: 100.0,
-      width: 460.0,
+      width: MediaQuery.of(context).size.width * 0.9,
+      height: MediaQuery.of(context).size.height * 0.3,
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.grey,
           borderRadius: BorderRadius.circular(12.0),
           // ignore: prefer_const_literals_to_create_immutables
           boxShadow: [

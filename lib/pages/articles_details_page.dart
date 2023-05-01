@@ -12,8 +12,10 @@ class ArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
         title: Text(article.title),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -54,6 +56,7 @@ class ArticlePage extends StatelessWidget {
             Text(
               article.description,
               style: TextStyle(
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),

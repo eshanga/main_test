@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      SizedBox(height: 20),
                       ElevatedButton(
                         //Connected to screen 5
                         child: Text(
@@ -225,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 20),
                       ElevatedButton(
                         child: Text(
-                          'Screen 6',
+                          'Available soon...',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
@@ -250,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 20),
                       ElevatedButton(
                         child: Text(
-                          'Screen 7',
+                          'Available soon...',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
@@ -275,7 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 20),
                       ElevatedButton(
                         child: Text(
-                          'Screen 8',
+                          'Available soon...',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
