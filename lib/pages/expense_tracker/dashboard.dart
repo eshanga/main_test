@@ -168,117 +168,121 @@ class _DashboardState extends State<Dashboard> {
               child: SafeArea(
                 child: Column(
                   children: [
-                    Container(
-                      height: 180,
-                      padding: const EdgeInsets.only(
-                        top: 15,
-                        left: 35,
-                        right: 20,
-                      ),
-                      child: Row(
-                        children: [
-                          CircularPercentIndicator(
-                            radius: 155,
-                            center: Text(
-                              "$_percenttext%",
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Container(
+                        height: 180,
+                        padding: const EdgeInsets.only(
+                          top: 15,
+                          left: 35,
+                          right: 20,
+                        ),
+                        child: Row(
+                          children: [
+                            CircularPercentIndicator(
+                              radius: 140,
+                              center: Text(
+                                "$_percenttext%",
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              progressColor: _percenttext > 75
+                                  ? Colors.red
+                                  : Color.fromRGBO(240, 185, 11, 1),
+                              backgroundColor:
+                                  Color.fromARGB(255, 112, 102, 102),
+                              percent: _percenttext > 100.0 ? 0 : _percent,
+                              lineWidth: 16,
+                              circularStrokeCap: CircularStrokeCap.round,
+                            ),
+                            Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 25,
+                                      top: 40,
+                                    ),
+                                    child: balchecker == 0
+                                        ? const Text(
+                                            "Balance",
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                              fontFamily: 'Helvetica',
+                                            ),
+                                          )
+                                        : const Text(
+                                            "OverBudget",
+                                            style: TextStyle(
+                                              fontSize: 23,
+                                              color: Colors.red,
+                                              fontFamily: 'Helvetica',
+                                            ),
+                                          ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 25,
+                                    ),
+                                    child: balchecker == 0
+                                        ? Text(
+                                            "Rs. $_balance",
+                                            style: const TextStyle(
+                                              fontSize: 35,
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        : Text(
+                                            "By Rs. $_balance",
+                                            style: const TextStyle(
+                                              fontSize: 25,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                  ),
+                                ],
                               ),
                             ),
-                            progressColor: _percenttext > 75
-                                ? Colors.red
-                                : Color.fromRGBO(240, 185, 11, 1),
-                            backgroundColor: Color.fromARGB(255, 112, 102, 102),
-                            percent: _percenttext > 100.0 ? 0 : _percent,
-                            lineWidth: 16,
-                            circularStrokeCap: CircularStrokeCap.round,
-                          ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 25,
-                                    top: 40,
-                                  ),
-                                  child: balchecker == 0
-                                      ? const Text(
-                                          "Balance",
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.white,
-                                            fontFamily: 'Helvetica',
-                                          ),
-                                        )
-                                      : const Text(
-                                          "OverBudget",
-                                          style: TextStyle(
-                                            fontSize: 23,
-                                            color: Colors.red,
-                                            fontFamily: 'Helvetica',
-                                          ),
-                                        ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 25,
-                                  ),
-                                  child: balchecker == 0
-                                      ? Text(
-                                          "Rs. $_balance",
-                                          style: const TextStyle(
-                                            fontSize: 35,
-                                            color: Colors.white,
-                                          ),
-                                        )
-                                      : Text(
-                                          "By Rs. $_balance",
-                                          style: const TextStyle(
-                                            fontSize: 25,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Expanded(
                       // fit: FlexFit.tight,
                       child: Container(
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(10),
                         width: MediaQuery.of(context).size.width,
                         decoration: const BoxDecoration(
                           color: Color.fromRGBO(68, 71, 75, 1),
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40),
-                            topRight: Radius.circular(40),
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
                           ),
                         ),
                         child: Column(
                           children: [
                             const Padding(
                               padding: EdgeInsets.only(
-                                top: 10,
-                                bottom: 10,
+                                top: 5,
+                                bottom: 5,
                               ),
                               child: Text(
                                 "Recent Transactions",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 24,
+                                  fontSize: 22,
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(5),
                               child: Text(
                                 DateFormat.yMMMEd().format(_newtoday),
                                 style: const TextStyle(
@@ -288,7 +292,7 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             ),
                             const SizedBox(
-                              height: 10,
+                              height: 8,
                             ),
                             Flexible(
                               fit: FlexFit.tight,
