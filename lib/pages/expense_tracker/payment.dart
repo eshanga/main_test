@@ -1,3 +1,4 @@
+import 'package:financia_mobile_app/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -14,6 +15,7 @@ class _PaymentState extends State<Payment> {
     return SingleChildScrollView(
       child: Container(
         padding: Vx.m12,
+        color: Color.fromRGBO(30, 35, 41, 1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -24,13 +26,13 @@ class _PaymentState extends State<Payment> {
                 .text
                 .xl5
                 .fontFamily('Helvetica')
-                .color(Colors.black87)
+                .color(Color.fromRGBO(240, 185, 11, 1))
                 .make(),
             SizedBox(
               height: 10,
             ),
             Divider(
-              color: Colors.grey,
+              color: Color.fromARGB(255, 230, 230, 230),
               indent: 0,
             ),
             SizedBox(
