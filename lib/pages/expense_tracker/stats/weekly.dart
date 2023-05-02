@@ -79,7 +79,7 @@ class _WeeklyState extends State<Weekly> {
         height: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: const Color(0xFFFFFFFF),
+          color: Color.fromRGBO(48, 52, 56, 1),
         ),
         margin: EdgeInsets.all(10.0),
         padding: const EdgeInsets.all(16),
@@ -91,7 +91,7 @@ class _WeeklyState extends State<Weekly> {
               'Weekly Analytics',
               style: TextStyle(
                 fontFamily: 'Helvetica',
-                color: const Color(0xFF123E9C),
+                color: Color.fromRGBO(240, 185, 11, 1),
                 fontSize: 24,
               ),
             ),
@@ -144,7 +144,7 @@ class _WeeklyState extends State<Weekly> {
       barRods: [
         BarChartRodData(
           y: y,
-          colors: [Colors.indigo, Colors.greenAccent],
+          colors: [Colors.white, Color.fromRGBO(240, 185, 11, 1)],
           width: 22,
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
