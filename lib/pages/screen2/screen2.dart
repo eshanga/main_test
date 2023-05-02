@@ -10,14 +10,19 @@ class Screen2 extends StatelessWidget {
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
         title: Text('Screen 2'),
-        backgroundColor: Color.fromARGB(255, 193, 175, 14),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       drawer: AppDrawer(
         email: '',
       ),
       body: Center(
-        child: Text('This page will available soon!',
-            selectionColor: Colors.white),
+        child: Text(
+          'This page will available soon!',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
       ),
     );
   }
