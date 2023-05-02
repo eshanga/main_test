@@ -20,27 +20,37 @@ class _StatsState extends State<Stats> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+          backgroundColor: Color.fromRGBO(30, 35, 41, 1),
           appBar: AppBar(
             title: "Stats"
                 .text
                 .xl2
                 .fontFamily('Helvetica')
-                .color(Colors.white)
+                .color(Colors.black)
                 .make(),
-            backgroundColor: Colors.indigo,
+            backgroundColor: Color.fromRGBO(240, 185, 11, 1),
             bottom: TabBar(
               tabs: [
                 Tab(
                   text: 'Weekly',
-                  icon: Icon(CupertinoIcons.chart_bar),
+                  icon: Icon(
+                    CupertinoIcons.chart_bar,
+                    color: Vx.black,
+                  ),
                 ),
                 Tab(
                   text: 'Monthly',
-                  icon: Icon(CupertinoIcons.graph_square),
+                  icon: Icon(
+                    CupertinoIcons.graph_square,
+                    color: Vx.black,
+                  ),
                 ),
                 Tab(
                   text: 'Categorywise',
-                  icon: Icon(CupertinoIcons.chart_pie),
+                  icon: Icon(
+                    CupertinoIcons.chart_pie,
+                    color: Vx.black,
+                  ),
                 ),
               ],
             ),
