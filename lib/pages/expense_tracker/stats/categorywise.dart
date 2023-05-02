@@ -82,9 +82,9 @@ class PieChart2State extends State {
                 'Categorywise Analytics',
                 style: TextStyle(
                   fontFamily: 'Helvetica',
-                  color: const Color(0xFF123E9C),
+                  color: Color.fromRGBO(240, 185, 11, 1),
                   fontSize: 24,
-                  // fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -92,7 +92,7 @@ class PieChart2State extends State {
           AspectRatio(
             aspectRatio: 1.1,
             child: Container(
-              color: Colors.white12,
+              color: Color.fromRGBO(48, 52, 56, 1),
               child: Row(
                 children: <Widget>[
                   SizedBox(
@@ -155,6 +155,7 @@ class PieChart2State extends State {
                       Indicator(
                         color: Color(0xff0293ee),
                         text: 'Education',
+                        textColor: Colors.white,
                         isSquare: true,
                       ),
                       SizedBox(
@@ -163,6 +164,7 @@ class PieChart2State extends State {
                       Indicator(
                         color: Color(0xfff8b250),
                         text: 'Rent',
+                        textColor: Colors.white,
                         isSquare: true,
                       ),
                       SizedBox(
@@ -171,6 +173,7 @@ class PieChart2State extends State {
                       Indicator(
                         color: Color(0xff845bef),
                         text: 'Entertainment',
+                        textColor: Colors.white,
                         isSquare: true,
                       ),
                       SizedBox(
@@ -179,6 +182,7 @@ class PieChart2State extends State {
                       Indicator(
                         color: Color(0xff13d38e),
                         text: 'Taxes',
+                        textColor: Colors.white,
                         isSquare: true,
                       ),
                       SizedBox(
@@ -187,6 +191,7 @@ class PieChart2State extends State {
                       Indicator(
                         color: Color(0xffec407a),
                         text: 'Vehicle',
+                        textColor: Colors.white,
                         isSquare: true,
                       ),
                       SizedBox(
@@ -195,6 +200,7 @@ class PieChart2State extends State {
                       Indicator(
                         color: Color(0xffd500f9),
                         text: 'Stationary',
+                        textColor: Colors.white,
                         isSquare: true,
                       ),
                       SizedBox(
@@ -203,14 +209,16 @@ class PieChart2State extends State {
                       Indicator(
                         color: Color(0xff00695c),
                         text: 'Meal',
+                        textColor: Colors.white,
                         isSquare: true,
                       ),
                       SizedBox(
                         height: 15,
                       ),
                       Indicator(
-                        color: Color(0xff546e7a),
+                        color: Color.fromARGB(255, 171, 182, 187),
                         text: 'Other',
+                        textColor: Colors.white,
                         isSquare: true,
                       ),
                       SizedBox(
@@ -303,7 +311,7 @@ class PieChart2State extends State {
           );
         case 7:
           return PieChartSectionData(
-            color: const Color(0xff546e7a),
+            color: Color.fromARGB(255, 171, 182, 187),
             value: _spent[7].toDouble(),
             title: _spenttext[7].toStringAsFixed(2),
             radius: radius,
