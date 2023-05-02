@@ -15,3 +15,5 @@ other colors:
     red colour Color.fromARGB( 255, 191, 14, 1),
     dark pink RGB(193, 9, 97,1)
     green RGB(16, 115, 90)
+
+    background colour for stat  Colors.white12

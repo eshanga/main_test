@@ -31,7 +31,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         builder: (context) {
           return AlertDialog(
               title: Text("Succes!",
-                  style: TextStyle(color: Color.fromRGBO(1, 134, 12, 1))),
+                  style: TextStyle(color: Color.fromRGBO(240, 185, 11, 1))),
               content: Text('Password Reset link sent. Check your email!'),
               actions: [
                 TextButton(
