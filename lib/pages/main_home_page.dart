@@ -120,31 +120,29 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       ElevatedButton(
-                        //Connect to screen 3
-                        child: Text(
-                          'Stocks',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Screen3()));
-                        },
-
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(110, 80),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                          //Connect to screen 3
+                          child: Text(
+                            'Stocks',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color.fromRGBO(240, 185, 11, 1),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
                           ),
-                        ),
-                      ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Screen3()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                            minimumSize: Size(110, 80),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  30), // Change this value to adjust the curve
+                            ),
+                          )),
                       ElevatedButton(
                         //Connected to Screen 4
                         child: Text(
@@ -196,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 40),
+                          minimumSize: Size(380, 80),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
@@ -223,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 40),
+                          minimumSize: Size(380, 80),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
@@ -248,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 40),
+                          minimumSize: Size(380, 80),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
@@ -273,7 +271,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 40),
+                          minimumSize: Size(380, 80),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
@@ -298,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 40),
+                          minimumSize: Size(380, 80),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve

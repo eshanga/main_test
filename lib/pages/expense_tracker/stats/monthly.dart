@@ -100,9 +100,9 @@ class _MonthlyState extends State<Monthly> {
                 'Monthly Analytics',
                 style: TextStyle(
                   fontFamily: 'Helvetica',
-                  color: const Color(0xFF123E9C),
+                  color: Color.fromRGBO(240, 185, 11, 1),
                   fontSize: 24,
-                  // fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

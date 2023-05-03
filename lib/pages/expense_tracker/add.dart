@@ -130,6 +130,7 @@ class _AddState extends State<Add> {
   Widget build(BuildContext context) {
     final userKey = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       resizeToAvoidBottomInset: false,
       drawer: AppDrawer(
         email: '',
@@ -149,7 +150,7 @@ class _AddState extends State<Add> {
                       .text
                       .xl2
                       .fontFamily('Helvetica')
-                      .color(Colors.black87)
+                      .color(Color.fromRGBO(240, 185, 11, 1))
                       .make(),
                   SizedBox(
                     height: 2,
@@ -158,7 +159,7 @@ class _AddState extends State<Add> {
                       .text
                       .xl2
                       .fontFamily('Helvetica')
-                      .color(Colors.indigo.shade400)
+                      .color(Color.fromRGBO(255, 255, 255, 1))
                       .make(),
                   SizedBox(
                     height: 25,
@@ -184,14 +185,22 @@ class _AddState extends State<Add> {
                           // Title TextField
                           TextFormField(
                             controller: namedata,
+                            style: const TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                            ),
                             decoration: InputDecoration(
                               labelText: 'Title',
                               border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color.fromRGBO(240, 185, 11, 1)),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(25.0)),
                               ),
                               prefixIcon: Icon(Icons.title),
                               hintText: "Enter a title",
+                              hintStyle: TextStyle(color: Colors.grey[700]),
+                              fillColor: Color.fromRGBO(59, 61, 63, 1),
+                              filled: true,
                             ),
                             validator: (value) {
                               if (value == null) {
@@ -210,6 +219,9 @@ class _AddState extends State<Add> {
 
                           TextFormField(
                             controller: spentdata,
+                            style: const TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                            ),
                             decoration: InputDecoration(
                               labelText: 'Amount',
                               border: OutlineInputBorder(
@@ -218,6 +230,9 @@ class _AddState extends State<Add> {
                               ),
                               prefixIcon: Icon(Icons.local_atm),
                               hintText: "Enter the amount",
+                              hintStyle: TextStyle(color: Colors.grey[700]),
+                              fillColor: Color.fromRGBO(59, 61, 63, 1),
+                              filled: true,
                             ),
                             validator: (value) {
                               if (value == null) {
@@ -240,6 +255,7 @@ class _AddState extends State<Add> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(26),
                               border: Border.all(color: Colors.grey, width: 1),
+                              color: Color.fromRGBO(59, 61, 63, 1),
                             ),
                             child: DropdownButtonHideUnderline(
                               child: DropdownButton(
@@ -258,7 +274,9 @@ class _AddState extends State<Add> {
                                         ),
                                         Text(
                                           user.name,
-                                          style: TextStyle(color: Colors.black),
+                                          style: TextStyle(
+                                              color:
+                                                  Color.fromRGBO(6, 6, 6, 1)),
                                         ),
                                       ],
                                     ),
@@ -295,6 +313,11 @@ class _AddState extends State<Add> {
                                         ),
                                         labelText: getText(),
                                         hintText: 'Date of Transaction',
+                                        hintStyle:
+                                            TextStyle(color: Colors.grey[700]),
+                                        fillColor:
+                                            Color.fromRGBO(48, 52, 56, 1),
+                                        filled: true,
                                         prefixIcon: Icon(Icons.calendar_today),
                                         suffixIcon: Icon(Icons.arrow_drop_down),
                                       ),
@@ -322,12 +345,14 @@ class _AddState extends State<Add> {
                                   ),
                                   textStyle: TextStyle(
                                     fontSize: 21.0,
-                                  )),
+                                  ),
+                                  backgroundColor:
+                                      Color.fromRGBO(240, 185, 11, 1)),
                               child: Text(
                                 'Add Transaction',
                                 style: TextStyle(
                                   fontFamily: 'Helvetica',
-                                  color: Colors.indigo,
+                                  color: Colors.black,
                                 ),
                               ),
                               onPressed: () {

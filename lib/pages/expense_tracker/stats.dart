@@ -20,7 +20,7 @@ class _StatsState extends State<Stats> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(30, 35, 41, 1),
+          backgroundColor: Color.fromRGBO(48, 52, 56, 1),
           appBar: AppBar(
             title: "Stats"
                 .text

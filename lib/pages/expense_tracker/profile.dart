@@ -22,13 +22,14 @@ class _ProfileState extends State<Profile> {
     TextEditingController limitdata = new TextEditingController();
 
     return Scaffold(
+      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
         title: Text(
           "User Profile",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
         ),
         elevation: 0.0,
-        backgroundColor: Colors.indigo,
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
         actions: [
           IconButton(
             icon: Icon(
@@ -90,11 +91,17 @@ class _ProfileState extends State<Profile> {
                     controller: limitdata,
                     decoration: InputDecoration(
                       labelText: 'Monthly Limit',
+                      labelStyle: TextStyle(color: Colors.grey[700]),
                       border: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color.fromRGBO(240, 185, 11, 1)),
                         borderRadius: BorderRadius.all(Radius.circular(25.0)),
                       ),
                       prefixIcon: Icon(Icons.query_stats),
                       hintText: "Enter Monthly Limit",
+                      hintStyle: TextStyle(color: Colors.grey[700]),
+                      fillColor: Color.fromRGBO(48, 52, 56, 1),
+                      filled: true,
                     ),
                     validator: (value) {
                       if (value == null) {
@@ -123,12 +130,13 @@ class _ProfileState extends State<Profile> {
                             ),
                             textStyle: TextStyle(
                               fontSize: 21.0,
-                            )),
+                            ),
+                            backgroundColor: Color.fromRGBO(240, 185, 11, 1)),
                         child: Text(
                           'Set Monthly Limit',
                           style: TextStyle(
                             fontFamily: 'Helvetica',
-                            color: Colors.deepPurple,
+                            color: Colors.black,
                           ),
                         ),
                         onPressed: () {
