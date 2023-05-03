@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:telephony/telephony.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -350,6 +351,119 @@ class _AddState extends State<Add> {
                                   date = DateTime.parse('2002-01-11');
                                   // Navigator.pushNamed(
                                   //     context, MyRoutes.homeRoute);
+                                }
+                              },
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 55.0,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                side: BorderSide(
+                                  width: 1,
+                                  color: Colors.black26,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                                textStyle: TextStyle(
+                                  fontSize: 21.0,
+                                ),
+                              ),
+                              child: Text(
+                                'Add your bank Transactions',
+                                style: TextStyle(
+                                  fontFamily: 'Helvetica',
+                                  color: Colors.indigo,
+                                ),
+                              ),
+                              onPressed: () async {
+                                final telephony = Telephony.instance;
+                                DateTime currentDate = DateTime.now();
+                                DateTime startOfCurrentDate = DateTime(
+                                    currentDate.year,
+                                    currentDate.month,
+                                    currentDate.day);
+                                DateTime endOfCurrentDate =
+                                    startOfCurrentDate.add(Duration(days: 1));
+                                List<SmsMessage> allMessages =
+                                    await telephony.getInboxSms(
+                                  columns: [
+                                    SmsColumn.ADDRESS,
+                                    SmsColumn.BODY,
+                                    SmsColumn.DATE
+                                  ],
+                                );
+                                List<Map<String, dynamic>> filteredMessages =
+                                    [];
+                                for (SmsMessage message in allMessages) {
+                                  if (message.address == "+94712165624" &&
+                                      (message.body!.contains("Billpay") ||
+                                          message.body!
+                                              .contains("debited by")) &&
+                                      message.date != null &&
+                                      DateTime.fromMillisecondsSinceEpoch(
+                                              message.date!)
+                                          .isAfter(startOfCurrentDate) &&
+                                      DateTime.fromMillisecondsSinceEpoch(
+                                              message.date!)
+                                          .isBefore(endOfCurrentDate)) {
+                                    RegExp regExp = new RegExp(r"(\d+\.\d+)");
+                                    Match? match =
+                                        regExp.firstMatch(message.body!);
+                                    if (match != null) {
+                                      String amount = match.group(0)!;
+                                      filteredMessages.add({
+                                        'message': message.body!,
+                                        'amount': amount,
+                                        'date': message.date
+                                      });
+                                    }
+                                  }
+                                }
+
+                                if (filteredMessages.isNotEmpty) {
+                                  for (var i = 0;
+                                      i < filteredMessages.length;
+                                      i++) {
+                                    int amountInt = int.parse(
+                                        filteredMessages[i]['amount']
+                                            .split('.')[0]);
+                                    Map<String, dynamic> data = {
+                                      "name": "Bank transactions",
+                                      "spent": amountInt,
+                                      "category": "other",
+                                      "date": DateTime.now(),
+                                    };
+                                    FirebaseFirestore.instance
+                                        .collection(userKey!.email!)
+                                        .add(data);
+                                  }
+                                  filteredMessages.removeRange(
+                                      0, filteredMessages.length);
+                                  showSnackBar(context);
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title:
+                                          Text('No matching messages found!'),
+                                      content: Text(
+                                          'There are no bank transactions in your messages.'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: Text('OK'),
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                        ),
+                                      ],
+                                    ),
+                                  );
                                 }
                               },
                             ),
