@@ -32,6 +32,16 @@ class _AddState extends State<Add> {
   DateTime datechecker = DateTime.parse('2002-01-11');
 
   Future _selectDate(BuildContext context) async {
+    final ThemeData customTheme = ThemeData(
+      primaryColor: Colors.grey[700],
+      accentColor: Color.fromRGBO(240, 185, 11, 1),
+      textTheme: TextTheme(
+        bodyText1: TextStyle(color: Colors.white),
+        bodyText2: TextStyle(color: Colors.white),
+        button: TextStyle(color: Colors.white),
+      ),
+      colorScheme: ColorScheme.dark(primary: Color.fromRGBO(240, 185, 11, 1)),
+    );
     final today = DateTime.now();
     final pickedDate = await showDatePicker(
       context: context,
@@ -198,7 +208,8 @@ class _AddState extends State<Add> {
                               ),
                               prefixIcon: Icon(Icons.title),
                               hintText: "Enter a title",
-                              hintStyle: TextStyle(color: Colors.grey[700]),
+                              hintStyle: TextStyle(
+                                  color: Color.fromRGBO(240, 185, 11, 1)),
                               fillColor: Color.fromRGBO(59, 61, 63, 1),
                               filled: true,
                             ),
@@ -230,7 +241,8 @@ class _AddState extends State<Add> {
                               ),
                               prefixIcon: Icon(Icons.local_atm),
                               hintText: "Enter the amount",
-                              hintStyle: TextStyle(color: Colors.grey[700]),
+                              hintStyle: TextStyle(
+                                  color: Color.fromRGBO(240, 185, 11, 1)),
                               fillColor: Color.fromRGBO(59, 61, 63, 1),
                               filled: true,
                             ),
@@ -274,9 +286,7 @@ class _AddState extends State<Add> {
                                         ),
                                         Text(
                                           user.name,
-                                          style: TextStyle(
-                                              color:
-                                                  Color.fromRGBO(6, 6, 6, 1)),
+                                          style: TextStyle(color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -313,8 +323,9 @@ class _AddState extends State<Add> {
                                         ),
                                         labelText: getText(),
                                         hintText: 'Date of Transaction',
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[700]),
+                                        hintStyle: TextStyle(
+                                            color: Color.fromRGBO(
+                                                240, 185, 11, 1)),
                                         fillColor:
                                             Color.fromRGBO(48, 52, 56, 1),
                                         filled: true,
@@ -389,22 +400,23 @@ class _AddState extends State<Add> {
                             height: 55.0,
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
-                                side: BorderSide(
-                                  width: 1,
-                                  color: Colors.black26,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(24),
-                                ),
-                                textStyle: TextStyle(
-                                  fontSize: 21.0,
-                                ),
-                              ),
+                                  side: BorderSide(
+                                    width: 1,
+                                    color: Colors.black26,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(24),
+                                  ),
+                                  textStyle: TextStyle(
+                                    fontSize: 21.0,
+                                  ),
+                                  backgroundColor:
+                                      Color.fromRGBO(240, 185, 11, 1)),
                               child: Text(
                                 'Add your bank Transactions',
                                 style: TextStyle(
                                   fontFamily: 'Helvetica',
-                                  color: Colors.indigo,
+                                  color: Colors.black,
                                 ),
                               ),
                               onPressed: () async {
@@ -427,7 +439,7 @@ class _AddState extends State<Add> {
                                 List<Map<String, dynamic>> filteredMessages =
                                     [];
                                 for (SmsMessage message in allMessages) {
-                                  if (message.address == "+94712165624" &&
+                                  if (message.address == "PeoplesBank" &&
                                       (message.body!.contains("Billpay") ||
                                           message.body!
                                               .contains("debited by")) &&

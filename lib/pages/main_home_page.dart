@@ -6,13 +6,16 @@ import '../components/customListTile.dart';
 import '../model/article_model.dart';
 import '../services/api_service.dart';
 import 'app_drawer.dart';
+import 'crypto_view/crypto_view.dart';
 import 'expense_tracker/home_expense.dart';
+import 'fixedrates_view/fixedrates.dart';
 import 'login_page.dart';
 import 'screen2/screen2.dart';
 import 'screen3/screen3.dart';
 import 'screen4/screen4.dart';
 import 'screen5/screen5.dart';
 import 'screen6/screen6.dart';
+import 'stock_view/stock_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -107,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Screen2()));
+                                  builder: (context) => Fixedrates()));
                         },
 
                         style: ElevatedButton.styleFrom(
@@ -133,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Screen3()));
+                                    builder: (context) => stockview()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color.fromRGBO(80, 85, 88, 1),
@@ -157,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Screen4()));
+                                  builder: (context) => cryptoview()));
                         },
 
                         style: ElevatedButton.styleFrom(
