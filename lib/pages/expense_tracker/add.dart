@@ -34,7 +34,7 @@ class _AddState extends State<Add> {
   Future _selectDate(BuildContext context) async {
     final ThemeData customTheme = ThemeData(
       primaryColor: Colors.grey[700],
-      accentColor: Color.fromRGBO(240, 185, 11, 1),
+      hintColor: Color.fromRGBO(240, 185, 11, 1),
       textTheme: TextTheme(
         bodyText1: TextStyle(color: Colors.white),
         bodyText2: TextStyle(color: Colors.white),
