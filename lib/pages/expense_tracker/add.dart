@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:telephony/telephony.dart';
+//import 'package:telephony/telephony.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -392,12 +392,12 @@ class _AddState extends State<Add> {
                             ),
                           ),
 
-                          SizedBox(
+                          /*               SizedBox(
                             height: 20.0,
                           ),
                           SizedBox(
-                            width: double.infinity,
-                            height: 55.0,
+                          width: double.infinity,
+                        height: 55.0,
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -421,20 +421,20 @@ class _AddState extends State<Add> {
                               ),
                               onPressed: () async {
                                 final telephony = Telephony.instance;
-                                DateTime currentDate = DateTime.now();
-                                DateTime startOfCurrentDate = DateTime(
+                               DateTime currentDate = DateTime.now();
+                               DateTime startOfCurrentDate = DateTime(
                                     currentDate.year,
                                     currentDate.month,
                                     currentDate.day);
                                 DateTime endOfCurrentDate =
                                     startOfCurrentDate.add(Duration(days: 1));
-                                List<SmsMessage> allMessages =
+                               List<SmsMessage> allMessages =
                                     await telephony.getInboxSms(
                                   columns: [
                                     SmsColumn.ADDRESS,
                                     SmsColumn.BODY,
                                     SmsColumn.DATE
-                                  ],
+                                 ],
                                 );
                                 List<Map<String, dynamic>> filteredMessages =
                                     [];
@@ -449,7 +449,7 @@ class _AddState extends State<Add> {
                                           .isAfter(startOfCurrentDate) &&
                                       DateTime.fromMillisecondsSinceEpoch(
                                               message.date!)
-                                          .isBefore(endOfCurrentDate)) {
+                                    .isBefore(endOfCurrentDate)) {
                                     RegExp regExp = new RegExp(r"(\d+\.\d+)");
                                     Match? match =
                                         regExp.firstMatch(message.body!);
@@ -504,7 +504,7 @@ class _AddState extends State<Add> {
                                 }
                               },
                             ),
-                          ),
+                          ),*/
                         ],
                       ),
                     ),
