@@ -26,22 +26,23 @@ class _cryptoviewState extends State<cryptoview> {
                 .text
                 .xl2
                 .fontFamily('Helvetica')
-                .color(Colors.white)
+                .color(Colors.black)
                 .make(),
             backgroundColor: Color.fromRGBO(240, 185, 11, 1),
             bottom: TabBar(
               tabs: [
                 Tab(
                   text: 'Top Gainers',
-                  icon: Icon(CupertinoIcons.sort_up),
+                  icon: Icon(CupertinoIcons.sort_up, color: Colors.black),
                 ),
                 Tab(
                   text: 'Top Losers',
-                  icon: Icon(CupertinoIcons.sort_down),
+                  icon: Icon(CupertinoIcons.sort_down, color: Colors.black),
                 ),
                 Tab(
                   text: 'Top Transactions',
-                  icon: Icon(CupertinoIcons.rectangle_stack),
+                  icon:
+                      Icon(CupertinoIcons.rectangle_stack, color: Colors.black),
                 ),
               ],
             ),

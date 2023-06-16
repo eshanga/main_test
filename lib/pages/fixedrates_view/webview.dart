@@ -27,7 +27,7 @@ class _WebViewState extends State<WebView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Fixed Deposits Rates'),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Color.fromRGBO(80, 85, 88, 1),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () async {

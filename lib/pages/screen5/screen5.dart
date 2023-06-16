@@ -40,7 +40,6 @@ class _Screen5State extends State<Screen5> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
         title: Text('Screen 6'),
         backgroundColor: Color.fromRGBO(240, 185, 11, 1),
@@ -53,6 +52,16 @@ class _Screen5State extends State<Screen5> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Container(
+              width: 200.0, // Adjust the size of the square box
+              height: 200.0, // Adjust the size of the square box
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.scaleDown,
+                  image: AssetImage('assets/interest.png'),
+                ),
+              ),
+            ),
             SizedBox(height: 16.0),
             TextField(
               controller: principalController,

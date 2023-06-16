@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:telephony/telephony.dart';
+import 'package:telephony/telephony.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -392,12 +392,12 @@ class _AddState extends State<Add> {
                             ),
                           ),
 
-                          /*               SizedBox(
+                          SizedBox(
                             height: 20.0,
                           ),
                           SizedBox(
-                          width: double.infinity,
-                        height: 55.0,
+                            width: double.infinity,
+                            height: 55.0,
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -421,35 +421,41 @@ class _AddState extends State<Add> {
                               ),
                               onPressed: () async {
                                 final telephony = Telephony.instance;
-                               DateTime currentDate = DateTime.now();
-                               DateTime startOfCurrentDate = DateTime(
+                                DateTime currentDate = DateTime.now();
+                                DateTime startOfCurrentDate = DateTime(
                                     currentDate.year,
                                     currentDate.month,
                                     currentDate.day);
                                 DateTime endOfCurrentDate =
                                     startOfCurrentDate.add(Duration(days: 1));
-                               List<SmsMessage> allMessages =
+                                List<SmsMessage> allMessages =
                                     await telephony.getInboxSms(
                                   columns: [
                                     SmsColumn.ADDRESS,
                                     SmsColumn.BODY,
                                     SmsColumn.DATE
-                                 ],
+                                  ],
                                 );
                                 List<Map<String, dynamic>> filteredMessages =
                                     [];
                                 for (SmsMessage message in allMessages) {
-                                  if (message.address == "PeoplesBank" &&
-                                      (message.body!.contains("Billpay") ||
-                                          message.body!
-                                              .contains("debited by")) &&
+                                  if (((message.address == "PeoplesBank" &&
+                                              (message.body!
+                                                      .contains("Billpay") ||
+                                                  message.body!.contains(
+                                                      "debited by"))) ||
+                                          (message.address == "COMBANK" &&
+                                              (message.body!.contains(
+                                                      "Purchase at") ||
+                                                  message.body!.contains(
+                                                      "Withdrawal at")))) &&
                                       message.date != null &&
                                       DateTime.fromMillisecondsSinceEpoch(
                                               message.date!)
                                           .isAfter(startOfCurrentDate) &&
                                       DateTime.fromMillisecondsSinceEpoch(
                                               message.date!)
-                                    .isBefore(endOfCurrentDate)) {
+                                          .isBefore(endOfCurrentDate)) {
                                     RegExp regExp = new RegExp(r"(\d+\.\d+)");
                                     Match? match =
                                         regExp.firstMatch(message.body!);
@@ -468,19 +474,43 @@ class _AddState extends State<Add> {
                                   for (var i = 0;
                                       i < filteredMessages.length;
                                       i++) {
+                                    String merchantName =
+                                        filteredMessages[i]['name'];
                                     int amountInt = int.parse(
                                         filteredMessages[i]['amount']
                                             .split('.')[0]);
+                                    String category;
+
+                                    if (merchantName.contains('Pizza Hut') ||
+                                        merchantName.contains('Dominos') ||
+                                        merchantName.contains("McDonald's") ||
+                                        merchantName.contains('KFC')) {
+                                      category = 'Meal';
+                                    } else if (merchantName
+                                            .contains('Mobitel') ||
+                                        merchantName.contains('Dialog') ||
+                                        merchantName.contains('Hutch') ||
+                                        merchantName.contains('Airtel') ||
+                                        merchantName.contains('Savoy') ||
+                                        merchantName
+                                            .contains('Scope Cinemas')) {
+                                      category = 'Entertainment';
+                                    } else {
+                                      category = 'Other';
+                                    }
+
                                     Map<String, dynamic> data = {
                                       "name": "Bank transactions",
                                       "spent": amountInt,
-                                      "category": "other",
+                                      "category": category,
                                       "date": DateTime.now(),
                                     };
+
                                     FirebaseFirestore.instance
                                         .collection(userKey!.email!)
                                         .add(data);
                                   }
+
                                   filteredMessages.removeRange(
                                       0, filteredMessages.length);
                                   showSnackBar(context);
@@ -504,7 +534,7 @@ class _AddState extends State<Add> {
                                 }
                               },
                             ),
-                          ),*/
+                          ),
                         ],
                       ),
                     ),

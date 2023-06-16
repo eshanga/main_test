@@ -1,6 +1,7 @@
 //Now let's create the article details page
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../model/article_model.dart';
 
@@ -14,7 +15,12 @@ class ArticlePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: Text(article.title),
+        title: Text(article.title)
+            .text
+            .xl
+            .fontFamily('Helvetica')
+            .color(Colors.black)
+            .make(),
         backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       body: Padding(
