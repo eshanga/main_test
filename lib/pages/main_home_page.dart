@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ElevatedButton(
                         //Connnect to screen 2
                         child: Text(
-                          'Fixed Deposits',
+                          'Fixed Deposits Rates',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ElevatedButton(
                           //Connect to screen 3
                           child: Text(
-                            'Stocks',
+                            'Stocks Market',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Color.fromRGBO(240, 185, 11, 1),
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ElevatedButton(
                         //Connected to Screen 4
                         child: Text(
-                          'Crypto',
+                          'Crypto Market',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
@@ -172,6 +172,62 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        //Connnect to screen 2
+                        child: Text(
+                          'Crypto View',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => cryptoview()));
+                        },
+
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(200, 80),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                          //Connect to screen 3
+                          child: Text(
+                            'Stock view',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color.fromRGBO(240, 185, 11, 1),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => stockview()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                            minimumSize: Size(200, 80),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  30), // Change this value to adjust the curve
+                            ),
+                          )),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -234,7 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 20),
                       ElevatedButton(
                         child: Text(
-                          'Available soon...',
+                          'Interest Calculator',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
@@ -259,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 20),
                       ElevatedButton(
                         child: Text(
-                          'Available soon...',
+                          'Loan Calculator',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
@@ -284,7 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 20),
                       ElevatedButton(
                         child: Text(
-                          'Available soon...',
+                          'Bill payments',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
