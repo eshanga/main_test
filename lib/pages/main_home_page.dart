@@ -98,14 +98,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       ElevatedButton(
                         //Connnect to screen 2
-                        child: Text(
-                          'Fixed Deposits Rates',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Fixed Deposits',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(240, 185, 11, 1),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'Rates',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color.fromRGBO(240, 185, 11, 1),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
+
                         onPressed: () {
                           Navigator.push(
                               context,
