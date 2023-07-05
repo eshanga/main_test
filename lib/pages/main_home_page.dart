@@ -1,3 +1,5 @@
+import 'package:financia_mobile_app/pages/crypto_view/CryptoDataPage.dart';
+import 'package:financia_mobile_app/pages/stock_view/StockDataPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -206,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => cryptoview()));
+                                  builder: (context) => CryptoDataPage()));
                         },
 
                         style: ElevatedButton.styleFrom(
@@ -232,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => stockview()));
+                                    builder: (context) => StockDataPage()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color.fromRGBO(80, 85, 88, 1),
