@@ -291,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => InterestCalPage()));
+                                  builder: (context) => SuggestionsPage()));
                         },
 
                         style: ElevatedButton.styleFrom(
@@ -317,7 +317,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Screen6()));
+                                  builder: (context) => InterestCalPage()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
