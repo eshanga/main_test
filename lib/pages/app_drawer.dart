@@ -88,7 +88,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share, color: Colors.white),
+            leading: Icon(Icons.settings_suggest, color: Colors.white),
             title: Text(
               'Suggestions',
               style: TextStyle(
@@ -101,7 +101,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share, color: Colors.white),
+            leading: Icon(Icons.calculate, color: Colors.white),
             title: Text(
               'Interest Calculator',
               style: TextStyle(
@@ -114,7 +114,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share, color: Colors.white),
+            leading: Icon(Icons.calculate, color: Colors.white),
             title: Text(
               'Loan Calculator',
               style: TextStyle(
@@ -127,7 +127,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share, color: Colors.white),
+            leading: Icon(Icons.payment, color: Colors.white),
             title: Text(
               'Bill Payments',
               style: TextStyle(
