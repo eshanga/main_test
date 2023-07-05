@@ -5,10 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'login_page.dart';
-import 'screen2/screen2.dart';
-import 'screen3/screen3.dart';
-import 'screen4/screen4.dart';
-import 'screen5/screen5.dart';
+import 'LoanCalculator/LoanCalculatorpage.dart';
+import 'BillPayments/BillPaymentsPage.dart';
+import 'Suggestions/SuggestionsPage.dart';
+import 'InterestCalculator/InterestCalculatorPage.dart';
 import 'screen6/screen6.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -90,53 +90,53 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Available soon...',
+              'Suggestions',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Screen2()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SuggestionsPage()));
             },
           ),
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Available soon...',
+              'Interest Calculator',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Screen3()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => InterestCalPage()));
             },
           ),
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Available soon...',
+              'Loan Calculator',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Screen4()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => LoanCalPage()));
             },
           ),
           ListTile(
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
-              'Available soon...',
+              'Bill Payments',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Screen5()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BillPayPage()));
             },
           ),
           ListTile(

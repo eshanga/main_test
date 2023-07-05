@@ -12,10 +12,10 @@ import 'crypto_view/crypto_view.dart';
 import 'expense_tracker/home_expense.dart';
 import 'fixedrates_view/fixedrates.dart';
 import 'login_page.dart';
-import 'screen2/screen2.dart';
-import 'screen3/screen3.dart';
-import 'screen4/screen4.dart';
-import 'screen5/screen5.dart';
+import 'LoanCalculator/LoanCalculatorpage.dart';
+import 'BillPayments/BillPaymentsPage.dart';
+import 'Suggestions/SuggestionsPage.dart';
+import 'InterestCalculator/InterestCalculatorPage.dart';
 import 'screen6/screen6.dart';
 import 'stock_view/stock_view.dart';
 
@@ -291,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Screen5()));
+                                  builder: (context) => InterestCalPage()));
                         },
 
                         style: ElevatedButton.styleFrom(
