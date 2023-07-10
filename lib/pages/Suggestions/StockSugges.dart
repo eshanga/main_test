@@ -136,7 +136,14 @@ class _StockSuggesState extends State<StockSugges> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Other Page'),
+        title: Text(
+          'Stock Suggestions Page',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       body: Center(

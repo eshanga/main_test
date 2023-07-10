@@ -1,61 +1,71 @@
-// TODO Implement this library.
+import 'package:financia_mobile_app/pages/Suggestions/CryptoSugges.dart';
+import 'package:financia_mobile_app/pages/Suggestions/StockSugges.dart';
 import 'package:flutter/material.dart';
 
-import '../app_drawer.dart';
-
 class SuggestionsPage extends StatelessWidget {
-  const SuggestionsPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: const Text('Flutter Demo Home Page'),
+        title: Text(
+          'Suggestions Page',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/other');
-              },
-              child: const Text('Go to Other Page'),
+            Container(
+              width: 400.0, // Adjust the size of the square box
+              height: 400.0, // Adjust the size of the square box
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/Suggess.png'),
+                ),
+              ),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/stock');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CrptoSugges()),
+                );
               },
-              child: const Text('Go to Stock Page'),
+              child: Text('Crypto Suggestions'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+                minimumSize: Size(380, 80),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                      30), // Change this value to adjust the curve
+                ),
+              ),
             ),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/another');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => StockSugges()),
+                );
               },
-              child: const Text('Go to Another Page'),
+              child: Text('Stock Suggestions'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+                minimumSize: Size(380, 80),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                      30), // Change this value to adjust the curve
+                ),
+              ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class AnotherPage extends StatelessWidget {
-  const AnotherPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Another Page'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Go Back'),
         ),
       ),
     );

@@ -70,7 +70,7 @@ class _CrptoSuggesState extends State<CrptoSugges> {
 
   Future<void> fetchRealtimeData() async {
     try {
-      final symbols = ['BTCUSDT', 'ETHUSDT', 'USDTUSDC', 'BNBUSDT', 'USDCUSDT'];
+      final symbols = ['BTCUSDT', 'ETHUSDT', 'TRXUSDT', 'BNBUSDT', 'USDCUSDT'];
 
       for (var symbol in symbols) {
         final response = await http.get(Uri.parse(
@@ -86,7 +86,7 @@ class _CrptoSuggesState extends State<CrptoSugges> {
             case 'ETHUSDT':
               ethRealtimeValue = double.parse(jsonData['price']);
               break;
-            case 'USDTUSDC':
+            case 'TRXUSDT':
               usdtRealtimeValue = double.parse(jsonData['price']);
               break;
             case 'BNBUSDT':
@@ -130,7 +130,14 @@ class _CrptoSuggesState extends State<CrptoSugges> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Other Page'),
+        title: Text(
+          'Crypto Suggestions Page',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       body: Center(
@@ -149,11 +156,11 @@ class _CrptoSuggesState extends State<CrptoSugges> {
                         style: TextStyle(color: Colors.white),
                       ),
                       const SizedBox(height: 10),
-                      buildValueCard('BTC1', btcRealtimeValue, btcValue),
-                      buildValueCard('RTH1', ethRealtimeValue, rthValue),
-                      buildValueCard('USDT1', usdtRealtimeValue, usdtValue),
-                      buildValueCard('BNB1', bnbRealtimeValue, bnbValue),
-                      buildValueCard('USDC1', usdcRealtimeValue, usdcValue),
+                      buildValueCard('BTC', btcRealtimeValue, btcValue),
+                      buildValueCard('ETH', ethRealtimeValue, rthValue),
+                      buildValueCard('TRX', usdtRealtimeValue, usdtValue),
+                      buildValueCard('BNB', bnbRealtimeValue, bnbValue),
+                      buildValueCard('USDC', usdcRealtimeValue, usdcValue),
                       const SizedBox(height: 10),
                       buildRecommendedBuyCard(),
                     ],
@@ -248,31 +255,31 @@ class _CrptoSuggesState extends State<CrptoSugges> {
         highestPercentage) {
       highestPercentage =
           calculatePercentageDifference(btcValue, btcRealtimeValue);
-      highestPercentageValue = 'BTC1';
+      highestPercentageValue = 'BTC';
     }
     if (calculatePercentageDifference(rthValue, ethRealtimeValue) >
         highestPercentage) {
       highestPercentage =
           calculatePercentageDifference(rthValue, ethRealtimeValue);
-      highestPercentageValue = 'RTH1';
+      highestPercentageValue = 'ETH';
     }
     if (calculatePercentageDifference(usdtValue, usdtRealtimeValue) >
         highestPercentage) {
       highestPercentage =
           calculatePercentageDifference(usdtValue, usdtRealtimeValue);
-      highestPercentageValue = 'USDT1';
+      highestPercentageValue = 'TRX';
     }
     if (calculatePercentageDifference(bnbValue, bnbRealtimeValue) >
         highestPercentage) {
       highestPercentage =
           calculatePercentageDifference(bnbValue, bnbRealtimeValue);
-      highestPercentageValue = 'BNB1';
+      highestPercentageValue = 'BNB';
     }
     if (calculatePercentageDifference(usdcValue, usdcRealtimeValue) >
         highestPercentage) {
       highestPercentage =
           calculatePercentageDifference(usdcValue, usdcRealtimeValue);
-      highestPercentageValue = 'USDC1';
+      highestPercentageValue = 'USDC';
     }
 
     return Card(

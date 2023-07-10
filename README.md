@@ -1,4 +1,4 @@
-# financia_mobile_app
+# Financia_mobile_app
 
 A new Flutter project.
 
