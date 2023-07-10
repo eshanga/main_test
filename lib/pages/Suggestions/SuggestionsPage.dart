@@ -4,24 +4,58 @@ import 'package:flutter/material.dart';
 import '../app_drawer.dart';
 
 class SuggestionsPage extends StatelessWidget {
+  const SuggestionsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: Text('Screen 4'),
-        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
-      ),
-      drawer: AppDrawer(
-        email: '',
+        title: const Text('Flutter Demo Home Page'),
       ),
       body: Center(
-        child: Text(
-          'This page will available soon!',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/other');
+              },
+              child: const Text('Go to Other Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/stock');
+              },
+              child: const Text('Go to Stock Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/another');
+              },
+              child: const Text('Go to Another Page'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AnotherPage extends StatelessWidget {
+  const AnotherPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Another Page'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back'),
         ),
       ),
     );
