@@ -29,7 +29,14 @@ class _CryptoDataPageState extends State<CryptoDataPage> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: Text('Crypto Data'),
+        title: Text(
+          'Crypto Wise Data',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),

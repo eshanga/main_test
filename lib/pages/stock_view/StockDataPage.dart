@@ -9,17 +9,18 @@ class StockDataPage extends StatefulWidget {
 }
 
 class _StockDataPageState extends State<StockDataPage> {
-  final TextEditingController _symbolController = TextEditingController();
+  final TextEditingController _stockSymbolController = TextEditingController();
   List<dynamic> stockData = [];
-  double currentStockPrice = 0;
+  double currentPrice = 0;
   double highPrice = 0;
   double lowPrice = 0;
   double volume = 0;
+  List<dynamic> trades = [];
   bool dataFound = true;
 
   @override
   void dispose() {
-    _symbolController.dispose();
+    _stockSymbolController.dispose();
     super.dispose();
   }
 
@@ -28,7 +29,14 @@ class _StockDataPageState extends State<StockDataPage> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: Text('Stock Data'),
+        title: Text(
+          'Stock Wise Data',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
@@ -36,10 +44,10 @@ class _StockDataPageState extends State<StockDataPage> {
           child: Column(
             children: [
               TextFormField(
-                controller: _symbolController,
+                controller: _stockSymbolController,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  labelText: 'Enter Stock Symbol',
+                  labelText: 'Enter Stock Symbol (e.g., AAPL)',
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
@@ -52,8 +60,9 @@ class _StockDataPageState extends State<StockDataPage> {
               SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () {
-                  String symbol = _symbolController.text.toUpperCase();
-                  fetchStockData(symbol);
+                  String stockSymbol =
+                      _stockSymbolController.text.toUpperCase();
+                  fetchStockData(stockSymbol);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Color.fromRGBO(240, 185, 11, 1),
@@ -67,14 +76,14 @@ class _StockDataPageState extends State<StockDataPage> {
                   'Data not found for the entered symbol.',
                   style: TextStyle(color: Colors.red),
                 ),
-              SizedBox(height: 16.0),
-              Container(
-                height: 300,
-                child: stockData.isNotEmpty ? _buildChart() : Container(),
-              ),
-              SizedBox(height: 16.0),
+              if (stockData.isNotEmpty)
+                Container(
+                  height: 300,
+                  child: _buildChart(),
+                ),
+              SizedBox(height: 50.0),
               Text(
-                'Today\'s Stock Price: ${currentStockPrice.toStringAsFixed(2)}',
+                'Today\'s Price: ${currentPrice.toStringAsFixed(2)}',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               SizedBox(height: 16.0),
@@ -102,6 +111,11 @@ class _StockDataPageState extends State<StockDataPage> {
                         'Volume: ${volume.toStringAsFixed(2)}',
                         style: TextStyle(color: Colors.white),
                       ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        'Trades: ${trades.length}',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ],
                   ),
                 ],
@@ -113,63 +127,60 @@ class _StockDataPageState extends State<StockDataPage> {
     );
   }
 
-  Future<void> fetchStockData(String symbol) async {
-    var stockUrl =
-        Uri.parse('https://query1.finance.yahoo.com/v8/finance/chart/$symbol');
+  Future<void> fetchStockData(String stockSymbol) async {
+    var apiKey = '10b48b466ea94b08a2c316bb127a1c75';
+    var apiUrl =
+        'https://api.twelvedata.com/time_series?symbol=$stockSymbol&interval=1day&apikey=$apiKey';
 
-    var stockResponse = await http.get(stockUrl);
+    var response = await http.get(Uri.parse(apiUrl));
 
-    if (stockResponse.statusCode == 200) {
-      var stockDataJson = jsonDecode(stockResponse.body);
-      var resultData = stockDataJson['chart']['result'];
-      if (resultData != null && resultData.isNotEmpty) {
-        var seriesData = resultData[0]['indicators']['quote'][0];
-        if (seriesData != null && seriesData.isNotEmpty) {
-          setState(() {
-            stockData = seriesData['close'];
-            currentStockPrice = stockData.last;
-            highPrice =
-                seriesData['high'].reduce((a, b) => a > b ? a : b).toDouble();
-            lowPrice =
-                seriesData['low'].reduce((a, b) => a < b ? a : b).toDouble();
-            volume = seriesData['volume'].reduce((a, b) => a + b).toDouble();
-            dataFound = true;
-          });
-          return;
-        }
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+
+      var timeSeries = jsonData['values'];
+
+      if (timeSeries != null) {
+        setState(() {
+          stockData = timeSeries;
+          currentPrice = double.parse(timeSeries.last['close']);
+          highPrice = double.parse(timeSeries.last['high']);
+          lowPrice = double.parse(timeSeries.last['low']);
+          volume = double.parse(timeSeries.last['volume']);
+          trades = timeSeries;
+          dataFound = true;
+        });
+      } else {
+        setState(() {
+          dataFound = false;
+        });
       }
+    } else {
+      print('Request failed with status: ${response.statusCode}');
+      setState(() {
+        dataFound = false;
+      });
     }
-
-    print('Stock data not available for the given symbol.');
-    setState(() {
-      stockData = [];
-      currentStockPrice = 0;
-      highPrice = 0;
-      lowPrice = 0;
-      volume = 0;
-      dataFound = false;
-    });
   }
 
   SfCartesianChart _buildChart() {
     return SfCartesianChart(
-      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
-      primaryXAxis: CategoryAxis(
+      plotAreaBackgroundColor: Color.fromRGBO(30, 35, 41, 1),
+      primaryXAxis: DateTimeAxis(
         labelStyle: TextStyle(color: Colors.white),
       ),
       primaryYAxis: NumericAxis(
         labelStyle: TextStyle(color: Colors.white),
       ),
       series: <ChartSeries>[
-        LineSeries<dynamic, String>(
-          dataSource: stockData.asMap().entries.map((data) {
+        LineSeries<dynamic, DateTime>(
+          dataSource: stockData.map((data) {
             return {
-              'index': data.key.toString(),
-              'stockPrice': data.value.toDouble(),
+              'time': DateTime.parse(data['datetime']),
+              'price': double.parse(data['close']),
             };
           }).toList(),
-          xValueMapper: (dynamic data, _) => data['index'],
-          yValueMapper: (dynamic data, _) => data['stockPrice'],
+          xValueMapper: (dynamic data, _) => data['time'],
+          yValueMapper: (dynamic data, _) => data['price'],
           color: Color.fromRGBO(240, 185, 11, 1),
         ),
       ],
