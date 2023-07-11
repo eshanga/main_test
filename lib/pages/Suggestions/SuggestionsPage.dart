@@ -26,6 +26,7 @@ class SuggestionsPage extends StatelessWidget {
               height: 400.0, // Adjust the size of the square box
               decoration: BoxDecoration(
                 image: DecorationImage(
+                  fit: BoxFit.scaleDown,
                   image: AssetImage('assets/Suggess.png'),
                 ),
               ),

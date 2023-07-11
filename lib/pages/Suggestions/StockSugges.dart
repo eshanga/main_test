@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:html/parser.dart' as parser;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StockSugges extends StatefulWidget {
   const StockSugges({Key? key}) : super(key: key);
@@ -30,42 +31,9 @@ class _StockSuggesState extends State<StockSugges> {
   @override
   void initState() {
     super.initState();
-    fetchData();
+    //fetchData();
     fetchRealtimeData();
-  }
-
-  Future<void> fetchData() async {
-    setState(() {
-      isLoading = true;
-      isError = false;
-    });
-
-    try {
-      final response =
-          await http.get(Uri.parse('http://emmahash.pythonanywhere.com/'));
-      if (response.statusCode == 200) {
-        final document = parser.parse(response.body);
-        final element = document.querySelector('body');
-        if (element != null) {
-          setState(() {
-            fetchedData = element.text;
-            parseFetchedData();
-          });
-        }
-      } else {
-        setState(() {
-          isError = true;
-        });
-      }
-    } catch (e) {
-      setState(() {
-        isError = true;
-      });
-    }
-
-    setState(() {
-      isLoading = false;
-    });
+    fetchFirestoreData();
   }
 
   Future<void> fetchRealtimeData() async {
@@ -108,6 +76,41 @@ class _StockSuggesState extends State<StockSugges> {
       setState(() {});
     } catch (e) {
       print('Error retrieving realtime data: $e');
+    }
+  }
+
+  Future<void> fetchFirestoreData() async {
+    try {
+      final collection =
+          FirebaseFirestore.instance.collection('predictionstock');
+      final documents = await collection.get();
+
+      for (var doc in documents.docs) {
+        final name = doc.id;
+        final data = doc.data();
+
+        switch (name) {
+          case 'RIVN':
+            rivnValue = (data['prediction']?.toDouble() ?? 0.0);
+            break;
+          case 'TSLA':
+            tslaValue = (data['prediction']?.toDouble() ?? 0.0);
+            break;
+          case 'AAPL':
+            aaplValue = (data['prediction']?.toDouble() ?? 0.0);
+            break;
+          case 'AMD':
+            amdValue = (data['prediction']?.toDouble() ?? 0.0);
+            break;
+          case 'BABA':
+            babaValue = (data['prediction']?.toDouble() ?? 0.0);
+            break;
+        }
+      }
+
+      setState(() {});
+    } catch (e) {
+      print('Error retrieving Firestore data: $e');
     }
   }
 
@@ -222,7 +225,7 @@ class _StockSuggesState extends State<StockSugges> {
                 style: TextStyle(fontSize: 16, color: Colors.black),
                 children: [
                   TextSpan(
-                    text: obtainedValue.toString(),
+                    text: obtainedValue.toStringAsFixed(4),
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
