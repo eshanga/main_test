@@ -292,7 +292,7 @@ class _StockSuggesState extends State<StockSugges> {
     }
 
     return Card(
-      color: Color.fromRGBO(240, 185, 11, 1),
+      color: Colors.green,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),

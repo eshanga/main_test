@@ -286,7 +286,7 @@ class _CrptoSuggesState extends State<CrptoSugges> {
     }
 
     return Card(
-      color: Color.fromRGBO(240, 185, 11, 1),
+      color: Colors.green,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),

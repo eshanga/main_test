@@ -59,6 +59,7 @@ dependencies:
   flutter_local_notifications: ^13.0.0
   webview_flutter: ^4.0.7  
   flutter_inappwebview: ^5.7.2+3 
+  flutter_typeahead: ^4.6.2
 
 
 dev_dependencies:

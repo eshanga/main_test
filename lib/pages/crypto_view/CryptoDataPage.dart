@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class CryptoDataPage extends StatefulWidget {
   @override
@@ -44,18 +45,40 @@ class _CryptoDataPageState extends State<CryptoDataPage> {
           // Wrap the Column with SingleChildScrollView
           child: Column(
             children: [
-              TextFormField(
-                controller: _cryptoSymbolController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: 'Enter Crypto Symbol (e.g., BTC)',
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+              TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  controller: _cryptoSymbolController,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    labelText: 'Enter Crypto Symbol (e.g., BTC)',
+                    labelStyle: TextStyle(color: Colors.white),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
                   ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
+                ),
+                suggestionsCallback: (pattern) async {
+                  // Fetch suggestions based on the entered pattern
+                  List<String> suggestions =
+                      await fetchSymbolSuggestions(pattern);
+                  return suggestions;
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(
+                      suggestion,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  );
+                },
+                onSuggestionSelected: (suggestion) {
+                  _cryptoSymbolController.text = suggestion;
+                },
+                suggestionsBoxDecoration: SuggestionsBoxDecoration(
+                  color: Color.fromRGBO(30, 35, 41, 1),
                 ),
               ),
               SizedBox(height: 16.0),
@@ -129,6 +152,31 @@ class _CryptoDataPageState extends State<CryptoDataPage> {
         ),
       ),
     );
+  }
+
+  Future<List<String>> fetchSymbolSuggestions(String pattern) async {
+    var exchangeInfoUrl =
+        Uri.parse('https://api.binance.com/api/v3/exchangeInfo');
+    var exchangeInfoResponse = await http.get(exchangeInfoUrl);
+
+    if (exchangeInfoResponse.statusCode == 200) {
+      var exchangeInfoData = jsonDecode(exchangeInfoResponse.body);
+      List<dynamic> symbols = exchangeInfoData['symbols'];
+
+      List<dynamic> shortSymbols =
+          symbols.where((symbol) => symbol['symbol'].length <= 4).toList();
+
+      List<String> suggestions = shortSymbols
+          .map((symbol) => symbol['symbol'])
+          .where((symbol) =>
+              symbol.toLowerCase().startsWith(pattern.toLowerCase()))
+          .toList()
+          .cast<String>();
+
+      return suggestions;
+    } else {
+      return [];
+    }
   }
 
   Future<void> fetchCryptoData(String cryptoSymbol) async {
