@@ -13,7 +13,7 @@ class StockSugges extends StatefulWidget {
 
 class _StockSuggesState extends State<StockSugges> {
   String fetchedData = '';
-  bool isLoading = false;
+  bool isLoading = true;
   bool isError = false;
 
   double rivnValue = 0.0;
@@ -28,54 +28,64 @@ class _StockSuggesState extends State<StockSugges> {
   double amdRealtimeValue = 0.0;
   double babaRealtimeValue = 0.0;
 
+  String highestPercentageValue = '';
+  double highestPercentage = 0.0;
+
   @override
   void initState() {
     super.initState();
-    //fetchData();
-    fetchRealtimeData();
-    fetchFirestoreData();
+    fetchData();
   }
 
-  Future<void> fetchRealtimeData() async {
+  Future<void> fetchData() async {
     try {
       final symbols = ['RIVN', 'TSLA', 'AAPL', 'AMD', 'BABA'];
+      final apiKey = '10b48b466ea94b08a2c316bb127a1c75';
 
       for (var symbol in symbols) {
-        final response = await http.get(Uri.parse(
-            'https://query1.finance.yahoo.com/v10/finance/quoteSummary/$symbol?modules=price'));
+        final apiUrl =
+            'https://api.twelvedata.com/time_series?symbol=$symbol&interval=1day&apikey=$apiKey';
+
+        final response = await http.get(Uri.parse(apiUrl));
 
         if (response.statusCode == 200) {
           final jsonData = json.decode(response.body);
 
-          final dynamic result = jsonData['quoteSummary']['result'];
+          if (jsonData.containsKey('values')) {
+            final List<dynamic> values = jsonData['values'];
 
-          if (result != null && result.isNotEmpty) {
-            final dynamic quote = result[0]['price'];
+            if (values.isNotEmpty) {
+              final dynamic lastData = values.last;
 
-            switch (symbol) {
-              case 'RIVN':
-                rivnRealtimeValue = quote['regularMarketPrice']['raw'];
-                break;
-              case 'TSLA':
-                tslaRealtimeValue = quote['regularMarketPrice']['raw'];
-                break;
-              case 'AAPL':
-                aaplRealtimeValue = quote['regularMarketPrice']['raw'];
-                break;
-              case 'AMD':
-                amdRealtimeValue = quote['regularMarketPrice']['raw'];
-                break;
-              case 'BABA':
-                babaRealtimeValue = quote['regularMarketPrice']['raw'];
-                break;
+              switch (symbol) {
+                case 'RIVN':
+                  rivnRealtimeValue = double.parse(lastData['close']);
+                  break;
+                case 'TSLA':
+                  tslaRealtimeValue = double.parse(lastData['close']);
+                  break;
+                case 'AAPL':
+                  aaplRealtimeValue = double.parse(lastData['close']);
+                  break;
+                case 'AMD':
+                  amdRealtimeValue = double.parse(lastData['close']);
+                  break;
+                case 'BABA':
+                  babaRealtimeValue = double.parse(lastData['close']);
+                  break;
+              }
             }
           }
         }
       }
 
-      setState(() {});
+      fetchFirestoreData();
     } catch (e) {
-      print('Error retrieving realtime data: $e');
+      print('Error retrieving data: $e');
+      setState(() {
+        isLoading = false;
+        isError = true;
+      });
     }
   }
 
@@ -108,21 +118,50 @@ class _StockSuggesState extends State<StockSugges> {
         }
       }
 
-      setState(() {});
+      findHighestPercentage();
+      setState(() {
+        isLoading = false;
+      });
     } catch (e) {
       print('Error retrieving Firestore data: $e');
+      setState(() {
+        isLoading = false;
+        isError = true;
+      });
     }
   }
 
-  void parseFetchedData() {
-    final values = fetchedData.split(',');
-
-    if (values.length == 5) {
-      rivnValue = double.tryParse(values[0].trim()) ?? 0.0;
-      tslaValue = double.tryParse(values[1].trim()) ?? 0.0;
-      aaplValue = double.tryParse(values[2].trim()) ?? 0.0;
-      amdValue = double.tryParse(values[3].trim()) ?? 0.0;
-      babaValue = double.tryParse(values[4].trim()) ?? 0.0;
+  void findHighestPercentage() {
+    // Find the highest percentage value
+    if (calculatePercentageDifference(rivnValue, rivnRealtimeValue) >
+        highestPercentage) {
+      highestPercentage =
+          calculatePercentageDifference(rivnValue, rivnRealtimeValue);
+      highestPercentageValue = 'RIVN';
+    }
+    if (calculatePercentageDifference(tslaValue, tslaRealtimeValue) >
+        highestPercentage) {
+      highestPercentage =
+          calculatePercentageDifference(tslaValue, tslaRealtimeValue);
+      highestPercentageValue = 'TSLA';
+    }
+    if (calculatePercentageDifference(aaplValue, aaplRealtimeValue) >
+        highestPercentage) {
+      highestPercentage =
+          calculatePercentageDifference(aaplValue, aaplRealtimeValue);
+      highestPercentageValue = 'AAPL';
+    }
+    if (calculatePercentageDifference(amdValue, amdRealtimeValue) >
+        highestPercentage) {
+      highestPercentage =
+          calculatePercentageDifference(amdValue, amdRealtimeValue);
+      highestPercentageValue = 'AMD';
+    }
+    if (calculatePercentageDifference(babaValue, babaRealtimeValue) >
+        highestPercentage) {
+      highestPercentage =
+          calculatePercentageDifference(babaValue, babaRealtimeValue);
+      highestPercentageValue = 'BABA';
     }
   }
 
@@ -151,9 +190,9 @@ class _StockSuggesState extends State<StockSugges> {
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? CircularProgressIndicator()
             : isError
-                ? const Text(
+                ? Text(
                     'Error retrieving data',
                     style: TextStyle(color: Colors.white),
                   )
@@ -185,7 +224,9 @@ class _StockSuggesState extends State<StockSugges> {
             .toStringAsFixed(2);
 
     return Card(
-      color: Color.fromRGBO(240, 185, 11, 1),
+      color: highestPercentageValue == valueName
+          ? Colors.green
+          : Color.fromRGBO(240, 185, 11, 1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -256,43 +297,8 @@ class _StockSuggesState extends State<StockSugges> {
   }
 
   Widget buildRecommendedBuyCard() {
-    String highestPercentageValue = '';
-    double highestPercentage = 0.0;
-
-    // Find the highest percentage value
-    if (calculatePercentageDifference(rivnValue, rivnRealtimeValue) >
-        highestPercentage) {
-      highestPercentage =
-          calculatePercentageDifference(rivnValue, rivnRealtimeValue);
-      highestPercentageValue = 'RIVN';
-    }
-    if (calculatePercentageDifference(tslaValue, tslaRealtimeValue) >
-        highestPercentage) {
-      highestPercentage =
-          calculatePercentageDifference(tslaValue, tslaRealtimeValue);
-      highestPercentageValue = 'TSLA';
-    }
-    if (calculatePercentageDifference(aaplValue, aaplRealtimeValue) >
-        highestPercentage) {
-      highestPercentage =
-          calculatePercentageDifference(aaplValue, aaplRealtimeValue);
-      highestPercentageValue = 'AAPL';
-    }
-    if (calculatePercentageDifference(amdValue, amdRealtimeValue) >
-        highestPercentage) {
-      highestPercentage =
-          calculatePercentageDifference(amdValue, amdRealtimeValue);
-      highestPercentageValue = 'AMD';
-    }
-    if (calculatePercentageDifference(babaValue, babaRealtimeValue) >
-        highestPercentage) {
-      highestPercentage =
-          calculatePercentageDifference(babaValue, babaRealtimeValue);
-      highestPercentageValue = 'BABA';
-    }
-
     return Card(
-      color: Colors.green,
+      color: highestPercentageValue.isNotEmpty ? Colors.green : Colors.grey,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -300,7 +306,9 @@ class _StockSuggesState extends State<StockSugges> {
       child: Padding(
         padding: EdgeInsets.all(16),
         child: Text(
-          'It is recommended to buy ${highestPercentageValue.toUpperCase()} with the received data.',
+          highestPercentageValue.isNotEmpty
+              ? 'It is recommended to buy ${highestPercentageValue.toUpperCase()} with the received data.'
+              : 'No recommended buy at the moment.',
           style: TextStyle(
               fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,

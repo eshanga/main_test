@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '552497491306',
     projectId: 'financiaflutter',
     storageBucket: 'financiaflutter.appspot.com',
-    iosClientId: '552497491306-74anuo8knopit2ptan31q07m3k9r3vq3.apps.googleusercontent.com',
+    iosClientId:
+        '552497491306-74anuo8knopit2ptan31q07m3k9r3vq3.apps.googleusercontent.com',
     iosBundleId: 'com.example.financiaMobileApp',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '552497491306',
     projectId: 'financiaflutter',
     storageBucket: 'financiaflutter.appspot.com',
-    iosClientId: '552497491306-74anuo8knopit2ptan31q07m3k9r3vq3.apps.googleusercontent.com',
+    iosClientId:
+        '552497491306-74anuo8knopit2ptan31q07m3k9r3vq3.apps.googleusercontent.com',
     iosBundleId: 'com.example.financiaMobileApp',
   );
 }

@@ -155,28 +155,115 @@ class _CryptoDataPageState extends State<CryptoDataPage> {
   }
 
   Future<List<String>> fetchSymbolSuggestions(String pattern) async {
-    var exchangeInfoUrl =
-        Uri.parse('https://api.binance.com/api/v3/exchangeInfo');
-    var exchangeInfoResponse = await http.get(exchangeInfoUrl);
+    var mainCryptocurrencies = [
+      'BTC',
+      'ETH',
+      'XRP',
+      'LTC',
+      'BCH',
+      'ADA',
+      'DOT',
+      'LINK',
+      'XLM',
+      'USDT',
+      'DOGE',
+      'XMR',
+      'EOS',
+      'XTZ',
+      'BSV',
+      'TRX',
+      'VET',
+      'NEO',
+      'ATOM',
+      'MKR',
+      'AAVE',
+      'SNX',
+      'COMP',
+      'FTT',
+      'AVAX',
+      'SOL',
+      'HBAR',
+      'ALGO',
+      'CRO',
+      'DASH',
+      'YFI',
+      'UNI',
+      'LEO',
+      'XTZ',
+      'ZEC',
+      'REN',
+      'BAT',
+      'OMG',
+      'SUSHI',
+      'ZRX',
+      'ENJ',
+      'MANA',
+      'GRT',
+      'MATIC',
+      'SRM',
+      'LRC',
+      'KSM',
+      'HNT',
+      'IOST',
+      'WAVES',
+      'CHZ',
+      'CVC',
+      'RLC',
+      'YFII',
+      'NEXO',
+      'STMX',
+      'UMA',
+      'ANT',
+      'BAND',
+      'CRV',
+      'MTL',
+      'SNT',
+      'ANKR',
+      'LUNA',
+      'REP',
+      'NANO',
+      'OCEAN',
+      'TUSD',
+      'FET',
+      '1INCH',
+      'REEF',
+      'CELO',
+      'BAL',
+      'RSR',
+      'STORJ',
+      'PAX',
+      'LPT',
+      'KAVA',
+      'NMR',
+      'LINA',
+      'YAM',
+      'UOS',
+      'KEEP',
+      'SRM',
+      'BEL',
+      'NU',
+      'TRB',
+      'AKRO',
+      'LDO',
+      'AUDIO',
+      'ORN',
+      'MIR',
+      'ORN',
+      'MASK',
+      'SWRV',
+      'OGN',
+      'KP3R',
+      'BZRX',
+      'BAL',
+      'OXT'
+    ];
 
-    if (exchangeInfoResponse.statusCode == 200) {
-      var exchangeInfoData = jsonDecode(exchangeInfoResponse.body);
-      List<dynamic> symbols = exchangeInfoData['symbols'];
+    List<String> suggestions = mainCryptocurrencies
+        .where(
+            (symbol) => symbol.toLowerCase().startsWith(pattern.toLowerCase()))
+        .toList();
 
-      List<dynamic> shortSymbols =
-          symbols.where((symbol) => symbol['symbol'].length <= 4).toList();
-
-      List<String> suggestions = shortSymbols
-          .map((symbol) => symbol['symbol'])
-          .where((symbol) =>
-              symbol.toLowerCase().startsWith(pattern.toLowerCase()))
-          .toList()
-          .cast<String>();
-
-      return suggestions;
-    } else {
-      return [];
-    }
+    return suggestions;
   }
 
   Future<void> fetchCryptoData(String cryptoSymbol) async {

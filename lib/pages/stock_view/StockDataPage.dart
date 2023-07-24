@@ -18,6 +18,110 @@ class _StockDataPageState extends State<StockDataPage> {
   List<dynamic> trades = [];
   bool dataFound = true;
 
+  // The list of stock symbols for autocompletion
+  final List<String> stockSymbols = [
+    'AAPL',
+    'MSFT',
+    'AMZN',
+    'GOOGL',
+    'FB',
+    'TSLA',
+    'JPM',
+    'JNJ',
+    'V',
+    'NVDA',
+    'WMT',
+    'PG',
+    'MA',
+    'UNH',
+    'HD',
+    'DIS',
+    'BAC',
+    'PYPL',
+    'ADBE',
+    'CRM',
+    'KO',
+    'XOM',
+    'NFLX',
+    'PFE',
+    'INTC',
+    'CMCSA',
+    'VZ',
+    'CVX',
+    'T',
+    'ABT',
+    'PEP',
+    'MRK',
+    'CSCO',
+    'TMO',
+    'ABBV',
+    'WFC',
+    'MCD',
+    'BMY',
+    'COST',
+    'AMGN',
+    'MDT',
+    'AVGO',
+    'NEE',
+    'NKE',
+    'HON',
+    'UNP',
+    'PM',
+    'QCOM',
+    'ORCL',
+    'AMT',
+    'LMT',
+    'ABNB',
+    'BA',
+    'ADP',
+    'LIN',
+    'MMM',
+    'TXN',
+    'NOW',
+    'SBUX',
+    'ACN',
+    'TGT',
+    'IBM',
+    'LOW',
+    'AMD',
+    'BDX',
+    'GS',
+    'RTX',
+    'UPS',
+    'CAT',
+    'CHTR',
+    'AMAT',
+    'MO',
+    'DE',
+    'ZTS',
+    'BLK',
+    'INTU',
+    'SPGI',
+    'ISRG',
+    'AMD',
+    'ADSK',
+    'ANTM',
+    'C',
+    'CCI',
+    'DHR',
+    'GM',
+    'FISV',
+    'MS',
+    'PLD',
+    'CL',
+    'CI',
+    'WM',
+    'SCHW',
+    'CB',
+    'SYK',
+    'ATVI',
+    'TMUS',
+    'ANTM',
+    'FDX',
+    'FIS',
+    'ICE'
+  ];
+
   @override
   void dispose() {
     _stockSymbolController.dispose();
@@ -43,19 +147,73 @@ class _StockDataPageState extends State<StockDataPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              TextFormField(
-                controller: _stockSymbolController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: 'Enter Stock Symbol (e.g., AAPL)',
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                ),
+              Autocomplete<String>(
+                optionsBuilder: (TextEditingValue textEditingValue) {
+                  return stockSymbols
+                      .where((symbol) => symbol
+                          .startsWith(textEditingValue.text.toUpperCase()))
+                      .toList();
+                },
+                onSelected: (String selectedSymbol) {
+                  _stockSymbolController.text = selectedSymbol;
+                },
+                fieldViewBuilder: (BuildContext context,
+                    TextEditingController textEditingController,
+                    FocusNode focusNode,
+                    VoidCallback onFieldSubmitted) {
+                  return TextFormField(
+                    controller: textEditingController,
+                    focusNode: focusNode,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      labelText: 'Enter Stock Symbol (e.g., AAPL)',
+                      labelStyle: TextStyle(color: Colors.white),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      // You can perform any additional logic based on the user's input here.
+                    },
+                  );
+                },
+                optionsViewBuilder: (BuildContext context,
+                    AutocompleteOnSelected<String> onSelected,
+                    Iterable<String> options) {
+                  return Align(
+                    alignment: Alignment.topLeft,
+                    child: Material(
+                      color: Color.fromRGBO(30, 35, 41, 1),
+                      elevation: 6.0,
+                      borderRadius: BorderRadius.circular(8),
+                      child: SizedBox(
+                        height: 400.0,
+                        child: ListView.builder(
+                          padding: EdgeInsets.all(8.0),
+                          itemCount: options.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final String option = options.elementAt(index);
+                            return GestureDetector(
+                              onTap: () {
+                                onSelected(option);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  option,
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 16.0),
               ElevatedButton(
@@ -186,4 +344,10 @@ class _StockDataPageState extends State<StockDataPage> {
       ],
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: StockDataPage(),
+  ));
 }
