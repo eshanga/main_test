@@ -19,7 +19,9 @@ class _HomeState extends State<HomeExpense> {
   final List<Widget> screens = [
     Dashboard(),
     Stats(),
-    Payment(),
+    Payment(
+      title: 'payemnt',
+    ),
     Profile(),
     Add(),
   ];
@@ -130,7 +132,9 @@ class _HomeState extends State<HomeExpense> {
                     onPressed: () {
                       setState(
                         () {
-                          currentScreen = Payment();
+                          currentScreen = Payment(
+                            title: 'payemnt',
+                          );
                           currentTab = 2;
                         },
                       );
