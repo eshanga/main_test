@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../firebase_options.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,13 +18,13 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Signed as ' + user.email!),
+            Text('Signed as ${user.email!}'),
             MaterialButton(
               onPressed: () {
                 FirebaseAuth.instance.signOut();
               },
-              color: Color.fromRGBO(240, 185, 11, 1),
-              child: Text('sign out'),
+              color: const Color.fromRGBO(240, 185, 11, 1),
+              child: const Text('sign out'),
             )
           ],
         ),

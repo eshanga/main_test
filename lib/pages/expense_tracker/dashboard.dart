@@ -22,8 +22,8 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   var _budget = 50000;
   late DocumentSnapshot documentSnapshot = Null as DocumentSnapshot<Object?>;
-  var today = new DateTime.now();
-  var ringdate = new DateTime.now();
+  var today = DateTime.now();
+  var ringdate = DateTime.now();
 
   getColor(String iconcolor) {
     switch (iconcolor) {
@@ -68,8 +68,8 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     final userKey = FirebaseAuth.instance.currentUser;
-    today = new DateTime(today.year, today.month, today.day);
-    ringdate = new DateTime(ringdate.year, ringdate.month);
+    today = DateTime(today.year, today.month, today.day);
+    ringdate = DateTime(ringdate.year, ringdate.month);
     var _newtoday = today;
 
     Future<int> getBudget(userKey) async {
@@ -102,7 +102,7 @@ class _DashboardState extends State<Dashboard> {
             .color(Colors.black)
             .make(),
         elevation: 0.0,
-        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+        backgroundColor: const Color.fromRGBO(240, 185, 11, 1),
         actions: [
           IconButton(
             icon: const Icon(
@@ -146,10 +146,10 @@ class _DashboardState extends State<Dashboard> {
 
           var _i = 0;
           var _total = 0;
-          snapshot.data!.docs.forEach((user) {
+          for (var user in snapshot.data!.docs) {
             _i = user['spent'];
             _total = _total + _i;
-          });
+          }
 
           var _percent = (_total / _budget);
           var _percenttext = _percent * 100;
@@ -163,7 +163,7 @@ class _DashboardState extends State<Dashboard> {
           }
 
           return Container(
-            color: Color.fromRGBO(30, 35, 41, 1),
+            color: const Color.fromRGBO(30, 35, 41, 1),
             child: Expanded(
               child: SafeArea(
                 child: Column(
@@ -190,9 +190,9 @@ class _DashboardState extends State<Dashboard> {
                               ),
                               progressColor: _percenttext > 75
                                   ? Colors.red
-                                  : Color.fromRGBO(240, 185, 11, 1),
+                                  : const Color.fromRGBO(240, 185, 11, 1),
                               backgroundColor:
-                                  Color.fromARGB(255, 112, 102, 102),
+                                  const Color.fromARGB(255, 112, 102, 102),
                               percent: _percenttext > 100.0 ? 0 : _percent,
                               lineWidth: 16,
                               circularStrokeCap: CircularStrokeCap.round,
@@ -363,7 +363,7 @@ class _DashboardState extends State<Dashboard> {
                                               user.reference.delete();
                                             },
                                           ),
-                                          Divider(
+                                          const Divider(
                                             color: Colors.white,
                                           ),
                                         ],

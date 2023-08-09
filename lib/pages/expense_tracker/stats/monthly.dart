@@ -5,7 +5,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Monthly extends StatefulWidget {
-  Monthly({Key? key}) : super(key: key);
+  const Monthly({Key? key}) : super(key: key);
 
   @override
   _MonthlyState createState() => _MonthlyState();
@@ -94,8 +94,8 @@ class _MonthlyState extends State<Monthly> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
                   Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 25, left: 25),
+            const Padding(
+              padding: EdgeInsets.only(top: 25, left: 25),
               child: Text(
                 'Monthly Analytics',
                 style: TextStyle(
@@ -106,7 +106,7 @@ class _MonthlyState extends State<Monthly> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
             StreamBuilder<QuerySnapshot>(
@@ -118,7 +118,7 @@ class _MonthlyState extends State<Monthly> {
                 builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (!snapshot.hasData) {
                     return Center(
-                        child: CircularProgressIndicator().centered().expand());
+                        child: const CircularProgressIndicator().centered().expand());
                   }
                   getMonthlyData(snapshot).then((spentmonth) {
                     spentmonth = this.spentmonth;
@@ -136,7 +136,7 @@ class _MonthlyState extends State<Monthly> {
                                 sales.expense,
                             name: 'EXPENSE (in ₹ K)',
                             dataLabelSettings:
-                                DataLabelSettings(isVisible: true))
+                                const DataLabelSettings(isVisible: true))
                       ]);
                 })
           ])),

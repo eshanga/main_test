@@ -1,4 +1,3 @@
-import 'package:financia_mobile_app/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -15,27 +14,27 @@ class _PaymentState extends State<Payment> {
     return SingleChildScrollView(
       child: Container(
         padding: Vx.m12,
-        color: Color.fromRGBO(30, 35, 41, 1),
+        color: const Color.fromRGBO(30, 35, 41, 1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 55,
             ),
             "Your Cards"
                 .text
                 .xl5
                 .fontFamily('Helvetica')
-                .color(Color.fromRGBO(240, 185, 11, 1))
+                .color(const Color.fromRGBO(240, 185, 11, 1))
                 .make(),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
+            const Divider(
               color: Color.fromARGB(255, 230, 230, 230),
               indent: 0,
             ),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
             //   _buildCreditCard(
@@ -71,8 +70,8 @@ class _PaymentState extends State<Payment> {
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Text(
-                '$cardNumber',
-                style: TextStyle(
+                cardNumber,
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 21,
                     fontFamily: 'CourrierPrime'),
@@ -119,13 +118,13 @@ class _PaymentState extends State<Payment> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          '$label',
-          style: TextStyle(
+          label,
+          style: const TextStyle(
               color: Colors.grey, fontSize: 9, fontWeight: FontWeight.bold),
         ),
         Text(
-          '$value',
-          style: TextStyle(
+          value,
+          style: const TextStyle(
               color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
         )
       ],

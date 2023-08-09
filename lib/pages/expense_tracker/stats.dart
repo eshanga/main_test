@@ -20,7 +20,7 @@ class _StatsState extends State<Stats> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(48, 52, 56, 1),
+          backgroundColor: const Color.fromRGBO(48, 52, 56, 1),
           appBar: AppBar(
             title: "Stats"
                 .text
@@ -28,8 +28,8 @@ class _StatsState extends State<Stats> {
                 .fontFamily('Helvetica')
                 .color(Colors.black)
                 .make(),
-            backgroundColor: Color.fromRGBO(240, 185, 11, 1),
-            bottom: TabBar(
+            backgroundColor: const Color.fromRGBO(240, 185, 11, 1),
+            bottom: const TabBar(
               tabs: [
                 Tab(
                   text: 'Weekly',
@@ -55,10 +55,10 @@ class _StatsState extends State<Stats> {
               ],
             ),
           ),
-          drawer: AppDrawer(
+          drawer: const AppDrawer(
             email: '',
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               Weekly(),
               Monthly(),

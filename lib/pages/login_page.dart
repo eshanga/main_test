@@ -1,11 +1,7 @@
-import 'package:financia_mobile_app/pages/main_home_page.dart';
 import 'package:financia_mobile_app/services/auth_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:velocity_x/velocity_x.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -47,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(
+          title: const Text(
             "Error!",
             style: TextStyle(
               color: Color.fromARGB(255, 134, 13, 4),
@@ -57,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
           content: Text(errormessage),
           actions: [
             TextButton(
-              child: Text("OK"),
+              child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -129,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFF1E2329),
+        backgroundColor: const Color(0xFF1E2329),
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -140,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     width: 200.0,
                     height: 200.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         fit: BoxFit.fill,
@@ -151,14 +147,14 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     'FINANCIA',
                     style: GoogleFonts.openSans(
-                      color: Color.fromRGBO(240, 185, 11, 1),
+                      color: const Color.fromRGBO(240, 185, 11, 1),
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 4,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     'Financial Management Mobile app',
                     style: TextStyle(
                         color: Color.fromRGBO(234, 236, 239, 1),
@@ -166,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                         fontSize: 20),
                   ),
 
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   //email textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -178,22 +174,22 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                              const BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Email',
                         hintStyle: TextStyle(color: Colors.grey[700]),
-                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        fillColor: const Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //password textfield
 
                   Padding(
@@ -207,17 +203,17 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                              const BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Password',
                         hintStyle: TextStyle(color: Colors.grey[700]),
-                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        fillColor: const Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                         suffixIcon: GestureDetector(
                           onTap: () {
@@ -236,7 +232,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Row(
@@ -248,12 +244,12 @@ class _LoginPageState extends State<LoginPage> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return ForgotPasswordPage();
+                                  return const ForgotPasswordPage();
                                 },
                               ),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             'Forgot Password? ',
                             style: TextStyle(
                                 color: Color.fromRGBO(240, 185, 11, 1)),
@@ -262,18 +258,18 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   //sign in button
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 60.0),
                     child: GestureDetector(
                       onTap: signIn,
                       child: Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                            color: Color.fromRGBO(240, 185, 11, 1),
+                            color: const Color.fromRGBO(240, 185, 11, 1),
                             borderRadius: BorderRadius.circular(16)),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'Sign In',
                             style: TextStyle(
@@ -286,7 +282,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -327,7 +323,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           width: 60.0,
                           height: 60.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.fill,
@@ -337,13 +333,13 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
 
-                      SizedBox(width: 25),
+                      const SizedBox(width: 25),
 
                       // apple button
                       Container(
                         width: 60.0,
                         height: 60.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.fill,
@@ -377,8 +373,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  const Text(
                     'Powered By,',
                     style: TextStyle(
                       fontSize: 12,
@@ -389,7 +385,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     width: 50.0,
                     height: 50.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
                         image: AssetImage('assets/company.png'),

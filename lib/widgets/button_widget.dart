@@ -14,18 +14,17 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        shape: StadiumBorder(),
-        onPrimary: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+        foregroundColor: Colors.white, shape: const StadiumBorder(),
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
       ),
+      onPressed: onClicked,
       child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
           fontFamily: "Helvetica",
         ),
       ),
-      onPressed: onClicked,
     );
   }
 }

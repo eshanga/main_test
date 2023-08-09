@@ -20,7 +20,7 @@ class _stockviewState extends State<stockview> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(48, 52, 56, 1),
+          backgroundColor: const Color.fromRGBO(48, 52, 56, 1),
           appBar: AppBar(
             title: "Stock Market"
                 .text
@@ -28,8 +28,8 @@ class _stockviewState extends State<stockview> {
                 .fontFamily('Helvetica')
                 .color(Colors.black)
                 .make(),
-            backgroundColor: Color.fromRGBO(240, 185, 11, 1),
-            bottom: TabBar(
+            backgroundColor: const Color.fromRGBO(240, 185, 11, 1),
+            bottom: const TabBar(
               tabs: [
                 Tab(
                   text: 'Top Gainers',
@@ -50,10 +50,10 @@ class _stockviewState extends State<stockview> {
               ],
             ),
           ),
-          drawer: AppDrawer(
+          drawer: const AppDrawer(
             email: '',
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               topgainerstock(),
               toploserstock(),

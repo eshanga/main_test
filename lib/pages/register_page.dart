@@ -62,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(30, 35, 41, 1),
+        backgroundColor: const Color.fromRGBO(30, 35, 41, 1),
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -74,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Container(
                     width: 150.0,
                     height: 150.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         fit: BoxFit.fill,
@@ -85,20 +85,20 @@ class _RegisterPageState extends State<RegisterPage> {
                   Text(
                     'FINANCIA',
                     style: GoogleFonts.openSans(
-                      color: Color.fromRGBO(240, 185, 11, 1),
+                      color: const Color.fromRGBO(240, 185, 11, 1),
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 4,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     'Register with your details! ',
                     style: TextStyle(
                         color: Color.fromRGBO(234, 236, 239, 1), fontSize: 16),
                   ),
 
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -110,22 +110,22 @@ class _RegisterPageState extends State<RegisterPage> {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                              const BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Name',
                         hintStyle: TextStyle(color: Colors.grey[700]),
-                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        fillColor: const Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //email textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -137,22 +137,22 @@ class _RegisterPageState extends State<RegisterPage> {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                              const BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Email',
                         hintStyle: TextStyle(color: Colors.grey[700]),
-                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        fillColor: const Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextField(
@@ -160,13 +160,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       onTap: () async {
                         final ThemeData customTheme = ThemeData(
                           primaryColor: Colors.grey[700],
-                          hintColor: Color.fromRGBO(240, 185, 11, 1),
-                          textTheme: TextTheme(
-                            bodyText1: TextStyle(color: Colors.white),
-                            bodyText2: TextStyle(color: Colors.white),
-                            button: TextStyle(color: Colors.white),
+                          hintColor: const Color.fromRGBO(240, 185, 11, 1),
+                          textTheme: const TextTheme(
+                            bodyLarge: TextStyle(color: Colors.white),
+                            bodyMedium: TextStyle(color: Colors.white),
+                            labelLarge: TextStyle(color: Colors.white),
                           ),
-                          colorScheme: ColorScheme.dark(
+                          colorScheme: const ColorScheme.dark(
                               primary: Color.fromRGBO(240, 185, 11, 1)),
                         );
                         final pickedDate = await showDatePicker(
@@ -194,17 +194,17 @@ class _RegisterPageState extends State<RegisterPage> {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                              const BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Select your birthday',
                         hintStyle: TextStyle(color: Colors.grey[700]),
-                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        fillColor: const Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                       controller: TextEditingController(
@@ -213,7 +213,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               : ''),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //password textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -226,22 +226,22 @@ class _RegisterPageState extends State<RegisterPage> {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                              const BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Enter your Password',
                         hintStyle: TextStyle(color: Colors.grey[700]),
-                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        fillColor: const Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
                   //confirm password textfield
                   Padding(
@@ -255,24 +255,24 @@ class _RegisterPageState extends State<RegisterPage> {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
+                              const BorderSide(color: Color.fromRGBO(48, 52, 56, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromRGBO(240, 185, 11, 1)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         hintText: 'Confirm your Password',
                         hintStyle: TextStyle(color: Colors.grey[700]),
-                        fillColor: Color.fromRGBO(48, 52, 56, 1),
+                        fillColor: const Color.fromRGBO(48, 52, 56, 1),
                         filled: true,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  const SizedBox(height: 10),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25.0),
                     child: Text(
                       'Please rate your risk rate that you are wiiling to take while using this App.',
                       style: TextStyle(
@@ -301,18 +301,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       });
                     },
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   //sign in button
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 75.0),
                     child: GestureDetector(
                       onTap: signUp,
                       child: Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                            color: Color.fromRGBO(240, 185, 11, 1),
+                            color: const Color.fromRGBO(240, 185, 11, 1),
                             borderRadius: BorderRadius.circular(12)),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
@@ -325,7 +325,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -365,7 +365,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Container(
                           width: 60.0,
                           height: 60.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.fill,
@@ -375,13 +375,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
 
-                      SizedBox(width: 25),
+                      const SizedBox(width: 25),
 
                       // apple button
                       Container(
                         width: 60.0,
                         height: 60.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.fill,
@@ -391,7 +391,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   // not a member? register now
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

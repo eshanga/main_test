@@ -5,7 +5,6 @@ import 'dashboard.dart';
 import 'stats.dart';
 import 'payment.dart';
 import 'profile.dart';
-import 'add.dart';
 
 class HomeExpense extends StatefulWidget {
   const HomeExpense({Key? key}) : super(key: key);
@@ -17,42 +16,42 @@ class HomeExpense extends StatefulWidget {
 class _HomeState extends State<HomeExpense> {
   int currentTab = 0;
   final List<Widget> screens = [
-    Dashboard(),
-    Stats(),
-    Payment(),
-    Profile(),
-    Add(),
+    const Dashboard(),
+    const Stats(),
+    const Payment(),
+    const Profile(),
+    const Add(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Dashboard();
+  Widget currentScreen = const Dashboard();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: PageStorage(
-        child: currentScreen,
         bucket: bucket,
+        child: currentScreen,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed: () {
           setState(
             () {
-              currentScreen = Add();
+              currentScreen = const Add();
               currentTab = -1;
             },
           );
         },
-        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+        backgroundColor: const Color.fromRGBO(240, 185, 11, 1),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         child: Container(
-          color: Color.fromRGBO(30, 35, 41, 1),
+          color: const Color.fromRGBO(30, 35, 41, 1),
           height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,7 +64,7 @@ class _HomeState extends State<HomeExpense> {
                     onPressed: () {
                       setState(
                         () {
-                          currentScreen = Dashboard();
+                          currentScreen = const Dashboard();
                           currentTab = 0;
                         },
                       );
@@ -76,7 +75,7 @@ class _HomeState extends State<HomeExpense> {
                         Icon(
                           CupertinoIcons.bars,
                           color: currentTab == 0
-                              ? Color.fromRGBO(240, 185, 11, 1)
+                              ? const Color.fromRGBO(240, 185, 11, 1)
                               : Colors.grey,
                         ),
                         Text(
@@ -84,7 +83,7 @@ class _HomeState extends State<HomeExpense> {
                           style: TextStyle(
                               fontFamily: 'Helvetica',
                               color: currentTab == 0
-                                  ? Color.fromRGBO(240, 185, 11, 1)
+                                  ? const Color.fromRGBO(240, 185, 11, 1)
                                   : Colors.grey),
                         ),
                       ],
@@ -95,7 +94,7 @@ class _HomeState extends State<HomeExpense> {
                     onPressed: () {
                       setState(
                         () {
-                          currentScreen = Stats();
+                          currentScreen = const Stats();
                           currentTab = 1;
                         },
                       );
@@ -106,7 +105,7 @@ class _HomeState extends State<HomeExpense> {
                         Icon(
                           CupertinoIcons.chart_bar_square,
                           color: currentTab == 1
-                              ? Color.fromRGBO(240, 185, 11, 1)
+                              ? const Color.fromRGBO(240, 185, 11, 1)
                               : Colors.grey,
                         ),
                         Text(
@@ -114,7 +113,7 @@ class _HomeState extends State<HomeExpense> {
                           style: TextStyle(
                               fontFamily: 'Helvetica',
                               color: currentTab == 1
-                                  ? Color.fromRGBO(240, 185, 11, 1)
+                                  ? const Color.fromRGBO(240, 185, 11, 1)
                                   : Colors.grey),
                         ),
                       ],
@@ -130,7 +129,7 @@ class _HomeState extends State<HomeExpense> {
                     onPressed: () {
                       setState(
                         () {
-                          currentScreen = Payment();
+                          currentScreen = const Payment();
                           currentTab = 2;
                         },
                       );
@@ -141,7 +140,7 @@ class _HomeState extends State<HomeExpense> {
                         Icon(
                           CupertinoIcons.creditcard,
                           color: currentTab == 2
-                              ? Color.fromRGBO(240, 185, 11, 1)
+                              ? const Color.fromRGBO(240, 185, 11, 1)
                               : Colors.grey,
                         ),
                         Text(
@@ -149,7 +148,7 @@ class _HomeState extends State<HomeExpense> {
                           style: TextStyle(
                               fontFamily: 'Helvetica',
                               color: currentTab == 2
-                                  ? Color.fromRGBO(240, 185, 11, 1)
+                                  ? const Color.fromRGBO(240, 185, 11, 1)
                                   : Colors.grey),
                         ),
                       ],
@@ -160,7 +159,7 @@ class _HomeState extends State<HomeExpense> {
                     onPressed: () {
                       setState(
                         () {
-                          currentScreen = Profile();
+                          currentScreen = const Profile();
                           currentTab = 3;
                         },
                       );
@@ -171,7 +170,7 @@ class _HomeState extends State<HomeExpense> {
                         Icon(
                           CupertinoIcons.person,
                           color: currentTab == 3
-                              ? Color.fromRGBO(240, 185, 11, 1)
+                              ? const Color.fromRGBO(240, 185, 11, 1)
                               : Colors.grey,
                         ),
                         Text(
@@ -179,7 +178,7 @@ class _HomeState extends State<HomeExpense> {
                           style: TextStyle(
                               fontFamily: 'Helvetica',
                               color: currentTab == 3
-                                  ? Color.fromRGBO(240, 185, 11, 1)
+                                  ? const Color.fromRGBO(240, 185, 11, 1)
                                   : Colors.grey),
                         ),
                       ],

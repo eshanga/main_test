@@ -8,53 +8,55 @@ import 'indicator.dart';
 import 'dart:async';
 
 class Categorywise extends StatefulWidget {
+  const Categorywise({super.key});
+
   @override
   State<StatefulWidget> createState() => PieChart2State();
 }
 
 class PieChart2State extends State {
   var _spent = [0, 0, 0, 0, 0, 0, 0, 0];
-  var _spenttext = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+  final _spenttext = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
   var _total;
-  var ringdate = new DateTime.now();
+  var ringdate = DateTime.now();
 
   Future<List> getData(snapshot) async {
     _spent = [0, 0, 0, 0, 0, 0, 0, 0];
     _total = 0;
     snapshot.data!.docs.forEach((user) {
-      int _i = 0;
+      int i0 = 0;
       if (user['category'] == 'Education') {
-        _i = user['spent'];
-        _spent[0] = _spent[0] + _i;
-        _total = _total + _i;
+        i0 = user['spent'];
+        _spent[0] = _spent[0] + i0;
+        _total = _total + i0;
       } else if (user['category'] == 'Rent') {
-        _i = user['spent'];
-        _spent[1] = _spent[1] + _i;
-        _total = _total + _i;
+        i0 = user['spent'];
+        _spent[1] = _spent[1] + i0;
+        _total = _total + i0;
       } else if (user['category'] == 'Entertainment') {
-        _i = user['spent'];
-        _spent[2] = _spent[2] + _i;
-        _total = _total + _i;
+        i0 = user['spent'];
+        _spent[2] = _spent[2] + i0;
+        _total = _total + i0;
       } else if (user['category'] == 'Taxes') {
-        _i = user['spent'];
-        _spent[3] = _spent[3] + _i;
-        _total = _total + _i;
+        i0 = user['spent'];
+        _spent[3] = _spent[3] + i0;
+        _total = _total + i0;
       } else if (user['category'] == 'Vehicle') {
-        _i = user['spent'];
-        _spent[4] = _spent[4] + _i;
-        _total = _total + _i;
+        i0 = user['spent'];
+        _spent[4] = _spent[4] + i0;
+        _total = _total + i0;
       } else if (user['category'] == 'Stationary') {
-        _i = user['spent'];
-        _spent[5] = _spent[5] + _i;
-        _total = _total + _i;
+        i0 = user['spent'];
+        _spent[5] = _spent[5] + i0;
+        _total = _total + i0;
       } else if (user['category'] == 'Meal') {
-        _i = user['spent'];
-        _spent[6] = _spent[6] + _i;
-        _total = _total + _i;
+        i0 = user['spent'];
+        _spent[6] = _spent[6] + i0;
+        _total = _total + i0;
       } else if (user['category'] == 'Other') {
-        _i = user['spent'];
-        _spent[7] = _spent[7] + _i;
-        _total = _total + _i;
+        i0 = user['spent'];
+        _spent[7] = _spent[7] + i0;
+        _total = _total + i0;
       }
     });
     for (int i = 0; i < _spent.length; i++) {
@@ -69,15 +71,15 @@ class PieChart2State extends State {
   @override
   Widget build(BuildContext context) {
     final userKey = FirebaseAuth.instance.currentUser;
-    ringdate = new DateTime(ringdate.year, ringdate.month);
+    ringdate = DateTime(ringdate.year, ringdate.month);
     return SingleChildScrollView(
       child: Container(
           child: Column(
         children: <Widget>[
-          Align(
+          const Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: const EdgeInsets.only(top: 25, left: 25),
+              padding: EdgeInsets.only(top: 25, left: 25),
               child: Text(
                 'Categorywise Analytics',
                 style: TextStyle(
@@ -92,10 +94,10 @@ class PieChart2State extends State {
           AspectRatio(
             aspectRatio: 1.1,
             child: Container(
-              color: Color.fromRGBO(48, 52, 56, 1),
+              color: const Color.fromRGBO(48, 52, 56, 1),
               child: Row(
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Flexible(
@@ -109,11 +111,11 @@ class PieChart2State extends State {
                           builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
                             if (!snapshot.hasData) {
                               return Center(
-                                  child: CircularProgressIndicator()
+                                  child: const CircularProgressIndicator()
                                       .centered()
                                       .expand());
                             }
-                            getData(snapshot).then((_spent) {
+                            getData(snapshot).then((spent) {
                               setState(() {});
                             });
                             return PieChart(
@@ -147,7 +149,7 @@ class PieChart2State extends State {
                           }),
                     ),
                   ),
-                  Column(
+                  const Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -311,7 +313,7 @@ class PieChart2State extends State {
           );
         case 7:
           return PieChartSectionData(
-            color: Color.fromARGB(255, 171, 182, 187),
+            color: const Color.fromARGB(255, 171, 182, 187),
             value: _spent[7].toDouble(),
             title: _spenttext[7].toStringAsFixed(2),
             radius: radius,

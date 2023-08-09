@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../app_drawer.dart';
 
+<<<<<<< Updated upstream:lib/pages/screen5/screen5.dart
 class Screen5 extends StatefulWidget {
+=======
+class InterestCalPage extends StatefulWidget {
+  const InterestCalPage({super.key});
+
+>>>>>>> Stashed changes:lib/pages/InterestCalculator/InterestCalculatorPage.dart
   @override
   _Screen5State createState() => _Screen5State();
 }
@@ -41,73 +47,73 @@ class _Screen5State extends State<Screen5> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen 6'),
-        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+        title: const Text('Screen 6'),
+        backgroundColor: const Color.fromRGBO(240, 185, 11, 1),
       ),
-      drawer: AppDrawer(
+      drawer: const AppDrawer(
         email: '',
       ),
       body: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
               width: 200.0, // Adjust the size of the square box
               height: 200.0, // Adjust the size of the square box
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.scaleDown,
                   image: AssetImage('assets/interest.png'),
                 ),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: principalController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              decoration: InputDecoration(
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
                 labelText: 'Principal',
                 hintText: 'Enter Principal Amount',
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: rateController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              decoration: InputDecoration(
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
                 labelText: 'Rate of Interest',
                 hintText: 'Enter Rate of Interest',
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: periodController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Period in Months',
                 hintText: 'Enter Period in Months',
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
-              child: Text('Calculate Interest'),
               onPressed: calculateInterest,
+              child: const Text('Calculate Interest'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Text(
               'Total Interest (before tax) = $result',
-              style: TextStyle(fontSize: 24.0),
+              style: const TextStyle(fontSize: 24.0),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Text(
               'Total Interest (after tax) = $afterTaxResult',
-              style: TextStyle(fontSize: 24.0),
+              style: const TextStyle(fontSize: 24.0),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Text(
               'Monthly Interest (after tax) = $monthlyInterest',
-              style: TextStyle(fontSize: 24.0),
+              style: const TextStyle(fontSize: 24.0),
             ),
           ],
         ),

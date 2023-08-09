@@ -24,8 +24,8 @@ class Add extends StatefulWidget {
 
 class _AddState extends State<Add> {
   final formKey = GlobalKey<FormState>();
-  TextEditingController namedata = new TextEditingController();
-  TextEditingController spentdata = new TextEditingController();
+  TextEditingController namedata = TextEditingController();
+  TextEditingController spentdata = TextEditingController();
 
   var isdateValid = false;
   DateTime date = DateTime.parse('2002-01-11');
@@ -34,13 +34,13 @@ class _AddState extends State<Add> {
   Future _selectDate(BuildContext context) async {
     final ThemeData customTheme = ThemeData(
       primaryColor: Colors.grey[700],
-      hintColor: Color.fromRGBO(240, 185, 11, 1),
-      textTheme: TextTheme(
-        bodyText1: TextStyle(color: Colors.white),
-        bodyText2: TextStyle(color: Colors.white),
-        button: TextStyle(color: Colors.white),
+      hintColor: const Color.fromRGBO(240, 185, 11, 1),
+      textTheme: const TextTheme(
+        bodyLarge: TextStyle(color: Colors.white),
+        bodyMedium: TextStyle(color: Colors.white),
+        labelLarge: TextStyle(color: Colors.white),
       ),
-      colorScheme: ColorScheme.dark(primary: Color.fromRGBO(240, 185, 11, 1)),
+      colorScheme: const ColorScheme.dark(primary: Color.fromRGBO(240, 185, 11, 1)),
     );
     final today = DateTime.now();
     final pickedDate = await showDatePicker(
@@ -68,7 +68,7 @@ class _AddState extends State<Add> {
   }
 
   void showSnackBar(BuildContext context) {
-    final snackBar = SnackBar(
+    const snackBar = SnackBar(
       content: Text(
         'Transaction Added',
         style: TextStyle(fontSize: 14, color: Colors.white),
@@ -89,49 +89,49 @@ class _AddState extends State<Add> {
         'Education',
         Icon(
           Icons.book_outlined,
-          color: const Color(0xFF000000),
+          color: Color(0xFF000000),
         )),
     const Item(
         'Rent',
         Icon(
           CupertinoIcons.house,
-          color: const Color(0xFF000000),
+          color: Color(0xFF000000),
         )),
     const Item(
         'Entertainment',
         Icon(
           Icons.movie_creation_outlined,
-          color: const Color(0xFF000000),
+          color: Color(0xFF000000),
         )),
     const Item(
         'Taxes',
         Icon(
           CupertinoIcons.money_dollar_circle,
-          color: const Color(0xFF000000),
+          color: Color(0xFF000000),
         )),
     const Item(
         'Vehicle',
         Icon(
           CupertinoIcons.car_detailed,
-          color: const Color(0xFF000000),
+          color: Color(0xFF000000),
         )),
     const Item(
         'Stationary',
         Icon(
           CupertinoIcons.pencil_outline,
-          color: const Color(0xFF000000),
+          color: Color(0xFF000000),
         )),
     const Item(
         'Meal',
         Icon(
           Icons.fastfood_outlined,
-          color: const Color(0xFF000000),
+          color: Color(0xFF000000),
         )),
     const Item(
         'Other',
         Icon(
           Icons.fact_check_outlined,
-          color: const Color(0xFF000000),
+          color: Color(0xFF000000),
         )),
   ];
   String values = 'Other';
@@ -140,9 +140,9 @@ class _AddState extends State<Add> {
   Widget build(BuildContext context) {
     final userKey = FirebaseAuth.instance.currentUser;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
+      backgroundColor: const Color.fromRGBO(30, 35, 41, 1),
       resizeToAvoidBottomInset: false,
-      drawer: AppDrawer(
+      drawer: const AppDrawer(
         email: '',
       ),
       body: Builder(
@@ -153,42 +153,42 @@ class _AddState extends State<Add> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   "New Transaction"
                       .text
                       .xl2
                       .fontFamily('Helvetica')
-                      .color(Color.fromRGBO(240, 185, 11, 1))
+                      .color(const Color.fromRGBO(240, 185, 11, 1))
                       .make(),
-                  SizedBox(
+                  const SizedBox(
                     height: 2,
                   ),
                   "Track Your Expenses!"
                       .text
                       .xl2
                       .fontFamily('Helvetica')
-                      .color(Color.fromRGBO(255, 255, 255, 1))
+                      .color(const Color.fromRGBO(255, 255, 255, 1))
                       .make(),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
-                  Divider(
+                  const Divider(
                     color: Colors.grey,
                     indent: 0,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Form(
                     key: formKey,
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             height: 14.0,
                           ),
 
@@ -198,7 +198,7 @@ class _AddState extends State<Add> {
                             style: const TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
                             ),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Title',
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -224,7 +224,7 @@ class _AddState extends State<Add> {
                             },
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 30.0,
                           ),
 
@@ -233,7 +233,7 @@ class _AddState extends State<Add> {
                             style: const TextStyle(
                               color: Color.fromRGBO(240, 185, 11, 1),
                             ),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Amount',
                               border: OutlineInputBorder(
                                 borderRadius:
@@ -256,23 +256,23 @@ class _AddState extends State<Add> {
                             },
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 30.0,
                           ),
 
                           Container(
-                            margin: EdgeInsets.all(2),
-                            padding: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.all(2),
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 4),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(26),
                               border: Border.all(color: Colors.grey, width: 1),
-                              color: Color.fromRGBO(59, 61, 63, 1),
+                              color: const Color.fromRGBO(59, 61, 63, 1),
                             ),
                             child: DropdownButtonHideUnderline(
                               child: DropdownButton(
                                 iconSize: 25,
-                                hint: Text("Select a Category"),
+                                hint: const Text("Select a Category"),
                                 isExpanded: true,
                                 value: values,
                                 items: users.map((Item user) {
@@ -281,12 +281,12 @@ class _AddState extends State<Add> {
                                     child: Row(
                                       children: [
                                         user.icon,
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         Text(
                                           user.name,
-                                          style: TextStyle(color: Colors.black),
+                                          style: const TextStyle(color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -294,14 +294,14 @@ class _AddState extends State<Add> {
                                 }).toList(),
                                 onChanged: (value) {
                                   setState(() {
-                                    this.values = value.toString();
+                                    values = value.toString();
                                   });
                                 },
                               ),
                             ),
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 30.0,
                           ),
 
@@ -317,20 +317,20 @@ class _AddState extends State<Add> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.datetime,
                                       decoration: InputDecoration(
-                                        border: OutlineInputBorder(
+                                        border: const OutlineInputBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(25.0)),
                                         ),
                                         labelText: getText(),
                                         hintText: 'Date of Transaction',
-                                        hintStyle: TextStyle(
+                                        hintStyle: const TextStyle(
                                             color: Color.fromRGBO(
                                                 240, 185, 11, 1)),
                                         fillColor:
-                                            Color.fromRGBO(48, 52, 56, 1),
+                                            const Color.fromRGBO(48, 52, 56, 1),
                                         filled: true,
-                                        prefixIcon: Icon(Icons.calendar_today),
-                                        suffixIcon: Icon(Icons.arrow_drop_down),
+                                        prefixIcon: const Icon(Icons.calendar_today),
+                                        suffixIcon: const Icon(Icons.arrow_drop_down),
                                       ),
                                     ),
                                   ),
@@ -339,7 +339,7 @@ class _AddState extends State<Add> {
                             ],
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 40.0,
                           ),
                           SizedBox(
@@ -347,19 +347,19 @@ class _AddState extends State<Add> {
                             height: 55.0,
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
+                                  side: const BorderSide(
                                     width: 1,
                                     color: Colors.black26,
                                   ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(24),
                                   ),
-                                  textStyle: TextStyle(
+                                  textStyle: const TextStyle(
                                     fontSize: 21.0,
                                   ),
                                   backgroundColor:
-                                      Color.fromRGBO(240, 185, 11, 1)),
-                              child: Text(
+                                      const Color.fromRGBO(240, 185, 11, 1)),
+                              child: const Text(
                                 'Add Transaction',
                                 style: TextStyle(
                                   fontFamily: 'Helvetica',
@@ -392,7 +392,7 @@ class _AddState extends State<Add> {
                             ),
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 20.0,
                           ),
                           SizedBox(
@@ -400,19 +400,19 @@ class _AddState extends State<Add> {
                             height: 55.0,
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
+                                  side: const BorderSide(
                                     width: 1,
                                     color: Colors.black26,
                                   ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(24),
                                   ),
-                                  textStyle: TextStyle(
+                                  textStyle: const TextStyle(
                                     fontSize: 21.0,
                                   ),
                                   backgroundColor:
-                                      Color.fromRGBO(240, 185, 11, 1)),
-                              child: Text(
+                                      const Color.fromRGBO(240, 185, 11, 1)),
+                              child: const Text(
                                 'Add your bank Transactions',
                                 style: TextStyle(
                                   fontFamily: 'Helvetica',
@@ -427,7 +427,7 @@ class _AddState extends State<Add> {
                                     currentDate.month,
                                     currentDate.day);
                                 DateTime endOfCurrentDate =
-                                    startOfCurrentDate.add(Duration(days: 1));
+                                    startOfCurrentDate.add(const Duration(days: 1));
                                 List<SmsMessage> allMessages =
                                     await telephony.getInboxSms(
                                   columns: [
@@ -456,7 +456,7 @@ class _AddState extends State<Add> {
                                       DateTime.fromMillisecondsSinceEpoch(
                                               message.date!)
                                           .isBefore(endOfCurrentDate)) {
-                                    RegExp regExp = new RegExp(r"(\d+\.\d+)");
+                                    RegExp regExp = RegExp(r"(\d+\.\d+)");
                                     Match? match =
                                         regExp.firstMatch(message.body!);
                                     if (match != null) {
@@ -519,12 +519,12 @@ class _AddState extends State<Add> {
                                     context: context,
                                     builder: (context) => AlertDialog(
                                       title:
-                                          Text('No matching messages found!'),
-                                      content: Text(
+                                          const Text('No matching messages found!'),
+                                      content: const Text(
                                           'There are no bank transactions in your messages.'),
                                       actions: <Widget>[
                                         TextButton(
-                                          child: Text('OK'),
+                                          child: const Text('OK'),
                                           onPressed: () =>
                                               Navigator.of(context).pop(),
                                         ),

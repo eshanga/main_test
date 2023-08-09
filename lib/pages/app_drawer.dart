@@ -23,15 +23,15 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     return Drawer(
-      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
+      backgroundColor: const Color.fromRGBO(30, 35, 41, 1),
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color.fromRGBO(250, 211, 56, 1),
             ),
-            accountName: Text(
+            accountName: const Text(
               "User Email",
               style: TextStyle(
                 color: Colors.black,
@@ -41,14 +41,14 @@ class AppDrawer extends StatelessWidget {
             ),
             accountEmail: Text(
               user?.email ?? '',
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
             currentAccountPicture: Center(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     fit: BoxFit.cover,
@@ -59,11 +59,11 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.home,
               color: Colors.white,
             ),
-            title: Text(
+            title: const Text(
               'Home',
               style: TextStyle(
                 color: Colors.white,
@@ -71,12 +71,12 @@ class AppDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.monetization_on, color: Colors.white),
-            title: Text(
+            leading: const Icon(Icons.monetization_on, color: Colors.white),
+            title: const Text(
               'Expense Tracker',
               style: TextStyle(
                 color: Colors.white,
@@ -84,18 +84,25 @@ class AppDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeExpense()));
+                  MaterialPageRoute(builder: (context) => const HomeExpense()));
             },
           ),
           ListTile(
+<<<<<<< Updated upstream
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Available soon...',
+=======
+            leading: const Icon(Icons.settings_suggest, color: Colors.white),
+            title: const Text(
+              'Suggestions',
+>>>>>>> Stashed changes
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
+<<<<<<< Updated upstream
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen2()));
             },
@@ -104,11 +111,22 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Available soon...',
+=======
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SuggestionsPage()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.calculate, color: Colors.white),
+            title: const Text(
+              'Interest Calculator',
+>>>>>>> Stashed changes
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
+<<<<<<< Updated upstream
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen3()));
             },
@@ -117,11 +135,22 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Available soon...',
+=======
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const InterestCalPage()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.calculate, color: Colors.white),
+            title: const Text(
+              'Loan Calculator',
+>>>>>>> Stashed changes
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
+<<<<<<< Updated upstream
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen4()));
             },
@@ -130,18 +159,33 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.screen_share, color: Colors.white),
             title: Text(
               'Available soon...',
+=======
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoanCalPage()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.payment, color: Colors.white),
+            title: const Text(
+              'Bill Payments',
+>>>>>>> Stashed changes
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
+<<<<<<< Updated upstream
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Screen5()));
+=======
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const BillPayPage()));
+>>>>>>> Stashed changes
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share, color: Colors.white),
-            title: Text(
+            leading: const Icon(Icons.screen_share, color: Colors.white),
+            title: const Text(
               'Available soon...',
               style: TextStyle(
                 color: Colors.white,
@@ -149,12 +193,12 @@ class AppDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Screen6()));
+                  context, MaterialPageRoute(builder: (context) => const Screen6()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.logout, color: Colors.white),
-            title: Text(
+            leading: const Icon(Icons.logout, color: Colors.white),
+            title: const Text(
               'Log out',
               style: TextStyle(
                 color: Colors.white,
@@ -173,13 +217,13 @@ class AppDrawer extends StatelessWidget {
               // Add logout functionality here
             },
           ),
-          Divider(
+          const Divider(
             color: Colors.white70,
           ),
           Expanded(
             child: ListTile(
-              leading: Icon(Icons.touch_app, color: Colors.white),
-              title: Text(
+              leading: const Icon(Icons.touch_app, color: Colors.white),
+              title: const Text(
                 'About us',
                 style: TextStyle(
                   color: Colors.white,
@@ -187,7 +231,7 @@ class AppDrawer extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AboutPage()));
+                    MaterialPageRoute(builder: (context) => const AboutPage()));
               },
             ),
           )

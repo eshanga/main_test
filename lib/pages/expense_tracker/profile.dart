@@ -1,7 +1,6 @@
 import 'package:financia_mobile_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../widgets/button_widget.dart';
@@ -19,20 +18,20 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-    TextEditingController limitdata = new TextEditingController();
+    TextEditingController limitdata = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
+      backgroundColor: const Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "User Profile",
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0.0,
-        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+        backgroundColor: const Color.fromRGBO(240, 185, 11, 1),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.logout,
             ),
             onPressed: () {
@@ -47,15 +46,15 @@ class _ProfileState extends State<Profile> {
             },
           )
         ],
-        iconTheme: IconThemeData(color: Colors.black54),
+        iconTheme: const IconThemeData(color: Colors.black54),
       ),
-      drawer: AppDrawer(
+      drawer: const AppDrawer(
         email: '',
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           // ProfileWidget(
@@ -70,10 +69,10 @@ class _ProfileState extends State<Profile> {
             height: 30,
           ),
           Center(child: buildLogout()),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
-          Divider(
+          const Divider(
             color: Colors.grey,
             indent: 0,
           ),
@@ -83,7 +82,7 @@ class _ProfileState extends State<Profile> {
           Form(
             key: limitFormKey,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
@@ -92,15 +91,15 @@ class _ProfileState extends State<Profile> {
                     decoration: InputDecoration(
                       labelText: 'Monthly Limit',
                       labelStyle: TextStyle(color: Colors.grey[700]),
-                      border: OutlineInputBorder(
+                      border: const OutlineInputBorder(
                         borderSide:
                             BorderSide(color: Color.fromRGBO(240, 185, 11, 1)),
                         borderRadius: BorderRadius.all(Radius.circular(25.0)),
                       ),
-                      prefixIcon: Icon(Icons.query_stats),
+                      prefixIcon: const Icon(Icons.query_stats),
                       hintText: "Enter Monthly Limit",
                       hintStyle: TextStyle(color: Colors.grey[700]),
-                      fillColor: Color.fromRGBO(48, 52, 56, 1),
+                      fillColor: const Color.fromRGBO(48, 52, 56, 1),
                       filled: true,
                     ),
                     validator: (value) {
@@ -113,7 +112,7 @@ class _ProfileState extends State<Profile> {
                       return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   SizedBox(
@@ -121,18 +120,18 @@ class _ProfileState extends State<Profile> {
                     height: 55.0,
                     child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
-                            side: BorderSide(
+                            side: const BorderSide(
                               width: 1,
                               color: Colors.black26,
                             ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24),
                             ),
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontSize: 21.0,
                             ),
-                            backgroundColor: Color.fromRGBO(240, 185, 11, 1)),
-                        child: Text(
+                            backgroundColor: const Color.fromRGBO(240, 185, 11, 1)),
+                        child: const Text(
                           'Set Monthly Limit',
                           style: TextStyle(
                             fontFamily: 'Helvetica',
@@ -168,7 +167,7 @@ class _ProfileState extends State<Profile> {
       children: [
         Text(
           user?.displayName ?? '',
-          style: TextStyle(
+          style: const TextStyle(
             // fontWeight: FontWeight.bold,
             fontSize: 30,
           ),
@@ -178,7 +177,7 @@ class _ProfileState extends State<Profile> {
         ),
         Text(
           user?.email ?? '',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 17,
             color: Colors.grey,
           ),

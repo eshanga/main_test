@@ -2,7 +2,6 @@
 
 import 'package:financia_mobile_app/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -180,6 +179,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   onPressed: () {
                     passwordReset();
                   },
+                  color: Color.fromRGBO(240, 185, 11, 1),
                   child: Text(
                     'Reset Password',
                     style: TextStyle(
@@ -188,7 +188,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       fontSize: 18,
                     ),
                   ),
-                  color: Color.fromRGBO(240, 185, 11, 1),
                 ),
               ),
             )

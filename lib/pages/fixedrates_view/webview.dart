@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-import '../app_drawer.dart';
 
 class WebView extends StatefulWidget {
   final String url;
 
-  WebView({required this.url});
+  const WebView({super.key, required this.url});
 
   @override
   _WebViewState createState() => _WebViewState();
@@ -26,10 +25,10 @@ class _WebViewState extends State<WebView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fixed Deposits Rates'),
-        backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+        title: const Text('Fixed Deposits Rates'),
+        backgroundColor: const Color.fromRGBO(80, 85, 88, 1),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () async {
             if (await _controller.canGoBack()) {
               _controller.goBack();

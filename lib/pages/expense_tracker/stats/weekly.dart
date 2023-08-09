@@ -79,15 +79,15 @@ class _WeeklyState extends State<Weekly> {
         height: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Color.fromRGBO(48, 52, 56, 1),
+          color: const Color.fromRGBO(48, 52, 56, 1),
         ),
-        margin: EdgeInsets.all(10.0),
+        margin: const EdgeInsets.all(10.0),
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
+            const Text(
               'Weekly Analytics',
               style: TextStyle(
                 fontFamily: 'Helvetica',
@@ -112,7 +112,7 @@ class _WeeklyState extends State<Weekly> {
                     builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (!snapshot.hasData) {
                         return Center(
-                            child: CircularProgressIndicator()
+                            child: const CircularProgressIndicator()
                                 .centered()
                                 .expand());
                       }
@@ -125,7 +125,7 @@ class _WeeklyState extends State<Weekly> {
                     }),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
           ],
@@ -144,7 +144,7 @@ class _WeeklyState extends State<Weekly> {
       barRods: [
         BarChartRodData(
           y: y,
-          colors: [Colors.white, Color.fromRGBO(240, 185, 11, 1)],
+          colors: [Colors.white, const Color.fromRGBO(240, 185, 11, 1)],
           width: 22,
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
@@ -247,7 +247,7 @@ class _WeeklyState extends State<Weekly> {
           }
           return BarTooltipItem(
             weekDay + '\n' + "Rs. " + (rod.y).toString(),
-            TextStyle(color: Colors.white),
+            const TextStyle(color: Colors.white),
           );
         },
       ),
