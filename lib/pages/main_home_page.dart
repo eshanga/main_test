@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           children: [
                             Text(
-                              'Fixed Deposits',
+                              'Fixed Deposit',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Color.fromRGBO(240, 185, 11, 1),
