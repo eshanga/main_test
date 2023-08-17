@@ -19,8 +19,10 @@ class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(48, 52, 56, 1),
       appBar: AppBar(
-        title: Center(child: Text(widget.title)),
+        title: Text('Payment'),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       body: Column(
         children: [
@@ -32,7 +34,7 @@ class _PaymentState extends State<Payment> {
                 bottomLeft: Radius.circular(80.0),
                 bottomRight: Radius.circular(80.0),
               ),
-              color: AppThemeData().appColor,
+              color: Color.fromRGBO(30, 35, 41, 1), // Background color
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -53,17 +55,32 @@ class _PaymentState extends State<Payment> {
             height: 20.0,
           ),
           CustomWidgets().paymentOptionButton(
-              context, const OneTimePaymentPage(), "One Time Payment"),
+            context,
+            const OneTimePaymentPage(),
+            "One Time Payment",
+            Color.fromRGBO(240, 185, 11, 1), // Accent color
+            Colors.black, // Text color
+          ),
           const SizedBox(
             height: 20.0,
           ),
           CustomWidgets().paymentOptionButton(
-              context, const RecurringPaymentPage(), "Recurring Payment"),
+            context,
+            const RecurringPaymentPage(),
+            "Recurring Payment",
+            Color.fromRGBO(240, 185, 11, 1), // Accent color
+            Colors.black, // Text color
+          ),
           const SizedBox(
             height: 20.0,
           ),
           CustomWidgets().paymentOptionButton(
-              context, const PreapprovalPaymentPage(), "Preapproval Payment"),
+            context,
+            const PreapprovalPaymentPage(),
+            "Preapproval Payment",
+            Color.fromRGBO(240, 185, 11, 1), // Accent color
+            Colors.black, // Text color
+          ),
         ],
       ),
     );

@@ -44,6 +44,7 @@ class _RecurringPaymentPageState extends State<RecurringPaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(48, 52, 56, 1),
       appBar: CustomWidgets().paymentMethodsAppBar("Recurring Payment"),
       body: Center(
         child: Column(
@@ -54,7 +55,18 @@ class _RecurringPaymentPageState extends State<RecurringPaymentPage> {
               height: 50.0,
             ),
             ElevatedButton(
-                onPressed: () => payNow(), child: const Text("Pay Now")),
+              onPressed: () => payNow(),
+              child: const Text(
+                "Pay Now",
+                style: TextStyle(
+                  color: Colors.black, // Text color
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: Color.fromRGBO(240, 185, 11, 1), // Background color
+                fixedSize: const Size(200, 50),
+              ),
+            ),
           ],
         ),
       ),

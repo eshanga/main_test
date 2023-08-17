@@ -46,7 +46,9 @@ class CustomWidgets {
             ),
             Text(
               cardName,
-              style: AppThemeData().subtitle1Style,
+              style: AppThemeData().subtitle1Style.copyWith(
+                    color: Colors.white,
+                  ),
             ),
           ],
         ),
@@ -68,7 +70,9 @@ class CustomWidgets {
       children: [
         Text(
           "Test Card Numbers",
-          style: AppThemeData().headline7Style,
+          style: AppThemeData().headline7Style.copyWith(
+                color: Colors.white,
+              ),
         ),
         const SizedBox(
           height: 10.0,
@@ -137,13 +141,18 @@ class CustomWidgets {
         const SizedBox(
           width: 10.0,
         ),
-        Text(paymentStatus, style: AppThemeData().subtitle1Style),
+        Text(
+          paymentStatus,
+          style: AppThemeData().subtitle1Style.copyWith(
+                color: Colors.white, // Change to the desired color
+              ),
+        ),
       ],
     );
   }
 
-  ElevatedButton paymentOptionButton(
-      BuildContext context, var pageName, String buttonName) {
+  ElevatedButton paymentOptionButton(BuildContext context, var pageName,
+      String buttonName, Color backgroundColor, Color textColor) {
     return ElevatedButton(
       onPressed: () {
         Navigator.push(
@@ -151,8 +160,16 @@ class CustomWidgets {
           MaterialPageRoute(builder: (context) => pageName),
         );
       },
-      child: Text(buttonName),
-      style: ElevatedButton.styleFrom(fixedSize: const Size(200, 50)),
+      child: Text(
+        buttonName,
+        style: TextStyle(
+          color: textColor,
+        ),
+      ),
+      style: ElevatedButton.styleFrom(
+        primary: backgroundColor,
+        fixedSize: const Size(200, 50),
+      ),
     );
   }
 }
