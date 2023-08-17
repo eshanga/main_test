@@ -19,7 +19,7 @@ class ArticlePage extends StatelessWidget {
             .text
             .xl
             .fontFamily('Helvetica')
-            .color(Colors.black)
+            .color(Color.fromARGB(255, 0, 0, 0))
             .make(),
         backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
@@ -30,7 +30,7 @@ class ArticlePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 200.0,
+              height: 300.0,
               width: double.infinity,
               decoration: BoxDecoration(
                 //let's add the height
@@ -46,25 +46,25 @@ class ArticlePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: Color.fromRGBO(252, 213, 53, 1),
                 borderRadius: BorderRadius.circular(30.0),
               ),
               child: Text(
                 article.source.name,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: const Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
             ),
             SizedBox(
-              height: 8.0,
+              height: 20.0,
             ),
             Text(
               article.description,
               style: TextStyle(
-                color: Colors.white,
+                color: Color.fromRGBO(250, 211, 56, 1),
                 fontWeight: FontWeight.bold,
-                fontSize: 16.0,
+                fontSize: 20.0,
               ),
             )
           ],
