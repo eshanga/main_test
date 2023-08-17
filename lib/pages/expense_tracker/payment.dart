@@ -59,7 +59,7 @@ class _PaymentState extends State<Payment> {
       color: color,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
-      ),
+      ), //
       child: Container(
         height: 200,
         padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
