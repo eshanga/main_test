@@ -100,11 +100,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(
-                        //Connnect to screen 2
+                        //Connnect to Fixed rate page
                         child: Column(
                           children: [
+                            Icon(
+                              Icons.account_balance,
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              size: 40,
+                            ),
                             Text(
-                              'Fixed Deposits',
+                              'Fixed Deposit',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Color.fromRGBO(240, 185, 11, 1),
@@ -132,7 +137,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(110, 80),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
@@ -140,29 +148,58 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       ElevatedButton(
-                          //Connect to screen 3
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.money_off,
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              size: 40,
+                            ),
+                            Text(
+                              'Expense Tracker',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color.fromRGBO(240, 185, 11, 1),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        /*child: SizedBox(
                           child: Text(
-                            'Stocks Market',
+                            'Expense Tracker',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Color.fromRGBO(240, 185, 11, 1),
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => stockview()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                            minimumSize: Size(110, 80),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  30), // Change this value to adjust the curve
-                            ),
-                          )),
+                        ),*/
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeExpense()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
                       ElevatedButton(
                         //Connected to Screen 4
                         child: Text(
@@ -182,19 +219,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(110, 80),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
                       ElevatedButton(
                         //Connnect to screen 2
                         child: Text(
@@ -214,13 +248,49 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(200, 80),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                          //Connect to screen 3
+                          child: Text(
+                            'Stocks Market',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color.fromRGBO(240, 185, 11, 1),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => stockview()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                            minimumSize: Size(
+                              MediaQuery.of(context).size.shortestSide * 0.425,
+                              MediaQuery.of(context).size.shortestSide * 0.425,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  30), // Change this value to adjust the curve
+                            ),
+                          )),
                       ElevatedButton(
                           //Connect to screen 3
                           child: Text(
@@ -239,7 +309,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                            minimumSize: Size(200, 80),
+                            minimumSize: Size(
+                              MediaQuery.of(context).size.shortestSide * 0.425,
+                              MediaQuery.of(context).size.shortestSide * 0.425,
+                            ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                   30), // Change this value to adjust the curve
@@ -248,36 +321,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   SizedBox(height: 20),
-                  Column(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ElevatedButton(
-                        child: SizedBox(
-                          child: Text(
-                            'Expense Tracker',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromRGBO(240, 185, 11, 1),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomeExpense()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 80),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
                       ElevatedButton(
                         //Connected to screen 5
                         child: Text(
@@ -297,14 +343,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 80),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
                       ElevatedButton(
                         child: Text(
                           'Interest Calculator',
@@ -322,14 +370,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 80),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
                       ElevatedButton(
                         child: Text(
                           'Loan Calculator',
@@ -347,14 +403,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 80),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
                       ElevatedButton(
                         child: Text(
                           'Bill payments',
@@ -372,7 +430,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 80),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 30), // Change this value to adjust the curve
@@ -407,6 +468,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 20),
                     ],
                   ),
+                  SizedBox(height: 20),
                 ],
               ),
             ),
