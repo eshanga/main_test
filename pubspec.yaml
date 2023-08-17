@@ -60,6 +60,7 @@ dependencies:
   webview_flutter: ^4.0.7  
   flutter_inappwebview: ^5.7.2+3 
   flutter_typeahead: ^4.6.2
+  payhere_mobilesdk_flutter: ^3.0.6
 
 
 dev_dependencies:
@@ -116,7 +117,8 @@ flutter:
    - assets/fixed.png
    - assets/interest.png
    - assets/Suggess.png
-   - assets/currency.png
+   - assets/images/
+   - assets/icons/
   
     #- images/a_dot_ham.jpeg
 

@@ -1,9 +1,15 @@
-import 'package:financia_mobile_app/widgets/background.dart';
+import 'package:financia_mobile_app/pages/expense_tracker/payment/app_theme.dart';
+import 'package:financia_mobile_app/pages/expense_tracker/payment/custom_widgets.dart';
+import 'package:financia_mobile_app/pages/expense_tracker/payment/one_time_payment_page.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
+
+import 'payment/preapproval_payment_page.dart';
+import 'payment/recurring_payment_page.dart';
 
 class Payment extends StatefulWidget {
-  const Payment({Key? key}) : super(key: key);
+  const Payment({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   _PaymentState createState() => _PaymentState();
@@ -12,123 +18,54 @@ class Payment extends StatefulWidget {
 class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        padding: Vx.m12,
-        color: Color.fromRGBO(30, 35, 41, 1),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              height: 55,
-            ),
-            "Your Cards"
-                .text
-                .xl5
-                .fontFamily('Helvetica')
-                .color(Color.fromRGBO(240, 185, 11, 1))
-                .make(),
-            SizedBox(
-              height: 10,
-            ),
-            Divider(
-              color: Color.fromARGB(255, 230, 230, 230),
-              indent: 0,
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            //   _buildCreditCard(
-            //   color: Color(0xFF5151CC),
-            //   cardExpiration: "09/2022",
-            //   cardHolder: "JOHN DOE",
-            //    cardNumber: "3546 7532 XXXX 9742"),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text(widget.title)),
       ),
-    );
-  }
-
-  Card _buildCreditCard(
-      {required Color color,
-      required String cardNumber,
-      required String cardHolder,
-      required String cardExpiration}) {
-    return Card(
-      elevation: 4.0,
-      color: color,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-      ), //
-      child: Container(
-        height: 200,
-        padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            _buildLogosBlock(),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Text(
-                '$cardNumber',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 21,
-                    fontFamily: 'CourrierPrime'),
+      body: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.width * 0.28,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(80.0),
+                bottomRight: Radius.circular(80.0),
               ),
+              color: AppThemeData().appColor,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                _buildDetailsBlock(
-                  label: 'CARDHOLDER',
-                  value: cardHolder,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset(
+                  'assets/images/logo_rounded.png',
+                  height: 100.0,
+                  width: 100.0,
                 ),
-                _buildDetailsBlock(label: 'VALID THRU', value: cardExpiration),
               ],
             ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          CustomWidgets().paymentInstruction(),
+          const SizedBox(
+            height: 20.0,
+          ),
+          CustomWidgets().paymentOptionButton(
+              context, const OneTimePaymentPage(), "One Time Payment"),
+          const SizedBox(
+            height: 20.0,
+          ),
+          CustomWidgets().paymentOptionButton(
+              context, const RecurringPaymentPage(), "Recurring Payment"),
+          const SizedBox(
+            height: 20.0,
+          ),
+          CustomWidgets().paymentOptionButton(
+              context, const PreapprovalPaymentPage(), "Preapproval Payment"),
+        ],
       ),
-    );
-  }
-
-  // Build the top row containing logos
-  Row _buildLogosBlock() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Image.asset(
-          "assets/images/contact_less.png",
-          height: 20,
-          width: 18,
-        ),
-        Image.asset(
-          "assets/images/mastercard.png",
-          height: 50,
-          width: 50,
-        ),
-      ],
-    );
-  }
-
-// Build Column containing the cardholder and expiration information
-  Column _buildDetailsBlock({required String label, required String value}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          '$label',
-          style: TextStyle(
-              color: Colors.grey, fontSize: 9, fontWeight: FontWeight.bold),
-        ),
-        Text(
-          '$value',
-          style: TextStyle(
-              color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
-        )
-      ],
     );
   }
 }

@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.financia_mobile_app">
    
    <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -8,7 +9,8 @@
    <application
         android:label="Financia"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/launcher_icon"
+        tools:replace="android:label">
         <activity
             android:name=".MainActivity"
             android:exported="true"
