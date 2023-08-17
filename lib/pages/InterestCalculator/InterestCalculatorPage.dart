@@ -41,7 +41,7 @@ class _InterestCalPageState extends State<InterestCalPage> {
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
         title: Text('Interest Calculator'),
-        backgroundColor: Color.fromRGBO(30, 35, 41, 1),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       body: SingleChildScrollView(
         child: Container(

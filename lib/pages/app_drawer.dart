@@ -136,7 +136,7 @@ class AppDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BillPayPage()));
+                  MaterialPageRoute(builder: (context) => BillPaymentScreen()));
             },
           ),
           ListTile(

@@ -7,6 +7,7 @@ import 'package:velocity_x/velocity_x.dart';
 import '../components/customListTile.dart';
 import '../model/article_model.dart';
 import '../services/api_service.dart';
+import 'Currency_convert/Currency_con.dart';
 import 'app_drawer.dart';
 import 'crypto_view/crypto_view.dart';
 import 'expense_tracker/home_expense.dart';
@@ -339,10 +340,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.bold),
                         ),
                         onPressed: () {
-                          /* Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Screen6()));*/
+                                  builder: (context) => LoanCalPage()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
@@ -364,10 +365,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.bold),
                         ),
                         onPressed: () {
-                          /* Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Screen6()));*/
+                                  builder: (context) => BillPaymentScreen()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(80, 85, 88, 1),
@@ -378,6 +379,32 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        child: Text(
+                          'Currency Converter',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(240, 185, 11, 1),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CurrencyConverter()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          minimumSize: Size(380, 80),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
                     ],
                   ),
                 ],
