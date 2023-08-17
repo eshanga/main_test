@@ -441,7 +441,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      ElevatedButton(
+                      /*  ElevatedButton(
                         child: Text(
                           'Currency Converter',
                           textAlign: TextAlign.center,
@@ -464,7 +464,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 30), // Change this value to adjust the curve
                           ),
                         ),
-                      ),
+                      ),*/
                       SizedBox(height: 20),
                     ],
                   ),
