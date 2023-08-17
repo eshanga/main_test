@@ -42,7 +42,7 @@ class _CurrencyConverterState extends State<CurrencyConverter> {
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
         title: Text('Currency Converter'),
-        backgroundColor: Color.fromRGBO(30, 35, 41, 1),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       drawer: AppDrawer(
         email: '',

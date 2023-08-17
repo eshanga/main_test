@@ -47,6 +47,7 @@ class _LoanCalPageState extends State<LoanCalPage> {
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
         title: Text('Loan Calculator'),
+        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -139,7 +140,7 @@ class _LoanCalPageState extends State<LoanCalPage> {
                 ),
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  '\$${monthlyPayment.toStringAsFixed(2)}',
+                  '\ ${monthlyPayment.toStringAsFixed(2)}',
                   style: TextStyle(fontSize: 24.0, color: Colors.white),
                 ),
               ),
