@@ -80,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   List<Article>? articles = snapshot.data;
 
                   return SizedBox(
-                    
                     height: 350.0,
                     child: ListView.builder(
                       shrinkWrap: true,
@@ -561,10 +560,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                         onPressed: () {
-                          /* Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Screen6()));*/
+                                  builder: (context) => CurrencyConverter()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(240, 185, 11, 1),
@@ -614,7 +613,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      //SizedBox(height: 20),
                       /*  ElevatedButton(
                         child: Text(
                           'Currency Converter',
@@ -639,7 +638,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),*/
-                      SizedBox(height: 20),
+                      //SizedBox(height: 20),
                     ],
                   ),
                   SizedBox(height: 20),
