@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../app_drawer.dart';
-
 class InterestCalPage extends StatefulWidget {
   @override
   _InterestCalPageState createState() => _InterestCalPageState();
@@ -40,76 +38,140 @@ class _InterestCalPageState extends State<InterestCalPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: Text('Screen 6'),
+        title: Text('Interest Calculator'),
         backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
-      drawer: AppDrawer(
-        email: '',
-      ),
-      body: Container(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              width: 200.0, // Adjust the size of the square box
-              height: 200.0, // Adjust the size of the square box
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.scaleDown,
-                  image: AssetImage('assets/interest.png'),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          color: Color.fromRGBO(30, 35, 41, 1),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width: 300.0,
+                height: 300.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.scaleDown,
+                    image: AssetImage('assets/interest.png'),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: principalController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              decoration: InputDecoration(
-                labelText: 'Principal',
-                hintText: 'Enter Principal Amount',
+              SizedBox(height: 10.0),
+              TextField(
+                controller: principalController,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'Principal',
+                  hintText: 'Enter Principal Amount',
+                  labelStyle: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.white),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                ),
               ),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: rateController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              decoration: InputDecoration(
-                labelText: 'Rate of Interest',
-                hintText: 'Enter Rate of Interest',
+              SizedBox(height: 16.0),
+              TextField(
+                controller: rateController,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'Rate of Interest',
+                  hintText: 'Enter Rate of Interest',
+                  labelStyle: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.white),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                ),
               ),
-            ),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: periodController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Period in Months',
-                hintText: 'Enter Period in Months',
+              SizedBox(height: 16.0),
+              TextField(
+                controller: periodController,
+                keyboardType: TextInputType.number,
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'Period in Months',
+                  hintText: 'Enter Period in Months',
+                  labelStyle: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.white),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                ),
               ),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              child: Text('Calculate Interest'),
-              onPressed: calculateInterest,
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              'Total Interest (before tax) = $result',
-              style: TextStyle(fontSize: 24.0),
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              'Total Interest (after tax) = $afterTaxResult',
-              style: TextStyle(fontSize: 24.0),
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              'Monthly Interest (after tax) = $monthlyInterest',
-              style: TextStyle(fontSize: 24.0),
-            ),
-          ],
+              SizedBox(height: 16.0),
+              ElevatedButton(
+                child: Text('Calculate Interest'),
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromRGBO(240, 185, 11, 1),
+                ),
+                onPressed: calculateInterest,
+              ),
+              SizedBox(height: 16.0),
+              Text(
+                'Total Interest (before tax)',
+                style: TextStyle(fontSize: 16.0, color: Colors.white),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  '$result',
+                  style: TextStyle(fontSize: 24.0, color: Colors.white),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Text(
+                'Total Interest (after tax)',
+                style: TextStyle(fontSize: 16.0, color: Colors.white),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  '$afterTaxResult',
+                  style: TextStyle(fontSize: 24.0, color: Colors.white),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Text(
+                'Monthly Interest (after tax)',
+                style: TextStyle(fontSize: 16.0, color: Colors.white),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  '$monthlyInterest',
+                  style: TextStyle(fontSize: 24.0, color: Colors.white),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
