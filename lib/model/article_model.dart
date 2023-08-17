@@ -2,6 +2,8 @@
 // for that we just need to copy the property from the json structure
 // and make a dart object
 
+import 'package:flutter/material.dart';
+
 import 'source_model.dart';
 
 class Article {
@@ -27,6 +29,7 @@ class Article {
 
   //And now let's create the function that will map the json into a list
   factory Article.fromJson(Map<String, dynamic> json) {
+   
     return Article(
       source: Source.fromJson(json['source']),
       author: json['author'] == null ? "" : json['author'] as String,

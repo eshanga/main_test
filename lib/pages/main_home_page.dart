@@ -34,18 +34,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
       appBar: AppBar(
-        title: "Homescreen"
-            .text
-            .xl2
-            .fontFamily('Helvetica')
-            .color(Color.fromARGB(255, 0, 0, 0))
-            .make(),
+        title: Text(
+          "Homescreen",
+          style: TextStyle(
+            fontSize: 24, // Adjust the font size as needed
+            fontFamily: 'Helvetica',
+            color: Color.fromARGB(255, 0, 0, 0),
+          ),
+        ),
         elevation: 0.0,
-        backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+        backgroundColor: Color.fromRGBO(252, 213, 53, 1),
         actions: [
           IconButton(
             icon: Icon(
               Icons.logout,
+              color: Color.fromRGBO(12, 14, 18, 1),
             ),
             onPressed: () {
               FirebaseAuth.instance.signOut();
@@ -75,7 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (snapshot.hasData) {
                   //Now let's make a list of articles
                   List<Article>? articles = snapshot.data;
+
                   return SizedBox(
+                    
                     height: 350.0,
                     child: ListView.builder(
                       shrinkWrap: true,
@@ -96,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -105,23 +111,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Icon(
                               Icons.account_balance,
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              size: 40,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
                             ),
                             Text(
                               'Fixed Deposit',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Color.fromRGBO(240, 185, 11, 1),
-                                  fontSize: 16,
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
                               'Rates',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: Color.fromRGBO(240, 185, 11, 1),
-                                fontSize: 16,
+                                color: Color.fromRGBO(12, 14, 18, 1),
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -136,14 +142,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
 
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
                             MediaQuery.of(context).size.shortestSide * 0.425,
                             MediaQuery.of(context).size.shortestSide * 0.425,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                                20), // Change this value to adjust the curve
                           ),
                         ),
                       ),
@@ -151,31 +157,30 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           children: [
                             Icon(
-                              Icons.money_off,
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              size: 40,
+                              Icons.monetization_on,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
                             ),
                             Text(
-                              'Expense Tracker',
+                              'Expense',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: Color.fromRGBO(240, 185, 11, 1),
-                                fontSize: 16,
+                                color: Color.fromRGBO(12, 14, 18, 1),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              'Tracker',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color.fromRGBO(12, 14, 18, 1),
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
-                        /*child: SizedBox(
-                          child: Text(
-                            'Expense Tracker',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromRGBO(240, 185, 11, 1),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),*/
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -183,14 +188,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => HomeExpense()));
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
                             MediaQuery.of(context).size.shortestSide * 0.425,
                             MediaQuery.of(context).size.shortestSide * 0.425,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                                20), // Change this value to adjust the curve
                           ),
                         ),
                       ),
@@ -202,14 +207,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       ElevatedButton(
                         //Connected to Screen 4
-                        child: Text(
-                          'Crypto Market',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.currency_bitcoin,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Crypto Market',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
+
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -218,27 +233,37 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
 
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
                             MediaQuery.of(context).size.shortestSide * 0.425,
                             MediaQuery.of(context).size.shortestSide * 0.425,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                                20), // Change this value to adjust the curve
                           ),
                         ),
                       ),
                       ElevatedButton(
                         //Connnect to screen 2
-                        child: Text(
-                          'Crypto View',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.view_module,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Crypto View',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
+
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -247,14 +272,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
 
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
                             MediaQuery.of(context).size.shortestSide * 0.425,
                             MediaQuery.of(context).size.shortestSide * 0.425,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                                20), // Change this value to adjust the curve
                           ),
                         ),
                       ),
@@ -266,13 +291,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       ElevatedButton(
                           //Connect to screen 3
-                          child: Text(
-                            'Stocks Market',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromRGBO(240, 185, 11, 1),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
+                          child: Column(
+                            children: [
+                              Icon(
+                                Icons.trending_up,
+                                color: Color.fromRGBO(12, 14, 18, 1),
+                                size: 60,
+                              ),
+                              Text(
+                                'Stocks Market',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(12, 14, 18, 1),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -281,25 +315,34 @@ class _HomeScreenState extends State<HomeScreen> {
                                     builder: (context) => stockview()));
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                            backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                             minimumSize: Size(
                               MediaQuery.of(context).size.shortestSide * 0.425,
                               MediaQuery.of(context).size.shortestSide * 0.425,
                             ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
-                                  30), // Change this value to adjust the curve
+                                  20), // Change this value to adjust the curve
                             ),
                           )),
                       ElevatedButton(
                           //Connect to screen 3
-                          child: Text(
-                            'Stock view',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromRGBO(240, 185, 11, 1),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
+                          child: Column(
+                            children: [
+                              Icon(
+                                Icons.leaderboard,
+                                color: Color.fromRGBO(12, 14, 18, 1),
+                                size: 60,
+                              ),
+                              Text(
+                                'Stock view',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(12, 14, 18, 1),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -308,14 +351,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     builder: (context) => StockDataPage()));
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                            backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                             minimumSize: Size(
                               MediaQuery.of(context).size.shortestSide * 0.425,
                               MediaQuery.of(context).size.shortestSide * 0.425,
                             ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
-                                  30), // Change this value to adjust the curve
+                                  20), // Change this value to adjust the curve
                             ),
                           )),
                     ],
@@ -326,13 +369,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       ElevatedButton(
                         //Connected to screen 5
-                        child: Text(
-                          'Suggestions',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.support_agent,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Suggestions',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -342,25 +395,42 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
 
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
                             MediaQuery.of(context).size.shortestSide * 0.425,
                             MediaQuery.of(context).size.shortestSide * 0.425,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ),
                       ElevatedButton(
-                        child: Text(
-                          'Interest Calculator',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.calculate,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Interest',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              ' Calculator',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color.fromRGBO(12, 14, 18, 1),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -369,14 +439,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => InterestCalPage()));
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
                             MediaQuery.of(context).size.shortestSide * 0.425,
                             MediaQuery.of(context).size.shortestSide * 0.425,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ),
@@ -387,13 +456,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(
-                        child: Text(
-                          'Loan Calculator',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.real_estate_agent,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Loan Calculator',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -402,25 +480,34 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => LoanCalPage()));
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
                             MediaQuery.of(context).size.shortestSide * 0.425,
                             MediaQuery.of(context).size.shortestSide * 0.425,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                                20), // Change this value to adjust the curve
                           ),
                         ),
                       ),
                       ElevatedButton(
-                        child: Text(
-                          'Bill payments',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.receipt_long,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Bill payments',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -429,14 +516,101 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => BillPaymentScreen()));
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
                             MediaQuery.of(context).size.shortestSide * 0.425,
                             MediaQuery.of(context).size.shortestSide * 0.425,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
+                                20), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.autorenew,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Currency',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'converter',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color.fromRGBO(12, 14, 18, 1),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          /* Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen6()));*/
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                20), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.receipt_long,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Bill payments',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          /* Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen6()));*/
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                20), // Change this value to adjust the curve
                           ),
                         ),
                       ),
