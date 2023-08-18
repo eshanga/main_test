@@ -1,3 +1,4 @@
+import 'package:financia_mobile_app/pages/about_page.dart';
 import 'package:financia_mobile_app/pages/crypto_view/CryptoDataPage.dart';
 import 'package:financia_mobile_app/pages/stock_view/StockDataPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -581,12 +582,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           children: [
                             Icon(
-                              Icons.receipt_long,
+                              Icons.groups,
                               color: Color.fromRGBO(12, 14, 18, 1),
                               size: 60,
                             ),
                             Text(
-                              'Bill payments',
+                              'About Us',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Color.fromRGBO(12, 14, 18, 1),
@@ -596,10 +597,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                         onPressed: () {
-                          /* Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Screen6()));*/
+                                  builder: (context) => AboutPage()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(240, 185, 11, 1),

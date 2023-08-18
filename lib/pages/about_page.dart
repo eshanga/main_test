@@ -36,7 +36,11 @@ class AboutPage extends StatelessWidget {
                   SizedBox(height: 16.0),
                   Text(
                     'INNOVIA Solutions',
-                    style: Theme.of(context).textTheme.headline5,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color.fromRGBO(250, 211, 56, 1),
+                      fontSize: 20,
+                    ),
                   ),
                   SizedBox(height: 8.0),
                   Text(
@@ -62,7 +66,11 @@ class AboutPage extends StatelessWidget {
                     children: [
                       Text(
                         'Copyright © 2023 INNOVIA Solutions',
-                        style: Theme.of(context).textTheme.caption,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color.fromRGBO(250, 211, 56, 1),
+                          fontSize: 15,
+                        ),
                       ),
                     ],
                   ),

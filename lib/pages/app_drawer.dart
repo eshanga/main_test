@@ -1,6 +1,12 @@
+import 'package:financia_mobile_app/pages/Currency_convert/Currency_con.dart';
 import 'package:financia_mobile_app/pages/about_page.dart';
+import 'package:financia_mobile_app/pages/crypto_view/CryptoDataPage.dart';
+import 'package:financia_mobile_app/pages/crypto_view/crypto_view.dart';
 import 'package:financia_mobile_app/pages/expense_tracker/home_expense.dart';
+import 'package:financia_mobile_app/pages/fixedrates_view/fixedrates.dart';
 import 'package:financia_mobile_app/pages/main_home_page.dart';
+import 'package:financia_mobile_app/pages/stock_view/StockDataPage.dart';
+import 'package:financia_mobile_app/pages/stock_view/stock_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -64,7 +70,7 @@ class AppDrawer extends StatelessWidget {
               color: Colors.white,
             ),
             title: Text(
-              'Home',
+              'Homescreen',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -72,6 +78,22 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.account_balance,
+              color: Colors.white,
+            ),
+            title: Text(
+              'Fixed Deposite Rates',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Fixedrates()));
             },
           ),
           ListTile(
@@ -88,7 +110,59 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings_suggest, color: Colors.white),
+            leading: Icon(Icons.currency_bitcoin, color: Colors.white),
+            title: Text(
+              'Crypto Market',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => cryptoview()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.view_module, color: Colors.white),
+            title: Text(
+              'Crypto View',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CryptoDataPage()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.trending_up, color: Colors.white),
+            title: Text(
+              'Stock Market',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => stockview()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.leaderboard, color: Colors.white),
+            title: Text(
+              'Stock view',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => StockDataPage()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.support_agent, color: Colors.white),
             title: Text(
               'Suggestions',
               style: TextStyle(
@@ -101,7 +175,10 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.calculate, color: Colors.white),
+            leading: Icon(
+              Icons.calculate,
+              color: Colors.white,
+            ),
             title: Text(
               'Interest Calculator',
               style: TextStyle(
@@ -114,7 +191,10 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.calculate, color: Colors.white),
+            leading: Icon(
+              Icons.real_estate_agent,
+              color: Colors.white,
+            ),
             title: Text(
               'Loan Calculator',
               style: TextStyle(
@@ -127,9 +207,12 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.payment, color: Colors.white),
+            leading: Icon(
+              Icons.receipt_long,
+              color: Colors.white,
+            ),
             title: Text(
-              'Bill Payments',
+              'Bill Payment',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -140,16 +223,19 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.screen_share, color: Colors.white),
+            leading: Icon(
+              Icons.autorenew,
+              color: Colors.white,
+            ),
             title: Text(
-              'Available soon...',
+              'Currency converter',
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Screen6()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CurrencyConverter()));
             },
           ),
           ListTile(
