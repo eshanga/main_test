@@ -1,21 +1,21 @@
 import 'package:financia_mobile_app/pages/Currency_convert/Currency_con.dart';
-import 'package:financia_mobile_app/pages/about_page.dart';
-import 'package:financia_mobile_app/pages/crypto_view/CryptoDataPage.dart';
-import 'package:financia_mobile_app/pages/crypto_view/crypto_view.dart';
 import 'package:financia_mobile_app/pages/expense_tracker/home_expense.dart';
-import 'package:financia_mobile_app/pages/fixedrates_view/fixedrates.dart';
 import 'package:financia_mobile_app/pages/main_home_page.dart';
-import 'package:financia_mobile_app/pages/stock_view/StockDataPage.dart';
-import 'package:financia_mobile_app/pages/stock_view/stock_view.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'about_page.dart';
+import 'crypto_view/CryptoDataPage.dart';
+import 'crypto_view/crypto_view.dart';
+import 'fixedrates_view/fixedrates.dart';
 import 'login_page.dart';
 import 'LoanCalculator/LoanCalculatorpage.dart';
 import 'BillPayments/BillPaymentsPage.dart';
 import 'Suggestions/SuggestionsPage.dart';
 import 'InterestCalculator/InterestCalculatorPage.dart';
-import 'screen6/screen6.dart';
+import 'stock_view/StockDataPage.dart';
+import 'stock_view/stock_view.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({

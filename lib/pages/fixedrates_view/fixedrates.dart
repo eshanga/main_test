@@ -9,7 +9,7 @@ class Fixedrates extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromRGBO(48, 52, 56, 1),
       appBar: AppBar(
-        title: "Crypto Currency Market"
+        title: "Fixed Deposite Rates"
             .text
             .xl2
             .fontFamily('Helvetica')
@@ -49,6 +49,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Peoples bank'),
                 onPressed: () {
@@ -73,6 +74,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Bank of Ceylon'),
                 onPressed: () {
@@ -97,6 +99,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Nationl Savings Bank'),
                 onPressed: () {
@@ -122,6 +125,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Commercial Bank PLC'),
                 onPressed: () {
@@ -147,6 +151,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Seylan Bank PLC'),
                 onPressed: () {
@@ -171,6 +176,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Hatton National Bank'),
                 onPressed: () {
@@ -196,6 +202,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Sampath Bank PLC'),
                 onPressed: () {
@@ -221,6 +228,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Nationl Development Bank (NDB)'),
                 onPressed: () {
@@ -246,6 +254,7 @@ class Fixedrates extends StatelessWidget {
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
+                  minimumSize: Size(150, 60),
                 ),
                 child: Text('Nations Trust Bank'),
                 onPressed: () {

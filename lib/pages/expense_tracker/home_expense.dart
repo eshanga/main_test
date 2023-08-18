@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'add.dart';
 import 'dashboard.dart';
 import 'stats.dart';

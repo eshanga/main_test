@@ -106,6 +106,7 @@ class _DashboardState extends State<Dashboard> {
         actions: [
           IconButton(
             icon: const Icon(
+              color: Color.fromRGBO(12, 14, 18, 1),
               Icons.logout,
             ),
             onPressed: () {
