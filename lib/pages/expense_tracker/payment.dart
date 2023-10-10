@@ -3,6 +3,7 @@ import 'package:financia_mobile_app/pages/expense_tracker/payment/custom_widgets
 import 'package:financia_mobile_app/pages/expense_tracker/payment/one_time_payment_page.dart';
 import 'package:flutter/material.dart';
 
+import '../scan_page.dart';
 import 'payment/preapproval_payment_page.dart';
 import 'payment/recurring_payment_page.dart';
 
@@ -80,6 +81,29 @@ class _PaymentState extends State<Payment> {
             "Preapproval Payment",
             Color.fromRGBO(240, 185, 11, 1), // Accent color
             Colors.black, // Text color
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Color.fromRGBO(240, 185, 11, 1)),
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+              fixedSize: MaterialStateProperty.all<Size>(
+                  Size(200, 50)), // Adjust width and height as needed
+            ),
+            child: Text('Pay through QR'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ScanScreen(
+                    appBarHeightSize: 12,
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),

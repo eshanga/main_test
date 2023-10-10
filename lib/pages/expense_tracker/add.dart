@@ -488,7 +488,7 @@ class _AddState extends State<Add> {
                                       category = 'Meal';
                                     } else if (merchantName
                                             .contains('Mobitel') ||
-                                        merchantName.contains('Dialog') ||
+                                        
                                         merchantName.contains('Hutch') ||
                                         merchantName.contains('Airtel') ||
                                         merchantName.contains('Savoy') ||

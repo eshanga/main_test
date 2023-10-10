@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class BillPaymentScreen extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
   bool _isRecurring = false;
   final _currentUser = FirebaseAuth.instance.currentUser;
 
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

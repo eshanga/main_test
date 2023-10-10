@@ -1,0 +1,38 @@
+ if (filteredMessages.isNotEmpty) {
+                                  for (var i = 0;
+                                      i < filteredMessages.length;
+                                      i++) {
+                                    int amountInt = int.parse(
+                                        filteredMessages[i]['amount']
+                                            .split('.')[0]);
+                                    Map<String, dynamic> data = {
+                                      "name": "Bank transactions",
+                                      "spent": amountInt,
+                                      "category": "other",
+                                      "date": DateTime.now(),
+                                    };
+                                    FirebaseFirestore.instance
+                                        .collection(userKey!.email!)
+                                        .add(data);
+                                  }
+                                  filteredMessages.removeRange(
+                                      0, filteredMessages.length);
+                                  showSnackBar(context);
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title:
+                                          Text('No matching messages found!'),
+                                      content: Text(
+                                          'There are no bank transactions in your messages.'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: Text('OK'),
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }
