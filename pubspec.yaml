@@ -71,6 +71,7 @@ dependencies:
   url_launcher:
   ussd_service:
   getwidget:
+  smooth_page_indicator:
 
 
 
