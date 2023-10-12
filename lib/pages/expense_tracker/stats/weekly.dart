@@ -178,29 +178,25 @@ class _WeeklyState extends State<Weekly> {
     return FlTitlesData(
       // Build X axis.
       bottomTitles: SideTitles(
+        
         showTitles: true,
-        // textStyle: TextStyle(
-        //   color: Colors.white,
-        //   fontWeight: FontWeight.bold,
-        //   fontSize: 14,
-        // ),
         margin: 22,
         getTitles: (double value) {
           switch (value.toInt()) {
             case 0:
-              return 'M';
+              return 'Mon';
             case 1:
-              return 'T';
+              return 'Tue';
             case 2:
-              return 'W';
+              return 'Wed';
             case 3:
-              return 'T';
+              return 'Thu';
             case 4:
-              return 'F';
+              return 'Fri';
             case 5:
-              return 'S';
+              return 'Sat';
             case 6:
-              return 'S';
+              return 'Sun';
             default:
               return '';
           }
@@ -219,7 +215,7 @@ class _WeeklyState extends State<Weekly> {
   BarTouchData _buildBarTouchData() {
     return BarTouchData(
       touchTooltipData: BarTouchTooltipData(
-        tooltipBgColor: Colors.indigo[300],
+        tooltipBgColor: Color.fromRGBO(88, 88, 88, 1),
         getTooltipItem: (group, groupIndex, rod, rodIndex) {
           String weekDay = "";
           switch (group.x.toInt()) {

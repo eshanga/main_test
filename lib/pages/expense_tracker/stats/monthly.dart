@@ -79,6 +79,7 @@ class _MonthlyState extends State<Monthly> {
       _ExpenseData('Nov', spentmonth[10]),
       _ExpenseData('Dec', spentmonth[11]),
     ];
+
     return data;
   }
 
@@ -91,55 +92,77 @@ class _MonthlyState extends State<Monthly> {
             vertical: MediaQuery.of(context).size.height * 0.05,
             horizontal: MediaQuery.of(context).size.width * 0.05,
           ),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-                  Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 25, left: 25),
-              child: Text(
-                'Monthly Analytics',
-                style: TextStyle(
-                  fontFamily: 'Helvetica',
-                  color: Color.fromRGBO(240, 185, 11, 1),
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 25, left: 25),
+                  child: Text(
+                    'Monthly Analytics',
+                    style: TextStyle(
+                      fontFamily: 'Helvetica',
+                      color: Color.fromRGBO(240, 185, 11, 1),
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 60,
-            ),
-            StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection(userKey!.email!)
-                    .where('date',
-                        isGreaterThanOrEqualTo: DateTime(DateTime.now().year))
-                    .snapshots(),
-                builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                        child: CircularProgressIndicator().centered().expand());
-                  }
-                  getMonthlyData(snapshot).then((spentmonth) {
-                    spentmonth = this.spentmonth;
-                    setState(() {});
-                  });
-                  return SfCartesianChart(
-                      primaryXAxis: CategoryAxis(),
-                      legend: Legend(isVisible: false),
-                      tooltipBehavior: TooltipBehavior(enable: true),
-                      series: <ChartSeries<_ExpenseData, String>>[
-                        LineSeries<_ExpenseData, String>(
-                            dataSource: makeList(spentmonth),
-                            xValueMapper: (_ExpenseData sales, _) => sales.year,
-                            yValueMapper: (_ExpenseData sales, _) =>
-                                sales.expense,
-                            name: 'EXPENSE (in ₹ K)',
-                            dataLabelSettings:
-                                DataLabelSettings(isVisible: true))
-                      ]);
-                })
-          ])),
+                SizedBox(
+                  height: 60,
+                ),
+                StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection(userKey!.email!)
+                        .where('date',
+                            isGreaterThanOrEqualTo:
+                                DateTime(DateTime.now().year))
+                        .snapshots(),
+                    builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (!snapshot.hasData) {
+                        return Center(
+                            child: CircularProgressIndicator()
+                                .centered()
+                                .expand());
+                      }
+                      getMonthlyData(snapshot).then((spentmonth) {
+                        spentmonth = this.spentmonth;
+                        setState(() {});
+                      });
+                      return SfCartesianChart(
+                          primaryXAxis: CategoryAxis(
+                            majorGridLines: MajorGridLines(
+                                color: Color.fromRGBO(202, 201, 201,
+                                    1)), // Change grid line color
+                            labelStyle: TextStyle(
+                                color: Color.fromRGBO(226, 213, 159, 1)),
+                          ),
+                          primaryYAxis: NumericAxis(
+                            majorGridLines: MajorGridLines(
+                                color: Color.fromRGBO(202, 201, 201,
+                                    1)), // Change grid line color
+                            labelStyle: TextStyle(
+                                color: Color.fromRGBO(226, 213, 159,
+                                    1)), // Change axis label color
+                          ),
+                          legend: Legend(isVisible: false),
+                          tooltipBehavior: TooltipBehavior(enable: true),
+                          series: <ChartSeries<_ExpenseData, String>>[
+                            LineSeries<_ExpenseData, String>(
+                                dataSource: makeList(spentmonth),
+                                xValueMapper: (_ExpenseData sales, _) =>
+                                    sales.year,
+                                yValueMapper: (_ExpenseData sales, _) =>
+                                    sales.expense,
+                                name: 'EXPENSE (in ₹ K)',
+                                color: Color.fromRGBO(250, 211, 56, 1),
+                                dataLabelSettings: DataLabelSettings(
+                                  isVisible: true,
+                                  textStyle: TextStyle(
+                                      color: Color.fromRGBO(250, 211, 56, 1)),
+                                ))
+                          ]);
+                    })
+              ])),
     );
   }
 }
