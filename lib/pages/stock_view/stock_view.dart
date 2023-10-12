@@ -30,6 +30,8 @@ class _stockviewState extends State<stockview> {
                 .make(),
             backgroundColor: Color.fromRGBO(240, 185, 11, 1),
             bottom: TabBar(
+              labelColor: Colors.black, // Change the selected tab's text color
+              unselectedLabelColor: Colors.white,
               tabs: [
                 Tab(
                   text: 'Top Gainers',

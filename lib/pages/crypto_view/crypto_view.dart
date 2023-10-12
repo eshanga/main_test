@@ -30,6 +30,9 @@ class _cryptoviewState extends State<cryptoview> {
                 .make(),
             backgroundColor: Color.fromRGBO(240, 185, 11, 1),
             bottom: TabBar(
+              labelColor: Colors.black, // Change the selected tab's text color
+              unselectedLabelColor:
+                  Colors.white, // Change the unselected tabs' text color
               tabs: [
                 Tab(
                   text: 'Top Gainers',

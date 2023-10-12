@@ -1,6 +1,7 @@
 import 'package:financia_mobile_app/pages/Currency_convert/Currency_con.dart';
 import 'package:financia_mobile_app/pages/expense_tracker/home_expense.dart';
 import 'package:financia_mobile_app/pages/main_home_page.dart';
+import 'package:financia_mobile_app/pages/wallet/wallet_home_page.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -236,6 +237,25 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => CurrencyConverter()));
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.account_balance_wallet,
+              color: Colors.white,
+            ),
+            title: Text(
+              'Wallet',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          WalletHomePage(appBarHeightSize: 2)));
             },
           ),
           ListTile(
