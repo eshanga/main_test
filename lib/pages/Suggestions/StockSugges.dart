@@ -188,31 +188,33 @@ class _StockSuggesState extends State<StockSugges> {
         backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
-      body: Center(
-        child: isLoading
-            ? CircularProgressIndicator()
-            : isError
-                ? Text(
-                    'Error retrieving data',
-                    style: TextStyle(color: Colors.white),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Data retrieved from server:',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      const SizedBox(height: 10),
-                      buildValueCard('RIVN', rivnRealtimeValue, rivnValue),
-                      buildValueCard('TSLA', tslaRealtimeValue, tslaValue),
-                      buildValueCard('AAPL', aaplRealtimeValue, aaplValue),
-                      buildValueCard('AMD', amdRealtimeValue, amdValue),
-                      buildValueCard('BABA', babaRealtimeValue, babaValue),
-                      const SizedBox(height: 10),
-                      buildRecommendedBuyCard(),
-                    ],
-                  ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: isLoading
+              ? CircularProgressIndicator()
+              : isError
+                  ? Text(
+                      'Error retrieving data',
+                      style: TextStyle(color: Colors.white),
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Data retrieved from server:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 10),
+                        buildValueCard('RIVN', rivnRealtimeValue, rivnValue),
+                        buildValueCard('TSLA', tslaRealtimeValue, tslaValue),
+                        buildValueCard('AAPL', aaplRealtimeValue, aaplValue),
+                        buildValueCard('AMD', amdRealtimeValue, amdValue),
+                        buildValueCard('BABA', babaRealtimeValue, babaValue),
+                        const SizedBox(height: 10),
+                        buildRecommendedBuyCard(),
+                      ],
+                    ),
+        ),
       ),
     );
   }

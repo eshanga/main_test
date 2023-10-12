@@ -177,31 +177,33 @@ class _CrptoSuggesState extends State<CrptoSugges> {
         backgroundColor: Color.fromRGBO(240, 185, 11, 1),
       ),
       backgroundColor: Color.fromRGBO(30, 35, 41, 1),
-      body: Center(
-        child: isLoading
-            ? CircularProgressIndicator()
-            : isError
-                ? const Text(
-                    'Error retrieving data',
-                    style: TextStyle(color: Colors.white),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Data retrieved from server:',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      const SizedBox(height: 10),
-                      buildValueCard('BTC', btcRealtimeValue, btcValue),
-                      buildValueCard('ETH', ethRealtimeValue, rthValue),
-                      buildValueCard('TRX', usdtRealtimeValue, usdtValue),
-                      buildValueCard('BNB', bnbRealtimeValue, bnbValue),
-                      buildValueCard('USDC', usdcRealtimeValue, usdcValue),
-                      const SizedBox(height: 10),
-                      buildRecommendedBuyCard(),
-                    ],
-                  ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: isLoading
+              ? CircularProgressIndicator()
+              : isError
+                  ? const Text(
+                      'Error retrieving data',
+                      style: TextStyle(color: Colors.white),
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Data retrieved from server:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 10),
+                        buildValueCard('BTC', btcRealtimeValue, btcValue),
+                        buildValueCard('ETH', ethRealtimeValue, rthValue),
+                        buildValueCard('TRX', usdtRealtimeValue, usdtValue),
+                        buildValueCard('BNB', bnbRealtimeValue, bnbValue),
+                        buildValueCard('USDC', usdcRealtimeValue, usdcValue),
+                        const SizedBox(height: 10),
+                        buildRecommendedBuyCard(),
+                      ],
+                    ),
+        ),
       ),
     );
   }
