@@ -1,6 +1,7 @@
 import 'package:financia_mobile_app/pages/about_page.dart';
 import 'package:financia_mobile_app/pages/crypto_view/CryptoDataPage.dart';
 import 'package:financia_mobile_app/pages/stock_view/StockDataPage.dart';
+import 'package:financia_mobile_app/pages/wallet/wallet_home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -582,6 +583,52 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           children: [
                             Icon(
+                              Icons.account_balance_wallet,
+                              color: Color.fromRGBO(12, 14, 18, 1),
+                              size: 60,
+                            ),
+                            Text(
+                              'Wallet',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(12, 14, 18, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      WalletHomePage(appBarHeightSize: 2)));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(240, 185, 11, 1),
+                          minimumSize: Size(
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.425,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                20), // Change this value to adjust the curve
+                          ),
+                        ),
+                      ),
+                      //SizedBox(height: 20),
+
+                      //SizedBox(height: 20),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        child: Column(
+                          children: [
+                            Icon(
                               Icons.groups,
                               color: Color.fromRGBO(12, 14, 18, 1),
                               size: 60,
@@ -605,8 +652,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(240, 185, 11, 1),
                           minimumSize: Size(
-                            MediaQuery.of(context).size.shortestSide * 0.425,
-                            MediaQuery.of(context).size.shortestSide * 0.425,
+                            MediaQuery.of(context).size.shortestSide * 0.9,
+                            MediaQuery.of(context).size.shortestSide * 0.25,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
@@ -614,31 +661,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      //SizedBox(height: 20),
-                      /*  ElevatedButton(
-                        child: Text(
-                          'Currency Converter',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(240, 185, 11, 1),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CurrencyConverter()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(80, 85, 88, 1),
-                          minimumSize: Size(380, 80),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                30), // Change this value to adjust the curve
-                          ),
-                        ),
-                      ),*/
+
                       //SizedBox(height: 20),
                     ],
                   ),
