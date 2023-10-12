@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:telephony/telephony.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:intl/intl.dart';
 
@@ -79,7 +80,7 @@ class _WeeklyState extends State<Weekly> {
         height: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Color.fromRGBO(48, 52, 56, 1),
+          color: Color.fromRGBO(240, 185, 11, 1),
         ),
         margin: EdgeInsets.all(10.0),
         padding: const EdgeInsets.all(16),
@@ -91,8 +92,9 @@ class _WeeklyState extends State<Weekly> {
               'Weekly Analytics',
               style: TextStyle(
                 fontFamily: 'Helvetica',
-                color: Color.fromRGBO(240, 185, 11, 1),
+                color: Color.fromRGBO(0, 0, 0, 1),
                 fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(
@@ -144,7 +146,10 @@ class _WeeklyState extends State<Weekly> {
       barRods: [
         BarChartRodData(
           y: y,
-          colors: [Colors.white, Color.fromRGBO(240, 185, 11, 1)],
+          colors: [
+            Color.fromRGBO(103, 105, 106, 1),
+            Color.fromRGBO(0, 0, 0, 1)
+          ],
           width: 22,
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
@@ -178,7 +183,6 @@ class _WeeklyState extends State<Weekly> {
     return FlTitlesData(
       // Build X axis.
       bottomTitles: SideTitles(
-        
         showTitles: true,
         margin: 22,
         getTitles: (double value) {
